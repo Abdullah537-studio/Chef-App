@@ -1,0 +1,24 @@
+{
+    "welcome_toApplication":"Welcome to Chef App",
+    "choose_language":"Please choose your language",
+    "message_welcome_login":"Welcome Back",
+    "message_welcome_register":"Welcome",
+    "email":"E-mail",
+    "password":"Password",
+    "confirm_password":"Confirm password",
+    "name":"Name",
+    "location":"Location",
+    "brand_named":"Brand Name",
+    "min_charge":"Min Charge",
+    "disc":"Discreptoin",
+    "health_certificate":"Discreptoin",
+    "front_id":"Discreptoin",
+    "back_id":"Discreptoin",
+    "profilePic":"Discreptoin",
+    "forget_password":"forget password ?",
+    "sign_in":"sign in",
+    "sign_up":"sign up",
+    "question_dont_register_yet":"Don't have an account ?",
+    "question_have_account_before":"have account already ?"
+
+}

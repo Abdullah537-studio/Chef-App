@@ -1,0 +1,24 @@
+{
+    "welcome_toApplication":"Chef App مرحبا بك في تطبيق ",
+    "choose_language":"اختر لغة رجاءً",
+    "message_welcome_login":"مرحباً مجدداً",
+    "message_welcome_register":"مرحباً",
+    "email":"البريد الالكتروني ",
+    "password":"كلمة المرور",
+    "confirm_password":"أكد كلمة المرور",
+    "name":"الاسم",
+    "location":"الموقع",
+    "brand_named":"الاسم التجاري",
+    "min_charge":"الحد الأدنى للرسوم ",
+    "disc":"الوصف",
+    "health_certificate":"شهادة صحية ",
+    "front_id":"معرف أمامي",
+    "back_id":"معرف خلفي",
+    "profile_pic":"صورة للملف الشخصي",
+    "forget_password":"نسيت كلمة المرور؟",
+    "sign_in":"تسجيل الدخول",
+    "sign_up":"إنشاء حساب",
+    "question_dont_register_yet":"ليس لديك حساب بعد؟ ",
+    "question_have_account_before":"لديك حساب مسبقاً؟ "
+
+}
