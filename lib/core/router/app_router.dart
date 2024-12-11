@@ -1,21 +1,29 @@
+import 'package:chef_app/app/splashe_page.dart';
 import 'package:chef_app/core/injection/injection_container.dart';
 import 'package:chef_app/features/auth/presentation/cubits/auth/auth_cubit.dart';
+import 'package:chef_app/features/auth/presentation/pages/choose_lang_page.dart';
 import 'package:chef_app/features/auth/presentation/pages/create_new_password_page.dart';
 import 'package:chef_app/features/auth/presentation/pages/forget_password_page.dart';
 import 'package:chef_app/features/auth/presentation/pages/login_page.dart';
 import 'package:chef_app/features/auth/presentation/pages/register_page.dart';
 import 'package:chef_app/features/profile/presentation/pages/profile_page.dart';
-import 'package:chef_app/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppRouter {
-  Route? onGenerateRoute(RouteSettings settings) {
+  static Route? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case RouteNamedScreens.homescreen:
+      case RouteNamedScreens.initialRoute:
+        return MaterialPageRoute(builder: (_) => const SplasheScreen());
+      case RouteNamedScreens.chooseLang:
         return MaterialPageRoute(
-          builder: (_) => const HomePage(),
+          builder: (_) => const ChooseLangPage(),
         );
+      case RouteNamedScreens.profilescreen:
+        return MaterialPageRoute(
+          builder: (_) => const ProfilePage(),
+        );
+
       case RouteNamedScreens.logiscreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
@@ -30,8 +38,6 @@ class AppRouter {
             child: RegisterPage(),
           ),
         );
-      case RouteNamedScreens.profilescreen:
-        return MaterialPageRoute(builder: (_) => const ProfilePage());
       case RouteNamedScreens.forgetPassword:
         return MaterialPageRoute(builder: (_) => ForgetPasswordPage());
       case RouteNamedScreens.createNewPassword:
@@ -42,7 +48,9 @@ class AppRouter {
 }
 
 class RouteNamedScreens {
+  static const String initialRoute = '/';
   static const String homescreen = '/home_screen';
+  static const String chooseLang = '/choose_lang';
   static const String logiscreen = '/login_screen';
   static const String registerscreen = '/register_screen';
   static const String profilescreen = '/profile_screen';

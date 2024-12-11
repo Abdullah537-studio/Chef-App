@@ -7,9 +7,7 @@ import 'package:chef_app/features/auth/domain/entities/response/login_response_m
 import 'package:chef_app/features/auth/domain/entities/response/register_response_model.dart';
 import 'package:chef_app/features/auth/domain/repositories/auth_repository.dart';
 import 'package:chef_app/network/network_info.dart';
-import 'package:chef_app/strings/exception_string.dart';
 import 'package:dartz/dartz.dart';
-import 'package:dio/dio.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
   final NetworkInfo networkInfo;
@@ -18,31 +16,24 @@ class AuthRepositoryImpl implements AuthRepository {
       {required this.networkInfo, required this.authRemote});
 //!-------------------------------- login --------------------------------------
   @override
-  Future<Either<ServerException, LoginResponseModel>> login(
+  Future<Either<ErrorModel, LoginResponseModel>> login(
       {required LoginRequiestModel loginRequiestModel}) async {
     if (await networkInfo.isConnected) {
       try {
         final loginData =
             await authRemote.login(loginRequiestModel: loginRequiestModel);
         return Right(loginData);
-      } on DioException catch (e) {
-        return Left(
-          throw ServerException(
-            errorModel: ErrorModel.fromJson(e.response!.data),
-          ),
-        );
+      } on ServerException catch (e) {
+        return Left(e.errorModel!);
       }
     } else {
-      ErrorModel errorModel = const ErrorModel(
-        errorMessage: ExceptionString.offlineExceptionString,
-      );
-      return Left(ServerException(errorModel: errorModel));
+      return const Left(ErrorModel(errorMessage: "errorModel"));
     }
   }
 
 //!---------------------------------register------------------------------------
   @override
-  Future<Either<ServerException, RegisterResponseModel>> signup(
+  Future<Either<ErrorModel, RegisterResponseModel>> signup(
       {required RegisterRequiestModel registerRequiestModel}) async {
     if (await networkInfo.isConnected) {
       try {
@@ -50,12 +41,10 @@ class AuthRepositoryImpl implements AuthRepository {
             registerRequiestModel: registerRequiestModel);
         return Right(registerData);
       } on ServerException catch (e) {
-        return Left(e);
+        return Left(e.errorModel!);
       }
     } else {
-      ErrorModel errorModel = const ErrorModel(
-          errorMessage: ExceptionString.offlineExceptionString, status: 0);
-      return Left(ServerException(errorModel: errorModel));
+      return const Left(ErrorModel(errorMessage: "errorModel"));
     }
   }
 }

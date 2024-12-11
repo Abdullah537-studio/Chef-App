@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 
 //  Interceptor from dio
 class ApiInterseptors extends Interceptor {
-  SecureStorageHelper storage = SecureStorageHelper();
+  CacheHelper storage = CacheHelper();
   @override
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {

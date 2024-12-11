@@ -25,31 +25,31 @@ class CustomTextFormFieldPassword extends StatelessWidget {
         onChanged: onChanged,
         obscureText: true,
         textInputAction: TextInputAction.next,
-        cursorColor: AppColors.mainColor,
+        cursorColor: AppColors.primaryColor,
         decoration: InputDecoration(
           hintText: text,
           hintStyle: TextStyle(
             color: AppColors.borderTextFormField,
             fontSize: 16.sp,
           ),
-          suffixIcon: Icon(
+          suffixIcon: const Icon(
             Icons.remove_red_eye,
             color: AppColors.borderTextFormField,
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: AppColors.mainColor,
+            borderSide: const BorderSide(
+              color: AppColors.primaryColor,
             ),
             borderRadius: BorderRadius.circular(12.r),
           ),
           errorBorder: OutlineInputBorder(
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: AppColors.redColor,
             ),
             borderRadius: BorderRadius.circular(12.r),
           ),
           border: OutlineInputBorder(
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: AppColors.borderTextFormField,
             ),
             borderRadius: BorderRadius.circular(12.r),

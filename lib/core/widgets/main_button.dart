@@ -18,7 +18,7 @@ class MainButton extends StatelessWidget {
       minWidth: double.infinity,
       height: 42.h,
       onPressed: onTap,
-      color: AppColors.mainColor,
+      color: AppColors.primaryColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8.r),
       ),
@@ -26,7 +26,7 @@ class MainButton extends StatelessWidget {
           ? SizedBox(
               height: 20.h,
               width: 20.w,
-              child: Center(
+              child: const Center(
                 child: CircularProgressIndicator(
                   color: AppColors.whiteColor,
                 ),

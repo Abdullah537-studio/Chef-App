@@ -27,7 +27,7 @@ class MainTextFormField extends StatelessWidget {
         controller: controller,
         onChanged: onChanged,
         textInputAction: TextInputAction.next,
-        cursorColor: AppColors.mainColor,
+        cursorColor: AppColors.primaryColor,
         decoration: InputDecoration(
           hintText: text,
           hintStyle: TextStyle(
@@ -35,19 +35,19 @@ class MainTextFormField extends StatelessWidget {
             fontSize: 16.sp,
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: AppColors.mainColor,
+            borderSide: const BorderSide(
+              color: AppColors.primaryColor,
             ),
             borderRadius: BorderRadius.circular(12.r),
           ),
           errorBorder: OutlineInputBorder(
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: AppColors.redColor,
             ),
             borderRadius: BorderRadius.circular(12.r),
           ),
           border: OutlineInputBorder(
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               color: AppColors.borderTextFormField,
             ),
             borderRadius: BorderRadius.circular(12.r),

@@ -14,17 +14,17 @@ class ExceptionString {
       "Please agree to our system to continue";
 
   //!  strings for DioExceptions
-  static const String badCertificateString = "Bad certificate.";
-  static const String connectionErrorString = "Connection error.";
-  static const String connectionTimeoutString = "Connection timed out.";
-  static const String receiveTimeoutString = "Receive timeout.";
-  static const String sendTimeoutString = "Send timeout.";
-  static const String requestCancelledString = "Request was cancelled.";
-  static const String unknownErrorString = "An unknown error occurred.";
-  static const String badRequestString = "Bad request.";
-  static const String unauthorizedString = "Unauthorized (no token).";
-  static const String forbiddenString = "Access forbidden.";
-  static const String notFoundString = "Resource not found.";
-  static const String conflictString = "Request conflict.";
-  static const String unexpectedResponseString = "Unexpected response.";
+  // static const String badCertificateString = "Bad certificate.";
+  // static const String connectionErrorString = "Connection error.";
+  // static const String connectionTimeoutString = "Connection timed out.";
+  // static const String receiveTimeoutString = "Receive timeout.";
+  // static const String sendTimeoutString = "Send timeout.";
+  // static const String requestCancelledString = "Request was cancelled.";
+  // static const String unknownErrorString = "An unknown error occurred.";
+  // static const String badRequestString = "Bad request.";
+  // static const String unauthorizedString = "Unauthorized (no token).";
+  // static const String forbiddenString = "Access forbidden.";
+  // static const String notFoundString = "Resource not found.";
+  // static const String conflictString = "Request conflict.";
+  // static const String unexpectedResponseString = "Unexpected response.";
 }

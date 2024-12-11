@@ -10,7 +10,7 @@ import 'package:equatable/equatable.dart';
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
-  final _storage = SecureStorageHelper();
+  final _storage = CacheHelper();
   final LoginUsecases loginUsecases;
   LoginResponseModel loginResponseModel =
       const LoginResponseModel(message: "", token: "");
@@ -20,9 +20,16 @@ class AuthCubit extends Cubit<AuthState> {
     final loginData =
         await loginUsecases(loginRequiestModel: loginRequiestModel);
     loginData.fold((failure) {
-      String errorMessage = failure.errorModel!.errorMessage;
-      emit(state.copyWith(
-          cubitStatus: CubitStatus.error, message: errorMessage));
+      try {
+        String errorMessage = failure.errorMessage;
+        emit(state.copyWith(
+            cubitStatus: CubitStatus.error, message: errorMessage));
+      } catch (e) {
+        emit(state.copyWith(
+          cubitStatus: CubitStatus.error,
+          message: e.toString(),
+        ));
+      }
     }, (response) {
       loginResponseModel = response;
       _storage.saveData(

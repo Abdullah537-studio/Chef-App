@@ -1,6 +1,7 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-class SecureStorageHelper {
+class CacheHelper {
+  // SecureStorageHelper
   final FlutterSecureStorage _storage = const FlutterSecureStorage();
   // لا حاجة لتحضير مسبق، حيث أن FlutterSecureStorage يتعامل مع التخزين مباشرة
   // Future<void> init() async {

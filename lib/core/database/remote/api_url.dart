@@ -20,3 +20,9 @@ class ApiDelete {
 }
 
 class ApiPatche {}
+
+class ApiKey {
+  static const String email = "email";
+  static const String password = "password";
+  static const String message = "message";
+}

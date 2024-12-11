@@ -100,12 +100,12 @@ class MainTextWidget extends StatelessWidget {
             fontSize: 16.sp,
           ),
         );
-      case TextStyleEnum.textMainColor:
+      case TextStyleEnum.textprimaryColor:
         return Text(
           text,
           textAlign: TextAlign.start,
           style: TextStyle(
-            color: AppColors.mainColor,
+            color: AppColors.primaryColor,
             fontSize: 16.sp,
           ),
         );
@@ -133,6 +133,6 @@ enum TextStyleEnum {
   buttonTran,
   appBar,
   welcomeAuth,
-  textMainColor,
+  textprimaryColor,
   normal,
 }

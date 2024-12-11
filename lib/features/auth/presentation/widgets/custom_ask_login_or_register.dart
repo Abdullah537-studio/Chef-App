@@ -22,7 +22,7 @@ class CustomAskLoginOrRegister extends StatelessWidget {
           onPressed: ontap,
           child: MainTextWidget(
             text: textNavigate,
-            textStyleEnum: TextStyleEnum.textMainColor,
+            textStyleEnum: TextStyleEnum.textprimaryColor,
           ),
         )
       ],

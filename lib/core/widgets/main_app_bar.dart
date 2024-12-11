@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 
 AppBar mainAppBar(BuildContext context, String text) {
   return AppBar(
-    backgroundColor: AppColors.mainColor,
+    backgroundColor: AppColors.primaryColor,
     leading: InkWell(
       onTap: () {
         Navigator.pop(context);
       },
-      child: Icon(
+      child: const Icon(
         Icons.arrow_back,
         color: AppColors.whiteColor,
       ),
