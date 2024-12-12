@@ -74,11 +74,15 @@ class RegisterPage extends StatelessWidget {
                 //   onChanged: (value) {},
                 // ),
                 CustomTextFormFieldPassword(
+                  horizontal: 24,
+                  vertical: 12,
                   controller: controllerPassword,
                   text: context.password,
                   onChanged: (value) {},
                 ),
                 CustomTextFormFieldPassword(
+                  horizontal: 24,
+                  vertical: 12,
                   controller: controllerConfirmPassword,
                   text: context.confirmPassword,
                   onChanged: (value) {},

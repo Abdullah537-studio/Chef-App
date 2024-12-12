@@ -1,5 +1,5 @@
 import 'package:chef_app/core/database/cache/cache_helper.dart';
-import 'package:chef_app/strings/key_cache_value.dart';
+import 'package:chef_app/core/database/remote/api_url.dart';
 import 'package:dio/dio.dart';
 
 //  Interceptor from dio
@@ -8,10 +8,10 @@ class ApiInterseptors extends Interceptor {
   @override
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
-    String? token = await storage.getData(key: AppKeyCache.token);
+    String? token = await storage.getData(key: ApiKey.token);
 
     if (token != null) {
-      options.headers["token"] = "FOODAPI $token";
+      options.headers[ApiKey.token] = "FOODAPI $token";
     } else {
       options.headers["Authorization"] = "Bearer ";
     }

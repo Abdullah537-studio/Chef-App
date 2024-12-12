@@ -4,9 +4,9 @@ import 'package:chef_app/features/auth/domain/entities/response/login_response_m
 import 'package:chef_app/features/auth/domain/repositories/auth_repository.dart';
 import 'package:dartz/dartz.dart';
 
-class LoginUsecases {
+class LoginUsecase {
   final AuthRepository repository;
-  const LoginUsecases({required this.repository});
+  const LoginUsecase({required this.repository});
   Future<Either<ErrorModel, LoginResponseModel>> call({
     required LoginRequiestModel loginRequiestModel,
   }) async {

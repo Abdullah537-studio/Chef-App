@@ -8,8 +8,12 @@ class CustomTextFormFieldPassword extends StatelessWidget {
     required this.text,
     required this.onChanged,
     required this.controller,
+    required this.horizontal,
+    required this.vertical,
   });
   final String text;
+  final double horizontal;
+  final double vertical;
   final TextEditingController controller;
   final Function(String) onChanged;
 
@@ -17,8 +21,8 @@ class CustomTextFormFieldPassword extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: 24.w,
-        vertical: 16.h,
+        horizontal: horizontal,
+        vertical: vertical,
       ),
       child: TextFormField(
         controller: controller,

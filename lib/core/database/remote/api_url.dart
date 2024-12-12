@@ -12,7 +12,9 @@ class ApiGet {
 class ApiPost {
   static const chefSignUp = 'chef/signup';
   static const chefSignIn = 'chef/signin';
+  static const chefSendCode = 'chef/send-code';
   static const chefChangePassword = 'chef/change-password';
+  static const chefCreateNewPassword = 'chef/change-forgotten-password';
 }
 
 class ApiDelete {
@@ -25,4 +27,5 @@ class ApiKey {
   static const String email = "email";
   static const String password = "password";
   static const String message = "message";
+  static const String token = "token";
 }

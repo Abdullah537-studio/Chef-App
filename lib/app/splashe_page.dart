@@ -43,8 +43,8 @@ class _SplasheScreenState extends State<SplasheScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(ImageString.chefImage),
-          SizedBox(
-            width: double.infinity,
+          Align(
+            alignment: Alignment.center,
             child: MainTextWidget(
               text: AppConstantString.cheffApp,
               textStyle: boldStyle(color: AppColors.darkCharcoal),

@@ -1,3 +1,5 @@
+import 'package:chef_app/core/database/remote/api_url.dart';
+
 class LoginResponseModel {
   final String message;
   final String token;
@@ -5,8 +7,8 @@ class LoginResponseModel {
   const LoginResponseModel({required this.message, required this.token});
   factory LoginResponseModel.fromJson(Map<String, dynamic> jsonData) {
     return LoginResponseModel(
-      message: jsonData["message"],
-      token: jsonData["token"],
+      message: jsonData[ApiKey.message],
+      token: jsonData[ApiKey.token],
     );
   }
 }

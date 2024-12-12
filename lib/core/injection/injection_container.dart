@@ -3,7 +3,9 @@ import "package:chef_app/core/database/remote/dio_consumer.dart";
 import "package:chef_app/features/auth/data/datasources/auth_remote.dart";
 import "package:chef_app/features/auth/data/repositories/auth_repository_impl.dart";
 import "package:chef_app/features/auth/domain/repositories/auth_repository.dart";
-import "package:chef_app/features/auth/domain/usecases/login_usecases.dart";
+import "package:chef_app/features/auth/domain/usecases/send_code_usecase.dart";
+import "package:chef_app/features/auth/domain/usecases/login_usecase.dart";
+import "package:chef_app/features/auth/domain/usecases/register_usecase.dart";
 import "package:chef_app/features/auth/presentation/cubits/auth/auth_cubit.dart";
 import "package:chef_app/network/network_info.dart";
 import "package:dio/dio.dart";
@@ -27,10 +29,23 @@ Future<void> init() async {
 
   //! Auth_Feature
   sl.registerLazySingleton(
-    () => AuthCubit(sl()),
+    () => AuthCubit(
+      sl(),
+      sl(),
+    ),
   );
   sl.registerLazySingleton(
-    () => LoginUsecases(
+    () => LoginUsecase(
+      repository: sl(),
+    ),
+  );
+  sl.registerLazySingleton(
+    () => RegisterUsecase(
+      repository: sl(),
+    ),
+  );
+  sl.registerLazySingleton(
+    () => SendCodeUsecase(
       repository: sl(),
     ),
   );

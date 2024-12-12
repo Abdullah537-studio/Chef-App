@@ -4,10 +4,10 @@ import 'package:chef_app/features/auth/domain/entities/response/register_respons
 import 'package:chef_app/features/auth/domain/repositories/auth_repository.dart';
 import 'package:dartz/dartz.dart';
 
-class RegisterUsecasess {
+class RegisterUsecase {
   final AuthRepository repository;
 
-  const RegisterUsecasess({required this.repository});
+  const RegisterUsecase({required this.repository});
   Future<Either<ErrorModel, RegisterResponseModel>> call({
     required RegisterRequiestModel registerRequiestModel,
   }) async {

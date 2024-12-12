@@ -4,7 +4,7 @@ import 'package:chef_app/core/injection/injection_container.dart';
 import 'package:chef_app/features/auth/presentation/cubits/auth/auth_cubit.dart';
 import 'package:chef_app/features/auth/presentation/pages/choose_lang_page.dart';
 import 'package:chef_app/features/auth/presentation/pages/create_new_password_page.dart';
-import 'package:chef_app/features/auth/presentation/pages/forget_password_page.dart';
+import 'package:chef_app/features/auth/presentation/pages/send_code_page.dart';
 import 'package:chef_app/features/auth/presentation/pages/login_page.dart';
 import 'package:chef_app/features/auth/presentation/pages/register_page.dart';
 import 'package:chef_app/features/profile/presentation/pages/change_password_page.dart';
@@ -44,8 +44,12 @@ class AppRouter {
             child: RegisterPage(),
           ),
         );
-      case RouteNamedScreens.forgetPassword:
-        return MaterialPageRoute(builder: (_) => ForgetPasswordPage());
+      case RouteNamedScreens.sendCode:
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+                  create: (context) => sl<AuthCubit>(),
+                  child: SendCodePage(),
+                ));
       case RouteNamedScreens.createNewPassword:
         return MaterialPageRoute(builder: (_) => CreateNewPasswordPage());
       case RouteNamedScreens.settingScreenProfile:
@@ -66,6 +70,7 @@ class RouteNamedScreens {
   static const String registerscreen = '/register_screen';
   static const String homeScren = '/home_screen';
   static const String forgetPassword = '/forget_password';
+  static const String sendCode = '/send_code';
   static const String createNewPassword = '/create_new_password';
   static const String settingScreenProfile = '/setting_screen_profile';
   static const String editScreenProfile = '/edit_screen_profile';

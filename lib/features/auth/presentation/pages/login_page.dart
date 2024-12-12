@@ -59,17 +59,18 @@ class LoginPage extends StatelessWidget {
                     vertical: 16.h,
                   ),
                   child: Align(
-                    alignment: Alignment.centerLeft,
+                    alignment: AlignmentDirectional.centerStart,
                     child: InkWell(
                       onTap: () {
                         Navigator.pushNamed(
                           context,
-                          RouteNamedScreens.forgetPassword,
+                          RouteNamedScreens.sendCode,
                         );
                       },
                       child: MainTextWidget(
                         text: context.forgetPassword,
-                        textStyle: boldStyle(color: AppColors.greyColor),
+                        textStyle: boldStyle(
+                            color: AppColors.greyColor, fontSize: 16.sp),
                       ),
                     ),
                   ),
