@@ -14,14 +14,15 @@ class ApiPost {
   static const chefSignIn = 'chef/signin';
   static const chefSendCode = 'chef/send-code';
   static const chefChangePassword = 'chef/change-password';
-  static const chefCreateNewPassword = 'chef/change-forgotten-password';
 }
 
 class ApiDelete {
   static const chefDelete = 'chef/delete';
 }
 
-class ApiPatche {}
+class ApiPatche {
+  static const chefChangeForgettonPassword = 'chef/change-forgotten-password';
+}
 
 class ApiKey {
   static const String email = "email";

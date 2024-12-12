@@ -26,7 +26,7 @@ class SendCodePage extends StatelessWidget {
           showToast(state.message, AppColors.greenColor);
           Navigator.pushNamed(
             context,
-            RouteNamedScreens.createNewPassword,
+            RouteNamedScreens.changeForgettonPassword,
           );
         } else if (state.cubitStatus == CubitStatus.error) {
           showToast(state.message, AppColors.redColor);

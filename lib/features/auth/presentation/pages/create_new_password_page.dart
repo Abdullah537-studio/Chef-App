@@ -9,8 +9,8 @@ import 'package:chef_app/strings/image_png.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CreateNewPasswordPage extends StatelessWidget {
-  CreateNewPasswordPage({super.key});
+class ChangeForgettonPassword extends StatelessWidget {
+  ChangeForgettonPassword({super.key});
   final TextEditingController controllerCode = TextEditingController();
   final TextEditingController controllerPassword = TextEditingController();
   final TextEditingController controllerConfirmPassword =

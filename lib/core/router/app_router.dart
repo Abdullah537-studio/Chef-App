@@ -50,8 +50,8 @@ class AppRouter {
                   create: (context) => sl<AuthCubit>(),
                   child: SendCodePage(),
                 ));
-      case RouteNamedScreens.createNewPassword:
-        return MaterialPageRoute(builder: (_) => CreateNewPasswordPage());
+      case RouteNamedScreens.changeForgettonPassword:
+        return MaterialPageRoute(builder: (_) => ChangeForgettonPassword());
       case RouteNamedScreens.settingScreenProfile:
       case RouteNamedScreens.editScreenProfile:
         return MaterialPageRoute(builder: (_) => const EditProfilePage());
@@ -71,7 +71,7 @@ class RouteNamedScreens {
   static const String homeScren = '/home_screen';
   static const String forgetPassword = '/forget_password';
   static const String sendCode = '/send_code';
-  static const String createNewPassword = '/create_new_password';
+  static const String changeForgettonPassword = '/change_forgetton_password';
   static const String settingScreenProfile = '/setting_screen_profile';
   static const String editScreenProfile = '/edit_screen_profile';
   static const String changePasswordScreenProfile =
