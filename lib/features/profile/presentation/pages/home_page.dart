@@ -13,17 +13,23 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: const CoustomBottomNavigationBar(),
-      body: Padding(
-        padding: EdgeInsets.symmetric(
-          vertical: 74.h,
-        ),
-        child: context.read<BootomNavbarCubit>().bootmNavBarProfileMealEnum ==
-                BootmNavBarProfileMealEnum.meal
-            ? showBodyMeal()
-            : showBodyProfile(),
-      ),
+    return BlocBuilder<BootomNavbarCubit, BootomNavbarState>(
+      builder: (context, state) {
+        return Scaffold(
+          bottomNavigationBar: CoustomBottomNavigationBar(
+            bootmNavBarProfileMealEnum: state.bootmNavBarProfileMealEnum,
+          ),
+          body: Padding(
+            padding: EdgeInsets.symmetric(
+              vertical: 74.h,
+            ),
+            child: state.bootmNavBarProfileMealEnum ==
+                    BootmNavBarProfileMealEnum.meal
+                ? showBodyMeal()
+                : showBodyProfile(),
+          ),
+        );
+      },
     );
   }
 }

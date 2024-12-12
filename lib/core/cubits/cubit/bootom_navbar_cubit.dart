@@ -6,11 +6,11 @@ part 'bootom_navbar_state.dart';
 
 class BootomNavbarCubit extends Cubit<BootomNavbarState> {
   BootomNavbarCubit() : super(BootomNavbarState.initial());
-  BootmNavBarProfileMealEnum bootmNavBarProfileMealEnum =
-      BootmNavBarProfileMealEnum.profile;
   void changeBootmNavBarProfileMealEnum(bool itsProfile) {
-    bootmNavBarProfileMealEnum = itsProfile
-        ? BootmNavBarProfileMealEnum.profile
-        : BootmNavBarProfileMealEnum.meal;
+    itsProfile
+        ? emit(state.copyWith(
+            bootmNavBarProfileMealEnum: BootmNavBarProfileMealEnum.profile))
+        : emit(state.copyWith(
+            bootmNavBarProfileMealEnum: BootmNavBarProfileMealEnum.meal));
   }
 }

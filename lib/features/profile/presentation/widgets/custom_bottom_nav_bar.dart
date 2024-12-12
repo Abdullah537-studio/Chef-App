@@ -8,7 +8,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CoustomBottomNavigationBar extends StatelessWidget {
-  const CoustomBottomNavigationBar({super.key});
+  const CoustomBottomNavigationBar(
+      {super.key, required this.bootmNavBarProfileMealEnum});
+  final BootmNavBarProfileMealEnum bootmNavBarProfileMealEnum;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,11 +23,9 @@ class CoustomBottomNavigationBar extends StatelessWidget {
           CustomIconBootomNavBar(
             text: "Meal",
             image: ImageSvg.homeIconBottomNavBar,
-            color:
-                context.read<BootomNavbarCubit>().bootmNavBarProfileMealEnum ==
-                        BootmNavBarProfileMealEnum.meal
-                    ? AppColors.primaryColor
-                    : AppColors.greyColor,
+            color: bootmNavBarProfileMealEnum == BootmNavBarProfileMealEnum.meal
+                ? AppColors.primaryColor
+                : AppColors.greyColor,
             ontap: () {
               context
                   .read<BootomNavbarCubit>()
@@ -36,8 +36,7 @@ class CoustomBottomNavigationBar extends StatelessWidget {
             text: "Profile",
             image: ImageSvg.profileIconBottomNavBar,
             color:
-                context.read<BootomNavbarCubit>().bootmNavBarProfileMealEnum ==
-                        BootmNavBarProfileMealEnum.profile
+                bootmNavBarProfileMealEnum == BootmNavBarProfileMealEnum.profile
                     ? AppColors.primaryColor
                     : AppColors.greyColor,
             ontap: () {
