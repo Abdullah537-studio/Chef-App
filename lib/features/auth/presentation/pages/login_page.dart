@@ -25,8 +25,7 @@ class LoginPage extends StatelessWidget {
       listener: (context, state) {
         if (state.cubitStatus == CubitStatus.loaded) {
           showToast("success", AppColors.primaryColor);
-          Navigator.pushReplacementNamed(
-              context, RouteNamedScreens.profilescreen);
+          Navigator.pushReplacementNamed(context, RouteNamedScreens.homeScren);
         } else if (state.cubitStatus == CubitStatus.error) {
           showToast(state.message, AppColors.redColor);
         }

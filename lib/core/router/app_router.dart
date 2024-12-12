@@ -1,4 +1,5 @@
 import 'package:chef_app/app/splashe_page.dart';
+import 'package:chef_app/core/cubits/cubit/bootom_navbar_cubit.dart';
 import 'package:chef_app/core/injection/injection_container.dart';
 import 'package:chef_app/features/auth/presentation/cubits/auth/auth_cubit.dart';
 import 'package:chef_app/features/auth/presentation/pages/choose_lang_page.dart';
@@ -8,7 +9,7 @@ import 'package:chef_app/features/auth/presentation/pages/login_page.dart';
 import 'package:chef_app/features/auth/presentation/pages/register_page.dart';
 import 'package:chef_app/features/profile/presentation/pages/change_password_page.dart';
 import 'package:chef_app/features/profile/presentation/pages/edit_profile_page.dart';
-import 'package:chef_app/features/profile/presentation/pages/profile_page.dart';
+import 'package:chef_app/features/profile/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,9 +22,12 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const ChooseLangPage(),
         );
-      case RouteNamedScreens.profilescreen:
+      case RouteNamedScreens.homeScren:
         return MaterialPageRoute(
-          builder: (_) => const ProfilePage(),
+          builder: (_) => BlocProvider(
+            create: (context) => BootomNavbarCubit(),
+            child: const HomePage(),
+          ),
         );
 
       case RouteNamedScreens.logiscreen:
@@ -60,7 +64,7 @@ class RouteNamedScreens {
   static const String chooseLang = '/choose_lang';
   static const String logiscreen = '/login_screen';
   static const String registerscreen = '/register_screen';
-  static const String profilescreen = '/profile_screen';
+  static const String homeScren = '/home_screen';
   static const String forgetPassword = '/forget_password';
   static const String createNewPassword = '/create_new_password';
   static const String settingScreenProfile = '/setting_screen_profile';
