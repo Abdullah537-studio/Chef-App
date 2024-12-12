@@ -1,4 +1,5 @@
 import 'package:chef_app/core/extention/tanslate_extention.dart';
+import 'package:chef_app/core/function/main_text_style.dart';
 import 'package:chef_app/core/router/app_router.dart';
 import 'package:chef_app/core/widgets/main_app_bar.dart';
 import 'package:chef_app/core/widgets/main_button.dart';
@@ -27,13 +28,13 @@ class ForgetPasswordPage extends StatelessWidget {
                     bottom: 26.h,
                   ),
                   child: Image.asset(ImageString.lockImage)),
-              const MainTextWidget(
+              MainTextWidget(
                 text: "Enter Your mail and we will send code to",
-                textStyleEnum: TextStyleEnum.normal,
+                textStyle: regularStyle(),
               ),
-              const MainTextWidget(
+              MainTextWidget(
                 text: " reset your password",
-                textStyleEnum: TextStyleEnum.normal,
+                textStyle: regularStyle(),
               ),
               MainTextFormField(
                 horizontal: 0,

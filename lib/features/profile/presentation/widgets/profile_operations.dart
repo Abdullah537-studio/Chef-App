@@ -1,3 +1,4 @@
+import 'package:chef_app/core/router/app_router.dart';
 import 'package:chef_app/features/profile/presentation/widgets/custom_setting_profile.dart';
 import 'package:chef_app/strings/image_svg.dart';
 import 'package:flutter/material.dart';
@@ -13,22 +14,34 @@ class ProfileOperations extends StatelessWidget {
         CustomSettingProfile(
           text: "Edit Profile",
           image: ImageSvg.personIcon,
-          ontap: () {},
+          ontap: () {
+            Navigator.pushNamed(context, RouteNamedScreens.editScreenProfile);
+          },
+          colorTextIsPrimary: false,
         ),
         CustomSettingProfile(
           text: "Password",
           image: ImageSvg.hidePasswordIcon,
-          ontap: () {},
+          ontap: () {
+            Navigator.pushNamed(
+                context, RouteNamedScreens.changePasswordScreenProfile);
+          },
+          colorTextIsPrimary: false,
         ),
         CustomSettingProfile(
           text: "Settings",
           image: ImageSvg.settingIcon,
-          ontap: () {},
+          ontap: () {
+            Navigator.pushNamed(
+                context, RouteNamedScreens.settingScreenProfile);
+          },
+          colorTextIsPrimary: false,
         ),
         CustomSettingProfile(
           text: "Logout",
           image: ImageSvg.logoutIcon,
           ontap: () {},
+          colorTextIsPrimary: true,
         ),
       ],
     );

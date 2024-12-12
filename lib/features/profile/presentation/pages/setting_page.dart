@@ -1,3 +1,4 @@
+import 'package:chef_app/core/widgets/main_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class SettingPage extends StatelessWidget {
@@ -5,6 +6,9 @@ class SettingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: mainAppBar(context, "setting"),
+      body: Container(),
+    );
   }
 }

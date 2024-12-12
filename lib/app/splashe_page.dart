@@ -1,4 +1,5 @@
 import 'package:chef_app/core/database/cache/cache_helper.dart';
+import 'package:chef_app/core/function/main_text_style.dart';
 import 'package:chef_app/core/router/app_router.dart';
 import 'package:chef_app/core/widgets/main_text_widget.dart';
 import 'package:chef_app/strings/color_strings.dart';
@@ -43,11 +44,11 @@ class _SplasheScreenState extends State<SplasheScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(ImageString.chefImage),
-          const SizedBox(
+          SizedBox(
             width: double.infinity,
             child: MainTextWidget(
               text: AppConstantString.cheffApp,
-              textStyleEnum: TextStyleEnum.title3,
+              textStyle: boldStyle(color: AppColors.darkCharcoal),
             ),
           )
         ],

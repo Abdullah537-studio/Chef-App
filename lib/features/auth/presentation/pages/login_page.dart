@@ -1,5 +1,6 @@
 import 'package:chef_app/core/enum/cubit_status.dart';
 import 'package:chef_app/core/extention/tanslate_extention.dart';
+import 'package:chef_app/core/function/main_text_style.dart';
 import 'package:chef_app/core/function/show_toast.dart';
 import 'package:chef_app/core/router/app_router.dart';
 import 'package:chef_app/core/widgets/main_button.dart';
@@ -69,7 +70,7 @@ class LoginPage extends StatelessWidget {
                       },
                       child: MainTextWidget(
                         text: context.forgetPassword,
-                        textStyleEnum: TextStyleEnum.medium,
+                        textStyle: boldStyle(color: AppColors.greyColor),
                       ),
                     ),
                   ),

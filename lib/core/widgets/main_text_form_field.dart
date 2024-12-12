@@ -48,7 +48,7 @@ class MainTextFormField extends StatelessWidget {
           ),
           border: OutlineInputBorder(
             borderSide: const BorderSide(
-              color: AppColors.borderTextFormField,
+              color: AppColors.greyColor,
             ),
             borderRadius: BorderRadius.circular(12.r),
           ),

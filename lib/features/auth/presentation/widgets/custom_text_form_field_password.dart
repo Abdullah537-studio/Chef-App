@@ -29,12 +29,12 @@ class CustomTextFormFieldPassword extends StatelessWidget {
         decoration: InputDecoration(
           hintText: text,
           hintStyle: TextStyle(
-            color: AppColors.borderTextFormField,
+            color: AppColors.greyColor,
             fontSize: 16.sp,
           ),
-          suffixIcon: const Icon(
+          suffixIcon: Icon(
             Icons.remove_red_eye,
-            color: AppColors.borderTextFormField,
+            color: AppColors.iconStateTextFormFieldColor,
           ),
           focusedBorder: OutlineInputBorder(
             borderSide: const BorderSide(
@@ -50,7 +50,7 @@ class CustomTextFormFieldPassword extends StatelessWidget {
           ),
           border: OutlineInputBorder(
             borderSide: const BorderSide(
-              color: AppColors.borderTextFormField,
+              color: AppColors.greyColor,
             ),
             borderRadius: BorderRadius.circular(12.r),
           ),

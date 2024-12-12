@@ -1,4 +1,6 @@
+import 'package:chef_app/core/function/main_text_style.dart';
 import 'package:chef_app/core/widgets/main_text_widget.dart';
+import 'package:chef_app/strings/color_strings.dart';
 import 'package:flutter/material.dart';
 
 class CustomAskLoginOrRegister extends StatelessWidget {
@@ -16,13 +18,13 @@ class CustomAskLoginOrRegister extends StatelessWidget {
       children: [
         MainTextWidget(
           text: textAsk,
-          textStyleEnum: TextStyleEnum.medium,
+          textStyle: boldStyle(color: AppColors.greyColor),
         ),
         TextButton(
           onPressed: ontap,
           child: MainTextWidget(
             text: textNavigate,
-            textStyleEnum: TextStyleEnum.textprimaryColor,
+            textStyle: boldStyle(color: AppColors.primaryColor),
           ),
         )
       ],

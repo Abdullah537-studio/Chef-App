@@ -1,3 +1,4 @@
+import 'package:chef_app/core/function/main_text_style.dart';
 import 'package:chef_app/core/widgets/main_text_widget.dart';
 import 'package:chef_app/strings/color_strings.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ AppBar mainAppBar(BuildContext context, String text) {
     ),
     title: MainTextWidget(
       text: text,
-      textStyleEnum: TextStyleEnum.appBar,
+      textStyle: boldStyle(),
     ),
   );
 }

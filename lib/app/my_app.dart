@@ -13,6 +13,9 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return SafeArea(
           child: MaterialApp(
+            // theme: ThemeData(
+            //   hintColor: Colors.blue,
+            // ),
             debugShowCheckedModeBanner: false,
             debugShowMaterialGrid: false,
             title: 'Flutter Demo',

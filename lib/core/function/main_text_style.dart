@@ -26,10 +26,10 @@ TextStyle boldStyle({
   );
 }
 
-// regular style
-TextStyle regulrStyle({
+// normal title  style
+TextStyle regularStyle({
   Color color = AppColors.blackColor,
-  double fontSize = 24,
+  double fontSize = 16,
 }) {
   return _textStyle(
     color: color,

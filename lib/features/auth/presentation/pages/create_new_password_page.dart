@@ -1,4 +1,5 @@
 import 'package:chef_app/core/extention/tanslate_extention.dart';
+import 'package:chef_app/core/function/main_text_style.dart';
 import 'package:chef_app/core/widgets/main_app_bar.dart';
 import 'package:chef_app/core/widgets/main_button.dart';
 import 'package:chef_app/core/widgets/main_text_form_field.dart';
@@ -29,9 +30,9 @@ class CreateNewPasswordPage extends StatelessWidget {
                     bottom: 26.h,
                   ),
                   child: Image.asset(ImageString.lockImage)),
-              const MainTextWidget(
+              MainTextWidget(
                 text: "create new password",
-                textStyleEnum: TextStyleEnum.normal,
+                textStyle: regularStyle(),
               ),
               MainTextFormField(
                 horizontal: 0,
