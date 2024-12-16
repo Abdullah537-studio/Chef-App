@@ -8,6 +8,7 @@ import 'package:chef_app/features/auth/domain/usecases/login_usecase.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:chef_app/core/enum/cubit_status.dart';
 import 'package:equatable/equatable.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 
 part 'auth_state.dart';
 
@@ -46,6 +47,11 @@ class AuthCubit extends Cubit<AuthState> {
       loginResponseModel = response;
       _storage.saveData(key: ApiKey.token, value: loginResponseModel.token);
 
+      Map<String, dynamic> decodedToken =
+          JwtDecoder.decode(loginResponseModel.token);
+      _storage.saveData(key: ApiKey.id, value: decodedToken[ApiKey.id]);
+      print(response.token);
+      print(decodedToken[ApiKey.id]);
       emit(state.copyWith(cubitStatus: CubitStatus.loaded));
     });
   }

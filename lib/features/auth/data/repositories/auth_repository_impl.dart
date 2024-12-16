@@ -8,7 +8,7 @@ import 'package:chef_app/features/auth/domain/entities/response/send_code_respon
 import 'package:chef_app/features/auth/domain/entities/response/login_response_model.dart';
 import 'package:chef_app/features/auth/domain/entities/response/register_response_model.dart';
 import 'package:chef_app/features/auth/domain/repositories/auth_repository.dart';
-import 'package:chef_app/network/network_info.dart';
+import 'package:chef_app/core/network/network_info.dart';
 import 'package:dartz/dartz.dart';
 
 class AuthRepositoryImpl implements AuthRepository {

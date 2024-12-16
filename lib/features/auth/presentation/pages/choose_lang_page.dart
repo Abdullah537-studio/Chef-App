@@ -1,10 +1,10 @@
+import 'package:chef_app/core/strings/key_tanslate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:chef_app/core/extention/tanslate_extention.dart';
 import 'package:chef_app/core/router/app_router.dart';
 import 'package:chef_app/core/widgets/main_button_chooce_lang.dart';
-import 'package:chef_app/strings/color_strings.dart';
-import 'package:chef_app/strings/constant_string.dart';
-import 'package:chef_app/strings/image_png.dart';
+import 'package:chef_app/core/strings/color_strings.dart';
+import 'package:chef_app/core/strings/constant_string.dart';
+import 'package:chef_app/core/strings/image_png.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -28,13 +28,13 @@ class ChooseLangPage extends StatelessWidget {
           children: [
             Image.asset(ImageString.chefImage),
             Text(
-              context.welcomeToApplication,
+              AppKeyTranslate.welcomeToApplication,
               style: TextStyle(fontSize: 32.sp, color: AppColors.textColor),
             ),
             Padding(
               padding: EdgeInsets.only(top: 54.h, bottom: 102.h),
               child: Text(
-                context.chooseLanguage,
+                AppKeyTranslate.chooseLanguage,
                 style: TextStyle(fontSize: 24.sp, color: AppColors.textColor),
               ),
             ),

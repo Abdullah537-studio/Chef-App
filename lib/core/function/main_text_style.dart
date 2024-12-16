@@ -1,4 +1,4 @@
-import 'package:chef_app/strings/color_strings.dart';
+import 'package:chef_app/core/strings/color_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

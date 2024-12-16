@@ -1,11 +1,11 @@
-import 'package:chef_app/core/extention/tanslate_extention.dart';
 import 'package:chef_app/core/function/main_text_style.dart';
+import 'package:chef_app/core/strings/key_tanslate.dart';
 import 'package:chef_app/core/widgets/main_app_bar.dart';
 import 'package:chef_app/core/widgets/main_button.dart';
 import 'package:chef_app/core/widgets/main_text_form_field.dart';
 import 'package:chef_app/core/widgets/main_text_widget.dart';
 import 'package:chef_app/features/auth/presentation/widgets/custom_text_form_field_password.dart';
-import 'package:chef_app/strings/image_png.dart';
+import 'package:chef_app/core/strings/image_png.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,7 +18,7 @@ class ChangeForgettonPassword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: mainAppBar(context, "Create New Password"),
+      appBar: mainAppBar(context, AppKeyTranslate.createNewPassword),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.w),
         child: SingleChildScrollView(
@@ -32,32 +32,32 @@ class ChangeForgettonPassword extends StatelessWidget {
                   ),
                   child: Image.asset(ImageString.lockImage)),
               MainTextWidget(
-                text: "create new password",
+                text: AppKeyTranslate.createNewPassword,
                 textStyle: regularStyle(),
               ),
               CustomTextFormFieldPassword(
                 horizontal: 0,
                 vertical: 30.h,
-                text: context.password,
+                text: AppKeyTranslate.password,
                 onChanged: (value) {},
                 controller: controllerPassword,
               ),
               CustomTextFormFieldPassword(
                 horizontal: 0,
                 vertical: 30.h,
-                text: context.confirmPassword,
+                text: AppKeyTranslate.confirmPassword,
                 onChanged: (value) {},
                 controller: controllerConfirmPassword,
               ),
               MainTextFormField(
                 horizontal: 0,
                 vertical: 30.h,
-                text: "code",
+                text: AppKeyTranslate.code,
                 onChanged: (value) {},
                 controller: controllerCode,
               ),
               MainButton(
-                text: "Reset Password",
+                text: AppKeyTranslate.resetPassword,
                 onTap: () {},
                 isLoading: false,
               ),

@@ -1,15 +1,25 @@
-import 'package:chef_app/strings/color_strings.dart';
-import 'package:flutter/material.dart';
+import 'package:chef_app/core/strings/color_strings.dart';
+import 'package:chef_app/core/strings/key_tanslate.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-void showToast(String text, Color color) {
+void showToast(ToastMessageStatus toastMessageStatus) {
   Fluttertoast.showToast(
-    msg: text,
+    msg: toastMessageStatus == ToastMessageStatus.success
+        ? AppKeyTranslate.success
+        : toastMessageStatus == ToastMessageStatus.error
+            ? AppKeyTranslate.error
+            : AppKeyTranslate.warning,
     toastLength: Toast.LENGTH_SHORT,
     gravity: ToastGravity.CENTER,
     timeInSecForIosWeb: 1,
-    backgroundColor: color,
+    backgroundColor: toastMessageStatus == ToastMessageStatus.success
+        ? AppColors.primaryColor
+        : toastMessageStatus == ToastMessageStatus.error
+            ? AppColors.redColor
+            : AppColors.orangeColor,
     textColor: AppColors.whiteColor,
     fontSize: 16.0,
   );
 }
+
+enum ToastMessageStatus { success, error, warning }

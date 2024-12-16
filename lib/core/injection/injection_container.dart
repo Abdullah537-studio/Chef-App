@@ -7,7 +7,7 @@ import "package:chef_app/features/auth/domain/usecases/send_code_usecase.dart";
 import "package:chef_app/features/auth/domain/usecases/login_usecase.dart";
 import "package:chef_app/features/auth/domain/usecases/register_usecase.dart";
 import "package:chef_app/features/auth/presentation/cubits/auth/auth_cubit.dart";
-import "package:chef_app/network/network_info.dart";
+import "package:chef_app/core/network/network_info.dart";
 import "package:dio/dio.dart";
 import "package:get_it/get_it.dart";
 import "package:internet_connection_checker/internet_connection_checker.dart";

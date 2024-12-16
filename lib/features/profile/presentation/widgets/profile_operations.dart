@@ -1,6 +1,6 @@
 import 'package:chef_app/core/router/app_router.dart';
 import 'package:chef_app/features/profile/presentation/widgets/custom_setting_profile.dart';
-import 'package:chef_app/strings/image_svg.dart';
+import 'package:chef_app/core/strings/image_svg.dart';
 import 'package:flutter/material.dart';
 
 class ProfileOperations extends StatelessWidget {

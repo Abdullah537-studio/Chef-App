@@ -19,6 +19,15 @@
     "sign_in":"تسجيل الدخول",
     "sign_up":"إنشاء حساب",
     "question_dont_register_yet":"ليس لديك حساب بعد؟ ",
-    "question_have_account_before":"لديك حساب مسبقاً؟ "
+    "question_have_account_before":"لديك حساب مسبقاً؟ ",
+    "settings":"الاعدادات",
+    "code":"الرمز",
+    "reset_password":"إعادة تعيين كلمة المرور",
+    "forget_password_appBar":"نسيان كلمة المرور",
+    "sendCodeBody1":"ادخل يميلك سنرسل لك كود على ايميل ل",
+    "sendCodeBody2":"اعادة تعيين كلمة المرور",
+    "send_code":"ارسل الرمز"
+
+
 
 }

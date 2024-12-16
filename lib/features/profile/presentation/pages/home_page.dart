@@ -1,6 +1,6 @@
 import 'package:chef_app/core/cubits/cubit/bootom_navbar_cubit.dart';
 import 'package:chef_app/core/enum/bootm_nav_bar_profile_meal_enum.dart';
-import 'package:chef_app/features/profile/presentation/widgets/body_meal.dart';
+import 'package:chef_app/features/meal/presentation/widgets/body_meal.dart';
 import 'package:chef_app/features/profile/presentation/widgets/body_profile.dart';
 import 'package:chef_app/features/profile/presentation/widgets/custom_bottom_nav_bar.dart';
 
@@ -25,8 +25,8 @@ class HomePage extends StatelessWidget {
             ),
             child: state.bootmNavBarProfileMealEnum ==
                     BootmNavBarProfileMealEnum.meal
-                ? showBodyMeal()
-                : showBodyProfile(),
+                ? const ShowBodyMeal()
+                : const ShowBodyProfile(),
           ),
         );
       },

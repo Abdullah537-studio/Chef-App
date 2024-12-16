@@ -7,6 +7,7 @@ import 'package:chef_app/features/auth/presentation/pages/create_new_password_pa
 import 'package:chef_app/features/auth/presentation/pages/send_code_page.dart';
 import 'package:chef_app/features/auth/presentation/pages/login_page.dart';
 import 'package:chef_app/features/auth/presentation/pages/register_page.dart';
+import 'package:chef_app/features/meal/presentation/pages/add_meal_page.dart';
 import 'package:chef_app/features/profile/presentation/pages/change_password_page.dart';
 import 'package:chef_app/features/profile/presentation/pages/edit_profile_page.dart';
 import 'package:chef_app/features/profile/presentation/pages/home_page.dart';
@@ -22,7 +23,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const ChooseLangPage(),
         );
-      case RouteNamedScreens.homeScren:
+      case RouteNamedScreens.homescreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
             create: (context) => BootomNavbarCubit(),
@@ -54,9 +55,11 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => ChangeForgettonPassword());
       case RouteNamedScreens.settingScreenProfile:
       case RouteNamedScreens.editScreenProfile:
-        return MaterialPageRoute(builder: (_) => const EditProfilePage());
+        return MaterialPageRoute(builder: (_) => EditProfilePage());
       case RouteNamedScreens.changePasswordScreenProfile:
-        return MaterialPageRoute(builder: (_) => const ChangePasswordPage());
+        return MaterialPageRoute(builder: (_) => ChangePasswordPage());
+      case RouteNamedScreens.addMealScreen:
+        return MaterialPageRoute(builder: (_) => const AddMealPage());
     }
     return null;
   }
@@ -68,7 +71,6 @@ class RouteNamedScreens {
   static const String chooseLang = '/choose_lang';
   static const String logiscreen = '/login_screen';
   static const String registerscreen = '/register_screen';
-  static const String homeScren = '/home_screen';
   static const String forgetPassword = '/forget_password';
   static const String sendCode = '/send_code';
   static const String changeForgettonPassword = '/change_forgetton_password';
@@ -76,4 +78,5 @@ class RouteNamedScreens {
   static const String editScreenProfile = '/edit_screen_profile';
   static const String changePasswordScreenProfile =
       '/change_password_screen_profile';
+  static const String addMealScreen = '/addMeal_screen';
 }

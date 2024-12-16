@@ -1,6 +1,6 @@
 import 'package:chef_app/core/function/main_text_style.dart';
 import 'package:chef_app/core/widgets/main_text_widget.dart';
-import 'package:chef_app/strings/image_png.dart';
+import 'package:chef_app/core/strings/image_png.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

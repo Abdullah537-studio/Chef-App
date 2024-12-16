@@ -19,6 +19,18 @@
     "sign_in":"sign in",
     "sign_up":"sign up",
     "question_dont_register_yet":"Don't have an account ?",
-    "question_have_account_before":"have account already ?"
+    "question_have_account_before":"have account already ?",
+    "settings":"settings",
+    "code":"code",
+    "reset_password":"Reset Password",
+    "success":"success",
+    "warning":"warning",
+    "error":"error",
+    "forget_password_appBar":"Forget Password",
+    "sendCodeBody1":"Enter Your mail and we will send code to",
+    "sendCodeBody2":"reset your password",
+    "send_code":"Send Code"
+
+
 
 }

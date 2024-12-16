@@ -2,10 +2,10 @@ import 'package:chef_app/core/database/cache/cache_helper.dart';
 import 'package:chef_app/core/function/main_text_style.dart';
 import 'package:chef_app/core/router/app_router.dart';
 import 'package:chef_app/core/widgets/main_text_widget.dart';
-import 'package:chef_app/strings/color_strings.dart';
-import 'package:chef_app/strings/constant_string.dart';
-import 'package:chef_app/strings/image_png.dart';
-import 'package:chef_app/strings/key_cache_value.dart';
+import 'package:chef_app/core/strings/color_strings.dart';
+import 'package:chef_app/core/strings/constant_string.dart';
+import 'package:chef_app/core/strings/image_png.dart';
+import 'package:chef_app/core/strings/key_cache_value.dart';
 import 'package:flutter/material.dart';
 
 class SplasheScreen extends StatefulWidget {
@@ -26,7 +26,7 @@ class _SplasheScreenState extends State<SplasheScreen> {
               (value) => token = value,
             );
         if (token != null) {
-          Navigator.pushReplacementNamed(context, RouteNamedScreens.homeScren);
+          Navigator.pushReplacementNamed(context, RouteNamedScreens.homescreen);
         } else {
           Navigator.pushReplacementNamed(context, RouteNamedScreens.chooseLang);
         }

@@ -1,5 +1,5 @@
-import 'package:chef_app/core/extention/tanslate_extention.dart';
 import 'package:chef_app/core/router/app_router.dart';
+import 'package:chef_app/core/strings/key_tanslate.dart';
 import 'package:chef_app/core/widgets/main_button.dart';
 import 'package:chef_app/core/widgets/main_text_form_field.dart';
 import 'package:chef_app/features/auth/presentation/cubits/auth/auth_cubit.dart';
@@ -29,7 +29,7 @@ class RegisterPage extends StatelessWidget {
           body: SingleChildScrollView(
             child: Column(
               children: [
-                CustomWelcomeAuth(text: context.messageWelcomeRegister),
+                CustomWelcomeAuth(text: AppKeyTranslate.messageWelcomeRegister),
                 SizedBox(
                   height: 103.h,
                 ),
@@ -37,54 +37,42 @@ class RegisterPage extends StatelessWidget {
                   horizontal: 26.w,
                   vertical: 14.h,
                   controller: controllerName,
-                  text: context.name,
+                  text: AppKeyTranslate.name,
                   onChanged: (value) {},
                 ),
                 MainTextFormField(
                   horizontal: 26.w,
                   vertical: 14.h,
                   controller: controllerLocation,
-                  text: context.location,
+                  text: AppKeyTranslate.location,
                   onChanged: (value) {},
                 ),
                 MainTextFormField(
                   horizontal: 26.w,
                   vertical: 14.h,
                   controller: controllerDisc,
-                  text: context.disc,
+                  text: AppKeyTranslate.disc,
                   onChanged: (value) {},
                 ),
                 MainTextFormField(
                   horizontal: 26.w,
                   vertical: 14.h,
                   controller: controllerBradName,
-                  text: context.brandNamed,
+                  text: AppKeyTranslate.brandNamed,
                   onChanged: (value) {},
                 ),
-                // MainTextFormField(
-                //   text: context.minCharge,
-                //   onChanged: (value) {},
-                // ),
-                // MainTextFormField(
-                //   text: context.healthCertificate,
-                //   onChanged: (value) {},
-                // ),
-                // MainTextFormField(
-                //   text: context.email,
-                //   onChanged: (value) {},
-                // ),
                 CustomTextFormFieldPassword(
                   horizontal: 24,
                   vertical: 12,
                   controller: controllerPassword,
-                  text: context.password,
+                  text: AppKeyTranslate.password,
                   onChanged: (value) {},
                 ),
                 CustomTextFormFieldPassword(
                   horizontal: 24,
                   vertical: 12,
                   controller: controllerConfirmPassword,
-                  text: context.confirmPassword,
+                  text: AppKeyTranslate.confirmPassword,
                   onChanged: (value) {},
                 ),
                 Padding(
@@ -94,15 +82,15 @@ class RegisterPage extends StatelessWidget {
                   ),
                   child: MainButton(
                     isLoading: isLoading,
-                    text: context.signUp,
+                    text: AppKeyTranslate.signUp,
                     onTap: () {},
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24),
                   child: CustomAskLoginOrRegister(
-                    textAsk: context.questionDontRegisterYet,
-                    textNavigate: context.signIn,
+                    textAsk: AppKeyTranslate.questionDontRegisterYet,
+                    textNavigate: AppKeyTranslate.signIn,
                     ontap: () {
                       Navigator.pushReplacementNamed(
                           context, RouteNamedScreens.logiscreen);
