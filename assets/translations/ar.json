@@ -11,7 +11,7 @@
     "brand_named":"الاسم التجاري",
     "min_charge":"الحد الأدنى للرسوم ",
     "disc":"الوصف",
-    "health_certificate":"شهادة صحية ",
+    "health_certificate":"شهادة صحية",
     "front_id":"معرف أمامي",
     "back_id":"معرف خلفي",
     "profile_pic":"صورة للملف الشخصي",
@@ -26,7 +26,14 @@
     "forget_password_appBar":"نسيان كلمة المرور",
     "sendCodeBody1":"ادخل يميلك سنرسل لك كود على ايميل ل",
     "sendCodeBody2":"اعادة تعيين كلمة المرور",
-    "send_code":"ارسل الرمز"
+    "send_code":"ارسل الرمز",
+    "thisFieldRequiredValidate":"يجب ملأ الحقل",
+    "invalidEmailValidate":"بريد الكتروني غير صحيح ",
+    "phone":"الهاتف",
+    "profile":"ملف الشخصي",
+    "home":"رئيسية",
+    "meal":"الوجبات",
+    "offlineConnectionError":"انت غير متصل بالأنترنت"
 
 
 

@@ -1,3 +1,4 @@
+import 'package:chef_app/core/function/validate.dart';
 import 'package:chef_app/core/strings/key_tanslate.dart';
 import 'package:chef_app/core/widgets/main_button.dart';
 import 'package:chef_app/core/widgets/main_text_form_field.dart';
@@ -39,6 +40,7 @@ class EditProfilePage extends StatelessWidget {
               ),
             ),
             MainTextFormField(
+              validate: Validate.generalValidate,
               horizontal: 26.w,
               vertical: 14.h,
               controller: controllerName,
@@ -46,6 +48,7 @@ class EditProfilePage extends StatelessWidget {
               onChanged: (value) {},
             ),
             MainTextFormField(
+              validate: Validate.generalValidate,
               horizontal: 26.w,
               vertical: 14.h,
               controller: controllerLocation,
@@ -53,6 +56,7 @@ class EditProfilePage extends StatelessWidget {
               onChanged: (value) {},
             ),
             MainTextFormField(
+              validate: Validate.generalValidate,
               horizontal: 26.w,
               vertical: 14.h,
               controller: controllerDisc,
@@ -60,6 +64,7 @@ class EditProfilePage extends StatelessWidget {
               onChanged: (value) {},
             ),
             MainTextFormField(
+              validate: Validate.generalValidate,
               horizontal: 26.w,
               vertical: 14.h,
               controller: controllerBradName,
@@ -67,6 +72,7 @@ class EditProfilePage extends StatelessWidget {
               onChanged: (value) {},
             ),
             CustomTextFormFieldPassword(
+              validate: Validate.passwordValidate,
               horizontal: 24,
               vertical: 12,
               controller: controllerPassword,
@@ -74,6 +80,7 @@ class EditProfilePage extends StatelessWidget {
               onChanged: (value) {},
             ),
             CustomTextFormFieldPassword(
+              validate: Validate.passwordValidate,
               horizontal: 24,
               vertical: 12,
               controller: controllerConfirmPassword,

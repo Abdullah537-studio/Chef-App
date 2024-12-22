@@ -1,6 +1,7 @@
 import 'package:chef_app/core/enum/cubit_status.dart';
 import 'package:chef_app/core/function/main_text_style.dart';
 import 'package:chef_app/core/function/show_toast.dart';
+import 'package:chef_app/core/function/validate.dart';
 import 'package:chef_app/core/router/app_router.dart';
 import 'package:chef_app/core/strings/key_tanslate.dart';
 import 'package:chef_app/core/widgets/main_app_bar.dart';
@@ -22,13 +23,13 @@ class SendCodePage extends StatelessWidget {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state.cubitStatus == CubitStatus.loaded) {
-          showToast(ToastMessageStatus.success);
+          showToast(ToastMessageStatus.success, state.message);
           Navigator.pushNamed(
             context,
             RouteNamedScreens.changeForgettonPassword,
           );
         } else if (state.cubitStatus == CubitStatus.error) {
-          showToast(ToastMessageStatus.error);
+          showToast(ToastMessageStatus.error, state.message);
         }
       },
       builder: (context, state) {
@@ -55,6 +56,7 @@ class SendCodePage extends StatelessWidget {
                     textStyle: regularStyle(),
                   ),
                   MainTextFormField(
+                    validate: Validate.emailValidate,
                     horizontal: 0,
                     vertical: 30.h,
                     text: AppKeyTranslate.email,

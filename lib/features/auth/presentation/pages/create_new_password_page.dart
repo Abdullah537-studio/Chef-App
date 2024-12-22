@@ -1,4 +1,5 @@
 import 'package:chef_app/core/function/main_text_style.dart';
+import 'package:chef_app/core/function/validate.dart';
 import 'package:chef_app/core/strings/key_tanslate.dart';
 import 'package:chef_app/core/widgets/main_app_bar.dart';
 import 'package:chef_app/core/widgets/main_button.dart';
@@ -36,6 +37,7 @@ class ChangeForgettonPassword extends StatelessWidget {
                 textStyle: regularStyle(),
               ),
               CustomTextFormFieldPassword(
+                validate: Validate.passwordValidate,
                 horizontal: 0,
                 vertical: 30.h,
                 text: AppKeyTranslate.password,
@@ -43,6 +45,7 @@ class ChangeForgettonPassword extends StatelessWidget {
                 controller: controllerPassword,
               ),
               CustomTextFormFieldPassword(
+                validate: Validate.passwordValidate,
                 horizontal: 0,
                 vertical: 30.h,
                 text: AppKeyTranslate.confirmPassword,
@@ -50,6 +53,7 @@ class ChangeForgettonPassword extends StatelessWidget {
                 controller: controllerConfirmPassword,
               ),
               MainTextFormField(
+                validate: Validate.passwordValidate,
                 horizontal: 0,
                 vertical: 30.h,
                 text: AppKeyTranslate.code,

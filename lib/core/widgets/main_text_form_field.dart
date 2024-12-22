@@ -3,17 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MainTextFormField extends StatelessWidget {
-  const MainTextFormField(
-      {super.key,
-      required this.text,
-      required this.onChanged,
-      required this.controller,
-      required this.vertical,
-      required this.horizontal});
+  const MainTextFormField({
+    super.key,
+    required this.text,
+    required this.onChanged,
+    required this.controller,
+    required this.vertical,
+    required this.horizontal,
+    required this.validate,
+  });
   final String text;
   final double vertical;
   final double horizontal;
-
+  final String? Function(String?)? validate;
   final TextEditingController controller;
   final Function(String)? onChanged;
   @override
@@ -24,6 +26,7 @@ class MainTextFormField extends StatelessWidget {
         vertical: vertical,
       ),
       child: TextFormField(
+        validator: validate,
         controller: controller,
         onChanged: onChanged,
         textInputAction: TextInputAction.next,

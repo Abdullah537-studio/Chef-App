@@ -1,5 +1,6 @@
 import 'package:chef_app/core/cubits/cubit/bootom_navbar_cubit.dart';
 import 'package:chef_app/core/enum/bootm_nav_bar_profile_meal_enum.dart';
+import 'package:chef_app/core/strings/key_tanslate.dart';
 import 'package:chef_app/features/profile/presentation/widgets/custom_icon_bootom_nav_bar.dart';
 import 'package:chef_app/core/strings/color_strings.dart';
 import 'package:chef_app/core/strings/image_svg.dart';
@@ -21,7 +22,7 @@ class CoustomBottomNavigationBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           CustomIconBootomNavBar(
-            text: "Meal",
+            text: AppKeyTranslate.meal,
             image: ImageSvg.homeIconBottomNavBar,
             color: bootmNavBarProfileMealEnum == BootmNavBarProfileMealEnum.meal
                 ? AppColors.primaryColor
@@ -33,7 +34,7 @@ class CoustomBottomNavigationBar extends StatelessWidget {
             },
           ),
           CustomIconBootomNavBar(
-            text: "Profile",
+            text: AppKeyTranslate.profile,
             image: ImageSvg.profileIconBottomNavBar,
             color:
                 bootmNavBarProfileMealEnum == BootmNavBarProfileMealEnum.profile

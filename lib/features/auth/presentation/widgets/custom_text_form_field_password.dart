@@ -10,13 +10,14 @@ class CustomTextFormFieldPassword extends StatelessWidget {
     required this.controller,
     required this.horizontal,
     required this.vertical,
+    required this.validate,
   });
   final String text;
   final double horizontal;
   final double vertical;
   final TextEditingController controller;
   final Function(String) onChanged;
-
+  final String? Function(String?)? validate;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,6 +26,7 @@ class CustomTextFormFieldPassword extends StatelessWidget {
         vertical: vertical,
       ),
       child: TextFormField(
+        validator: validate,
         controller: controller,
         onChanged: onChanged,
         obscureText: true,

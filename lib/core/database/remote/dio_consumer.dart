@@ -4,6 +4,7 @@ import 'package:chef_app/core/database/remote/api_consumer.dart';
 import 'package:chef_app/core/database/remote/api_interseptors.dart';
 import 'package:chef_app/core/database/remote/api_url.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 
 class DioConsumer extends ApiConsumer {
   final Dio dio;
@@ -48,47 +49,56 @@ class DioConsumer extends ApiConsumer {
       final response = await request();
       return response;
     } on DioException catch (e) {
-      _handleDioException(e);
+      if (e.response != null) {
+        _handleDioException(e);
+      } else {
+        debugPrint(e.toString());
+      }
     }
   }
 
 //!------------------ handel error for all methods
   ServerException _handleDioException(DioException e) {
-    switch (e.type) {
-      case DioExceptionType.badCertificate:
-        throw BadCertificateException(
-          errorModel: ErrorModel.fromJson(e.response!.data),
-        );
-      case DioExceptionType.connectionError:
-        throw ConnectionErrorException(
-          errorModel: ErrorModel.fromJson(e.response!.data),
-        );
-      case DioExceptionType.connectionTimeout:
-        throw ConnectionTimeoutException(
-          errorModel: ErrorModel.fromJson(e.response!.data),
-        );
-      case DioExceptionType.receiveTimeout:
-        throw ReceiveTimeoutException(
-          errorModel: ErrorModel.fromJson(e.response!.data),
-        );
-      case DioExceptionType.sendTimeout:
-        throw SendTimeoutException(
-          errorModel: ErrorModel.fromJson(e.response!.data),
-        );
-      case DioExceptionType.cancel:
-        throw CancelException(
-          errorModel: ErrorModel.fromJson(e.response!.data),
-        );
-      case DioExceptionType.unknown:
-        throw UnknownException(
-          errorModel: ErrorModel.fromJson(e.response!.data),
-        );
-      case DioExceptionType.badResponse:
-        throw _handleBadResponse(e.response!);
-      default:
-        throw ServerException(
-          errorModel: ErrorModel.fromJson(e.response!.data),
-        );
+    if (e.response != null) {
+      switch (e.type) {
+        case DioExceptionType.badCertificate:
+          throw BadCertificateException(
+            errorModel: ErrorModel.fromJson(e.response!.data),
+          );
+        case DioExceptionType.connectionError:
+          throw ConnectionErrorException(
+            errorModel: ErrorModel.fromJson(e.response!.data),
+          );
+        case DioExceptionType.connectionTimeout:
+          throw ConnectionTimeoutException(
+            errorModel: ErrorModel.fromJson(e.response!.data),
+          );
+        case DioExceptionType.receiveTimeout:
+          throw ReceiveTimeoutException(
+            errorModel: ErrorModel.fromJson(e.response!.data),
+          );
+        case DioExceptionType.sendTimeout:
+          throw SendTimeoutException(
+            errorModel: ErrorModel.fromJson(e.response!.data),
+          );
+        case DioExceptionType.cancel:
+          throw CancelException(
+            errorModel: ErrorModel.fromJson(e.response!.data),
+          );
+        case DioExceptionType.unknown:
+          throw UnknownException(
+            errorModel: ErrorModel.fromJson(e.response!.data),
+          );
+        case DioExceptionType.badResponse:
+          throw _handleBadResponse(e.response!);
+        default:
+          throw ServerException(
+            errorModel: ErrorModel.fromJson(e.response!.data),
+          );
+      }
+    } else {
+      return ServerException(
+          errorModel: ErrorModel(errorMessage: e.toString()));
     }
   }
 

@@ -46,7 +46,7 @@ class AuthRepositoryImpl implements AuthRepository {
         return Left(e.errorModel!);
       }
     } else {
-      return const Left(ErrorModel(errorMessage: "errorModel"));
+      return const Left(ErrorModel(errorMessage: "offline"));
     }
   }
 

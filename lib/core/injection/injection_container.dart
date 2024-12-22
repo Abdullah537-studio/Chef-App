@@ -1,3 +1,4 @@
+import "package:chef_app/core/cubits/cubit/bootom_navbar_cubit.dart";
 import "package:chef_app/core/database/remote/api_consumer.dart";
 import "package:chef_app/core/database/remote/dio_consumer.dart";
 import "package:chef_app/features/auth/data/datasources/auth_remote.dart";
@@ -8,6 +9,12 @@ import "package:chef_app/features/auth/domain/usecases/login_usecase.dart";
 import "package:chef_app/features/auth/domain/usecases/register_usecase.dart";
 import "package:chef_app/features/auth/presentation/cubits/auth/auth_cubit.dart";
 import "package:chef_app/core/network/network_info.dart";
+import "package:chef_app/features/auth/presentation/cubits/register/register_cubit.dart";
+import "package:chef_app/features/profile/data/datasources/chef_data_remote.dart";
+import "package:chef_app/features/profile/data/repositories/profile_repository_impl.dart";
+import "package:chef_app/features/profile/domain/repositories/profile_repository.dart";
+import "package:chef_app/features/profile/domain/usecases/get_chef_data_usecase.dart";
+import "package:chef_app/features/profile/presentation/cubit/profile_cubit.dart";
 import "package:dio/dio.dart";
 import "package:get_it/get_it.dart";
 import "package:internet_connection_checker/internet_connection_checker.dart";
@@ -32,8 +39,15 @@ Future<void> init() async {
     () => AuthCubit(
       sl(),
       sl(),
+      sl(),
     ),
   );
+  sl.registerLazySingleton(
+    () => RegisterCubit(
+      sl(),
+    ),
+  );
+
   sl.registerLazySingleton(
     () => LoginUsecase(
       repository: sl(),
@@ -50,9 +64,39 @@ Future<void> init() async {
     ),
   );
   sl.registerLazySingleton<AuthRepository>(
-    () => AuthRepositoryImpl(networkInfo: sl(), authRemote: sl()),
+    () => AuthRepositoryImpl(
+      networkInfo: sl(),
+      authRemote: sl(),
+    ),
   );
   sl.registerLazySingleton<AuthRemote>(() => AuthRemoteImpl());
 
   //! End_Auth_Feature
+  sl.registerLazySingleton(
+    () => ProfileCubit(
+      sl(),
+    ),
+  );
+  sl.registerLazySingleton(
+    () => BootomNavbarCubit(),
+  );
+  sl.registerLazySingleton(
+    () => GetChefDataUsecase(
+      repository: sl(),
+    ),
+  );
+  sl.registerLazySingleton<ProfileRepository>(
+    () => ProfileRepositoryImpl(
+      networkInfo: sl(),
+      remoteData: sl(),
+    ),
+  );
+
+  sl.registerLazySingleton<ChefDataRemote>(
+    () => ChefDataRemoteImpl(),
+  );
+
+  //! start_profile_Feature
+
+  //! End_profile_Feature
 }

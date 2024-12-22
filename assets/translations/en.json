@@ -11,10 +11,10 @@
     "brand_named":"Brand Name",
     "min_charge":"Min Charge",
     "disc":"Discreptoin",
-    "health_certificate":"Discreptoin",
-    "front_id":"Discreptoin",
-    "back_id":"Discreptoin",
-    "profilePic":"Discreptoin",
+    "health_certificate":"health certificate",
+    "front_id":"front id",
+    "back_id":"back id",
+    "profile_Pic":"profile picture",
     "forget_password":"forget password ?",
     "sign_in":"sign in",
     "sign_up":"sign up",
@@ -29,8 +29,12 @@
     "forget_password_appBar":"Forget Password",
     "sendCodeBody1":"Enter Your mail and we will send code to",
     "sendCodeBody2":"reset your password",
-    "send_code":"Send Code"
-
-
-
+    "send_code":"Send Code",
+    "thisFieldRequiredValidate":"this field is required",
+    "invalidEmailValidate":"Invalida email ",
+    "phone":"phone",
+    "profile":"profile",
+    "home":"home",
+    "meal":"meal",
+    "offlineConnectionError":"your not connection in internet"
 }

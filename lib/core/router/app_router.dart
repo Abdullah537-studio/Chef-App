@@ -2,12 +2,14 @@ import 'package:chef_app/app/splashe_page.dart';
 import 'package:chef_app/core/cubits/cubit/bootom_navbar_cubit.dart';
 import 'package:chef_app/core/injection/injection_container.dart';
 import 'package:chef_app/features/auth/presentation/cubits/auth/auth_cubit.dart';
+import 'package:chef_app/features/auth/presentation/cubits/register/register_cubit.dart';
 import 'package:chef_app/features/auth/presentation/pages/choose_lang_page.dart';
 import 'package:chef_app/features/auth/presentation/pages/create_new_password_page.dart';
 import 'package:chef_app/features/auth/presentation/pages/send_code_page.dart';
 import 'package:chef_app/features/auth/presentation/pages/login_page.dart';
 import 'package:chef_app/features/auth/presentation/pages/register_page.dart';
 import 'package:chef_app/features/meal/presentation/pages/add_meal_page.dart';
+import 'package:chef_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:chef_app/features/profile/presentation/pages/change_password_page.dart';
 import 'package:chef_app/features/profile/presentation/pages/edit_profile_page.dart';
 import 'package:chef_app/features/profile/presentation/pages/home_page.dart';
@@ -25,11 +27,17 @@ class AppRouter {
         );
       case RouteNamedScreens.homescreen:
         return MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (context) => BootomNavbarCubit(),
-            child: const HomePage(),
-          ),
-        );
+            builder: (_) => MultiBlocProvider(
+                  providers: [
+                    BlocProvider(
+                      create: (context) => sl<ProfileCubit>()..getChefData(),
+                    ),
+                    BlocProvider(
+                      create: (context) => sl<BootomNavbarCubit>(),
+                    ),
+                  ],
+                  child: const HomePage(),
+                ));
 
       case RouteNamedScreens.logiscreen:
         return MaterialPageRoute(
@@ -41,7 +49,7 @@ class AppRouter {
       case RouteNamedScreens.registerscreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => sl<AuthCubit>(),
+            create: (context) => sl<RegisterCubit>(),
             child: RegisterPage(),
           ),
         );

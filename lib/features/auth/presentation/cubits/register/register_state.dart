@@ -1,14 +1,15 @@
-part of 'auth_cubit.dart';
+import 'package:equatable/equatable.dart';
+import 'package:chef_app/core/enum/cubit_status.dart';
 
-class AuthState extends Equatable {
-  const AuthState(this.response,
+class RegisterState extends Equatable {
+  const RegisterState(this.response,
       {required this.cubitStatus, required this.message});
   final CubitStatus cubitStatus;
   final String message;
   final dynamic response;
 
-  factory AuthState.initial() {
-    return const AuthState(
+  factory RegisterState.initial() {
+    return const RegisterState(
       null,
       cubitStatus: CubitStatus.initial,
       message: "",
@@ -20,9 +21,9 @@ class AuthState extends Equatable {
   @override
   List<Object> get props => [message, cubitStatus];
 
-  AuthState copyWith(
+  RegisterState copyWith(
       {dynamic response, CubitStatus? cubitStatus, String? message}) {
-    return AuthState(
+    return RegisterState(
       response ?? this.response,
       cubitStatus: cubitStatus ?? this.cubitStatus,
       message: message ?? this.message,

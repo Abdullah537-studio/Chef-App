@@ -1,14 +1,12 @@
 import 'package:chef_app/core/strings/color_strings.dart';
-import 'package:chef_app/core/strings/key_tanslate.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-void showToast(ToastMessageStatus toastMessageStatus) {
+void showToast(
+  ToastMessageStatus toastMessageStatus,
+  String text,
+) {
   Fluttertoast.showToast(
-    msg: toastMessageStatus == ToastMessageStatus.success
-        ? AppKeyTranslate.success
-        : toastMessageStatus == ToastMessageStatus.error
-            ? AppKeyTranslate.error
-            : AppKeyTranslate.warning,
+    msg: text,
     toastLength: Toast.LENGTH_SHORT,
     gravity: ToastGravity.CENTER,
     timeInSecForIosWeb: 1,

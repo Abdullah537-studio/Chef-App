@@ -30,7 +30,7 @@ class CustomIconBootomNavBar extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(vertical: 8.h),
             child: MainTextWidget(
-              text: "Home",
+              text: text,
               textStyle: boldStyle(fontSize: 12.sp, color: color),
             ),
           )

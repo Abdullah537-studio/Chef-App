@@ -4,8 +4,13 @@ class ApiUrl {
 
 class ApiGet {
   static String getChefDataEndPoint(id) {
-    const String chefGet = 'chef/get-chef/';
-    return "$chefGet$id";
+    String chefGet = 'chef/get-chef/$id';
+    return chefGet;
+  }
+
+  static String getMealChefDataEndPoint(id) {
+    String mealChefGet = "chef/get-chef/$id/meals";
+    return mealChefGet;
   }
 }
 
