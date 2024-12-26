@@ -35,7 +35,7 @@ class _SettingPageState extends State<SettingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: mainAppBar(context, AppKeyTranslate.settings),
+      appBar: mainAppBar(context, context.settings),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
         child: Card(
@@ -45,7 +45,7 @@ class _SettingPageState extends State<SettingPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   MainTextWidget(
-                    text: AppKeyTranslate.chooseLanguage,
+                    text: context.chooseLanguage,
                     textStyle: regularStyle(),
                   ),
                   DropdownButton<String>(

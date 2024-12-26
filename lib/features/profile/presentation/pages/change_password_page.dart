@@ -36,7 +36,7 @@ class ChangePasswordPage extends StatelessWidget {
                 textStyle: regularStyle(),
               ),
               CustomTextFormFieldPassword(
-                validate: Validate.passwordValidate,
+                validate: (val) => Validate.passwordValidate(context, val),
                 horizontal: 0,
                 vertical: 30.h,
                 text: "old password",
@@ -44,7 +44,7 @@ class ChangePasswordPage extends StatelessWidget {
                 controller: controllerOldPassword,
               ),
               CustomTextFormFieldPassword(
-                validate: Validate.passwordValidate,
+                validate: (val) => Validate.passwordValidate(context, val),
                 horizontal: 0,
                 vertical: 30.h,
                 text: "new Password",
@@ -52,10 +52,10 @@ class ChangePasswordPage extends StatelessWidget {
                 controller: controllerNewPassword,
               ),
               CustomTextFormFieldPassword(
-                validate: Validate.passwordValidate,
+                validate: (val) => Validate.passwordValidate(context, val),
                 horizontal: 0,
                 vertical: 30.h,
-                text: AppKeyTranslate.confirmPassword,
+                text: context.confirmPassword,
                 onChanged: (value) {},
                 controller: controllerconfirmPassword,
               ),

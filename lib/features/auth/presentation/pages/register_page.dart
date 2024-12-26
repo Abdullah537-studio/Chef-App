@@ -50,63 +50,62 @@ class RegisterPage extends StatelessWidget {
             body: SingleChildScrollView(
               child: Column(
                 children: [
-                  CustomWelcomeAuth(
-                      text: AppKeyTranslate.messageWelcomeRegister),
+                  CustomWelcomeAuth(text: context.messageWelcomeRegister),
                   SizedBox(
                     height: 103.h,
                   ),
                   //! Name
                   MainTextFormField(
-                    validate: Validate.generalValidate,
+                    validate: (val) => Validate.generalValidate(context, val),
                     horizontal: 26.w,
                     vertical: 14.h,
                     controller: controllerName,
-                    text: AppKeyTranslate.name,
+                    text: context.name,
                     onChanged: (value) {},
                   ),
                   //! Phone
                   MainTextFormField(
-                    validate: Validate.generalValidate,
+                    validate: (val) => Validate.generalValidate(context, val),
                     horizontal: 26.w,
                     vertical: 14.h,
                     controller: controllerPhone,
-                    text: AppKeyTranslate.phone,
+                    text: context.phone,
                     onChanged: (value) {},
                   ),
                   //! location
                   MainTextFormField(
-                    validate: Validate.generalValidate,
+                    validate: (val) => Validate.generalValidate(context, val),
                     horizontal: 26.w,
                     vertical: 14.h,
                     controller: controllerLocation,
-                    text: AppKeyTranslate.location,
+                    text: context.location,
                     onChanged: (value) {},
                   ),
                   //! min charge
                   MainTextFormField(
-                    validate: Validate.generalValidate,
+                    validate: (val) => Validate.generalValidate(context, val),
                     horizontal: 26.w,
                     vertical: 14.h,
                     controller: controllerMinCharge,
-                    text: AppKeyTranslate.minCharge,
+                    text: context.minCharge,
                     onChanged: (value) {},
                   ),
                   //! discription
                   MainTextFormField(
-                    validate: Validate.generalValidate,
+                    validate: (val) => Validate.generalValidate(context, val),
                     horizontal: 26.w,
                     vertical: 14.h,
                     controller: controllerDisc,
-                    text: AppKeyTranslate.disc,
+                    text: context.disc,
                     onChanged: (value) {},
                   ),
                   //! Brand Name
                   MainTextFormField(
-                    validate: Validate.generalValidate,
+                    validate: (val) => Validate.generalValidate(context, val),
                     horizontal: 26.w,
                     vertical: 14.h,
                     controller: controllerBradName,
-                    text: AppKeyTranslate.brandNamed,
+                    text: context.brandNamed,
                     onChanged: (value) {},
                   ),
 
@@ -114,7 +113,7 @@ class RegisterPage extends StatelessWidget {
                   CustomUploadeImageRegister(
                     horizontal: 26.w,
                     vertical: 14.h,
-                    text: AppKeyTranslate.healthCertificate,
+                    text: context.healthCertificate,
                     file: (value) {
                       return registerRequiestModel.healthCertificate = value;
                     },
@@ -123,7 +122,7 @@ class RegisterPage extends StatelessWidget {
                   CustomUploadeImageRegister(
                     horizontal: 26.w,
                     vertical: 14.h,
-                    text: AppKeyTranslate.frontId,
+                    text: context.frontId,
                     file: (value) {
                       return registerRequiestModel.frontId = value;
                     },
@@ -133,7 +132,7 @@ class RegisterPage extends StatelessWidget {
                   CustomUploadeImageRegister(
                     horizontal: 26.w,
                     vertical: 14.h,
-                    text: AppKeyTranslate.backId,
+                    text: context.backId,
                     file: (value) {
                       return registerRequiestModel.backId = value;
                     },
@@ -143,7 +142,7 @@ class RegisterPage extends StatelessWidget {
                   CustomUploadeImageRegister(
                     horizontal: 26.w,
                     vertical: 14.h,
-                    text: AppKeyTranslate.profilePicture,
+                    text: context.profilePicture,
                     file: (value) {
                       return registerRequiestModel.profilePic = value;
                     },
@@ -151,29 +150,29 @@ class RegisterPage extends StatelessWidget {
 
                   //! Email
                   MainTextFormField(
-                    validate: Validate.emailValidate,
+                    validate: (val) => Validate.emailValidate(context, val),
                     horizontal: 26.w,
                     vertical: 14.h,
                     controller: controllerEmail,
-                    text: AppKeyTranslate.email,
+                    text: context.email,
                     onChanged: (value) {},
                   ),
                   //! Password
                   CustomTextFormFieldPassword(
-                    validate: Validate.generalValidate,
+                    validate: (val) => Validate.generalValidate(context, val),
                     horizontal: 24.w,
                     vertical: 12.h,
                     controller: controllerPassword,
-                    text: AppKeyTranslate.password,
+                    text: context.password,
                     onChanged: (value) {},
                   ),
                   //! Confirm Password
                   CustomTextFormFieldPassword(
-                    validate: Validate.generalValidate,
+                    validate: (val) => Validate.generalValidate(context, val),
                     horizontal: 24.w,
                     vertical: 12.h,
                     controller: controllerConfirmPassword,
-                    text: AppKeyTranslate.confirmPassword,
+                    text: context.confirmPassword,
                     onChanged: (value) {},
                   ),
                   Padding(
@@ -183,7 +182,7 @@ class RegisterPage extends StatelessWidget {
                     ),
                     child: MainButton(
                       isLoading: state.cubitStatus == CubitStatus.loading,
-                      text: AppKeyTranslate.signUp,
+                      text: context.signUp,
                       onTap: () {
                         if (formState.currentState?.validate() ?? false) {
                           registerRequiestModel.name = controllerName.text;
@@ -211,8 +210,8 @@ class RegisterPage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24),
                     child: CustomAskLoginOrRegister(
-                      textAsk: AppKeyTranslate.questionDontRegisterYet,
-                      textNavigate: AppKeyTranslate.signIn,
+                      textAsk: context.questionDontRegisterYet,
+                      textNavigate: context.signIn,
                       ontap: () {
                         Navigator.pushReplacementNamed(
                             context, RouteNamedScreens.logiscreen);

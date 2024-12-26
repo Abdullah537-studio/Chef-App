@@ -3,54 +3,47 @@
 // import 'package:flutter/material.dart';
 
 // extension Trans on BuildContext {
-//   String get welcomeToApplication => tr(AppKeyTranslate.welcomeToApplication);
-//   String get chooseLanguage => tr(AppKeyTranslate.chooseLanguage);
-//   String get messageWelcomeLogin => tr(AppKeyTranslate.messageWelcomeLogin);
-//   String get messageWelcomeRegister =>
-//       tr(AppKeyTranslate.messageWelcomeRegister);
-//   String get email => tr(AppKeyTranslate.email);
-//   String get password => tr(AppKeyTranslate.password);
-//   String get confirmPassword => tr(AppKeyTranslate.confirmPassword);
-//   String get name => tr(AppKeyTranslate.name);
-//   String get location => tr(AppKeyTranslate.location);
-//   String get brandNamed => tr(AppKeyTranslate.brandNamed);
-//   String get minCharge => tr(AppKeyTranslate.minCharge);
-//   String get disc => tr(AppKeyTranslate.disc);
-//   String get healthCertificate => tr(AppKeyTranslate.healthCertificate);
-//   String get forgetPassword => tr(AppKeyTranslate.forgetPassword);
-//   String get signIn => tr(AppKeyTranslate.signIn);
-//   String get signUp => tr(AppKeyTranslate.signUp);
-//   String get questionDontRegisterYet =>
-//       tr(AppKeyTranslate.questionDontRegisterYet);
-//   String get questionHaveAccountBefore =>
-//       tr(AppKeyTranslate.questionHaveAccountBefore);
-//   String get createNewPassword => tr(AppKeyTranslate.createNewPassword);
-// }
-
-// extension StringTranslate on String {
-//   static String get welcomeToApplication =>
-//       tr(AppKeyTranslate.welcomeToApplication);
-//   static String get chooseLanguage => tr(AppKeyTranslate.chooseLanguage);
-//   static String get messageWelcomeLogin =>
-//       tr(AppKeyTranslate.messageWelcomeLogin);
-//   static String get messageWelcomeRegister =>
-//       tr(AppKeyTranslate.messageWelcomeRegister);
-//   static String get email => tr(AppKeyTranslate.email);
-//   static String get password => tr(AppKeyTranslate.password);
-//   static String get confirmPassword => tr(AppKeyTranslate.confirmPassword);
-//   static String get name => tr(AppKeyTranslate.name);
-//   static String get location => tr(AppKeyTranslate.location);
-//   static String get brandNamed => tr(AppKeyTranslate.brandNamed);
-//   static String get minCharge => tr(AppKeyTranslate.minCharge);
-//   static String get disc => tr(AppKeyTranslate.disc);
-//   static String get healthCertificate => tr(AppKeyTranslate.healthCertificate);
-//   static String get forgetPassword => tr(AppKeyTranslate.forgetPassword);
-//   static String get signIn => tr(AppKeyTranslate.signIn);
-//   static String get signUp => tr(AppKeyTranslate.signUp);
-//   static String get questionDontRegisterYet =>
-//       tr(AppKeyTranslate.questionDontRegisterYet);
-//   static String get questionHaveAccountBefore =>
-//       tr(AppKeyTranslate.questionHaveAccountBefore);
-//   static String get createNewPassword => tr(AppKeyTranslate.createNewPassword);
-//   static String get settings => tr("settings");
+//   String get welcomeToApplication => "question_dont_register_yet".tr();
+//   String get chooseLanguage => "choose_language".tr();
+//   String get messageWelcomeLogin => "message_welcome_login".tr();
+//   String get messageWelcomeRegister => "message_welcome_register".tr();
+//   String get email => "email".tr();
+//   String get password => "password".tr();
+//   String get confirmPassword => "confirm_password".tr();
+//   String get name => "name".tr();
+//   String get phone => "phone".tr();
+//   String get location => "location".tr();
+//   String get brandNamed => "brand_named".tr();
+//   String get minCharge => "min_charge".tr();
+//   String get disc => "disc".tr();
+//   String get forgetPassword => "forget_password".tr();
+//   String get signIn => "sign_in".tr();
+//   String get signUp => "sign_up".tr();
+//   String get questionDontRegisterYet => "question_dont_register_yet".tr();
+//   String get questionHaveAccountBefore => "question_have_account_before".tr();
+//   String get createNewPassword => "create_new_password".tr();
+//   String get code => "code".tr();
+//   String get profilePicture => "profile_Pic".tr();
+//   String get backId => "back_id".tr();
+//   String get frontId => "front_id".tr();
+//   String get healthCertificate => "health_certificate".tr();
+//   String get resetPassword => "reset_password".tr();
+//   String get success => "success".tr();
+//   String get warning => "warning".tr();
+//   String get error => "error".tr();
+//   String get offlineConnectionError => "offlineConnectionError".tr();
+//   String get forgetPasswordAppBar => "forget_password_appBar".tr();
+//   String get sendCodeBody1 => "send_code_body_1".tr();
+//   String get sendCodeBody2 => "send_code_body_2".tr();
+//   String get sendCode => "send_code".tr();
+//   String get thisFieldRequiredValidate => "thisFieldRequiredValidate".tr();
+//   String get invalidEmailValidate => "invalidEmailValidate".tr();
+//   String get home => "home".tr();
+//   String get meal => "meal".tr();
+//   String get profile => "profile".tr();
+//   String get addMeal => "add_meal".tr();
+//   String get settings => "settings".tr();
+//   String get editProfile => "edit_profile".tr();
+//   String get logOut => "log_out".tr();
+//   String get nowLanguage => "now_language".tr();
 // }

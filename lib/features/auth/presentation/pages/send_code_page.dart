@@ -34,7 +34,7 @@ class SendCodePage extends StatelessWidget {
       },
       builder: (context, state) {
         return Scaffold(
-          appBar: mainAppBar(context, AppKeyTranslate.forgetPassword),
+          appBar: mainAppBar(context, context.forgetPassword),
           body: Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.w),
             child: SingleChildScrollView(
@@ -48,23 +48,23 @@ class SendCodePage extends StatelessWidget {
                       ),
                       child: Image.asset(ImageString.lockImage)),
                   MainTextWidget(
-                    text: AppKeyTranslate.sendCodeBody1,
+                    text: context.sendCodeBody1,
                     textStyle: regularStyle(),
                   ),
                   MainTextWidget(
-                    text: AppKeyTranslate.sendCodeBody2,
+                    text: context.sendCodeBody2,
                     textStyle: regularStyle(),
                   ),
                   MainTextFormField(
-                    validate: Validate.emailValidate,
+                    validate: (val) => Validate.generalValidate(context, val),
                     horizontal: 0,
                     vertical: 30.h,
-                    text: AppKeyTranslate.email,
+                    text: context.email,
                     onChanged: (value) {},
                     controller: controller,
                   ),
                   MainButton(
-                    text: AppKeyTranslate.sendCode,
+                    text: context.sendCode,
                     onTap: () {
                       SendCodeRequistModel sendCode =
                           SendCodeRequistModel(email: controller.text);

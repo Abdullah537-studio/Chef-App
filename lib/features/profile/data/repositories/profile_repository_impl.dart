@@ -1,7 +1,6 @@
 import 'package:chef_app/core/database/error/error_model.dart';
 import 'package:chef_app/core/database/error/server_exception.dart';
 import 'package:chef_app/core/network/network_info.dart';
-import 'package:chef_app/core/strings/key_tanslate.dart';
 import 'package:chef_app/features/profile/data/datasources/chef_data_remote.dart';
 import 'package:chef_app/features/profile/domain/entities/chef_data_entity.dart';
 import 'package:chef_app/features/profile/domain/repositories/profile_repository.dart';
@@ -24,8 +23,7 @@ class ProfileRepositoryImpl implements ProfileRepository {
         return Left(e.errorModel!);
       }
     } else {
-      return Left(
-          ErrorModel(errorMessage: AppKeyTranslate.offlineConnectionError));
+      return const Left(ErrorModel(errorMessage: "offline"));
     }
   }
 }

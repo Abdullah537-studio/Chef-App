@@ -19,7 +19,7 @@ class ChangeForgettonPassword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: mainAppBar(context, AppKeyTranslate.createNewPassword),
+      appBar: mainAppBar(context, context.createNewPassword),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.w),
         child: SingleChildScrollView(
@@ -33,35 +33,35 @@ class ChangeForgettonPassword extends StatelessWidget {
                   ),
                   child: Image.asset(ImageString.lockImage)),
               MainTextWidget(
-                text: AppKeyTranslate.createNewPassword,
+                text: context.createNewPassword,
                 textStyle: regularStyle(),
               ),
               CustomTextFormFieldPassword(
-                validate: Validate.passwordValidate,
+                validate: (val) => Validate.passwordValidate(context, val),
                 horizontal: 0,
                 vertical: 30.h,
-                text: AppKeyTranslate.password,
+                text: context.password,
                 onChanged: (value) {},
                 controller: controllerPassword,
               ),
               CustomTextFormFieldPassword(
-                validate: Validate.passwordValidate,
+                validate: (val) => Validate.passwordValidate(context, val),
                 horizontal: 0,
                 vertical: 30.h,
-                text: AppKeyTranslate.confirmPassword,
+                text: context.confirmPassword,
                 onChanged: (value) {},
                 controller: controllerConfirmPassword,
               ),
               MainTextFormField(
-                validate: Validate.passwordValidate,
+                validate: (val) => Validate.passwordValidate(context, val),
                 horizontal: 0,
                 vertical: 30.h,
-                text: AppKeyTranslate.code,
+                text: context.code,
                 onChanged: (value) {},
                 controller: controllerCode,
               ),
               MainButton(
-                text: AppKeyTranslate.resetPassword,
+                text: context.resetPassword,
                 onTap: () {},
                 isLoading: false,
               ),

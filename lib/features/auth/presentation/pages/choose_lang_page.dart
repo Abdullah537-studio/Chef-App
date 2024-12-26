@@ -28,13 +28,13 @@ class ChooseLangPage extends StatelessWidget {
           children: [
             Image.asset(ImageString.chefImage),
             Text(
-              AppKeyTranslate.welcomeToApplication,
+              context.welcomeToApplication,
               style: TextStyle(fontSize: 32.sp, color: AppColors.textColor),
             ),
             Padding(
               padding: EdgeInsets.only(top: 54.h, bottom: 102.h),
               child: Text(
-                AppKeyTranslate.chooseLanguage,
+                context.chooseLanguage,
                 style: TextStyle(fontSize: 24.sp, color: AppColors.textColor),
               ),
             ),

@@ -19,7 +19,7 @@ class ShowBodyMeal extends StatelessWidget {
       child: Column(
         children: [
           MainButton(
-            text: AppKeyTranslate.addMeal,
+            text: context.addMeal,
             onTap: () async {
               // Navigator.pushNamed(context, RouteNamedScreens.addMealScreen);
               CacheHelper cache = CacheHelper();

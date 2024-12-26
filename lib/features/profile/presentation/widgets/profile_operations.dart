@@ -13,7 +13,7 @@ class ProfileOperations extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         CustomSettingProfile(
-          text: AppKeyTranslate.editProfile,
+          text: context.editProfile,
           image: ImageSvg.personIcon,
           ontap: () {
             Navigator.pushNamed(
@@ -24,7 +24,7 @@ class ProfileOperations extends StatelessWidget {
           colorTextIsPrimary: false,
         ),
         CustomSettingProfile(
-          text: AppKeyTranslate.password,
+          text: context.password,
           image: ImageSvg.hidePasswordIcon,
           ontap: () {
             Navigator.pushNamed(
@@ -35,7 +35,7 @@ class ProfileOperations extends StatelessWidget {
           colorTextIsPrimary: false,
         ),
         CustomSettingProfile(
-          text: AppKeyTranslate.settings,
+          text: context.settings,
           image: ImageSvg.settingIcon,
           ontap: () {
             Navigator.pushNamed(
@@ -46,7 +46,7 @@ class ProfileOperations extends StatelessWidget {
           colorTextIsPrimary: false,
         ),
         CustomSettingProfile(
-          text: AppKeyTranslate.logOut,
+          text: context.logOut,
           image: ImageSvg.logoutIcon,
           ontap: () {},
           colorTextIsPrimary: true,

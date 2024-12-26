@@ -21,7 +21,7 @@ class EditProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: mainAppBar(context, AppKeyTranslate.editProfile),
+      appBar: mainAppBar(context, context.editProfile),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -42,51 +42,51 @@ class EditProfilePage extends StatelessWidget {
               ),
             ),
             MainTextFormField(
-              validate: Validate.generalValidate,
+              validate: (val) => Validate.generalValidate(context, val),
               horizontal: 26.w,
               vertical: 14.h,
               controller: controllerName,
-              text: AppKeyTranslate.name,
+              text: context.name,
               onChanged: (value) {},
             ),
             MainTextFormField(
-              validate: Validate.generalValidate,
+              validate: (val) => Validate.generalValidate(context, val),
               horizontal: 26.w,
               vertical: 14.h,
               controller: controllerLocation,
-              text: AppKeyTranslate.location,
+              text: context.location,
               onChanged: (value) {},
             ),
             MainTextFormField(
-              validate: Validate.generalValidate,
+              validate: (val) => Validate.generalValidate(context, val),
               horizontal: 26.w,
               vertical: 14.h,
               controller: controllerDisc,
-              text: AppKeyTranslate.disc,
+              text: context.disc,
               onChanged: (value) {},
             ),
             MainTextFormField(
-              validate: Validate.generalValidate,
+              validate: (val) => Validate.generalValidate(context, val),
               horizontal: 26.w,
               vertical: 14.h,
               controller: controllerBradName,
-              text: AppKeyTranslate.brandNamed,
+              text: context.brandNamed,
               onChanged: (value) {},
             ),
             CustomTextFormFieldPassword(
-              validate: Validate.passwordValidate,
+              validate: (val) => Validate.passwordValidate(context, val),
               horizontal: 24,
               vertical: 12,
               controller: controllerPassword,
-              text: AppKeyTranslate.password,
+              text: context.password,
               onChanged: (value) {},
             ),
             CustomTextFormFieldPassword(
-              validate: Validate.passwordValidate,
+              validate: (val) => Validate.passwordValidate(context, val),
               horizontal: 24,
               vertical: 12,
               controller: controllerConfirmPassword,
-              text: AppKeyTranslate.confirmPassword,
+              text: context.confirmPassword,
               onChanged: (value) {},
             ),
             Padding(

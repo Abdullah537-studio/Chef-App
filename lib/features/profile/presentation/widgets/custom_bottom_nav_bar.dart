@@ -22,7 +22,7 @@ class CoustomBottomNavigationBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           CustomIconBootomNavBar(
-            text: AppKeyTranslate.meal,
+            text: context.meal,
             image: ImageSvg.homeIconBottomNavBar,
             color: bootmNavBarProfileMealEnum == BootmNavBarProfileMealEnum.meal
                 ? AppColors.primaryColor
@@ -34,7 +34,7 @@ class CoustomBottomNavigationBar extends StatelessWidget {
             },
           ),
           CustomIconBootomNavBar(
-            text: AppKeyTranslate.profile,
+            text: context.profile,
             image: ImageSvg.profileIconBottomNavBar,
             color:
                 bootmNavBarProfileMealEnum == BootmNavBarProfileMealEnum.profile

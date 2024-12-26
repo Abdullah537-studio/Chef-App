@@ -40,23 +40,23 @@ class LoginPage extends StatelessWidget {
               child: Column(
                 children: [
                   CustomWelcomeAuth(
-                    text: AppKeyTranslate.messageWelcomeLogin,
+                    text: context.messageWelcomeLogin,
                   ),
                   SizedBox(height: 77.h),
                   MainTextFormField(
-                    validate: Validate.emailValidate,
+                    validate: (val) => Validate.emailValidate(context, val),
                     horizontal: 26.w,
                     vertical: 14.h,
                     controller: _controllerEmail,
-                    text: AppKeyTranslate.email,
+                    text: context.email,
                     onChanged: (value) {},
                   ),
                   MainTextFormField(
-                    validate: Validate.passwordValidate,
+                    validate: (val) => Validate.passwordValidate(context, val),
                     horizontal: 26.w,
                     vertical: 14.h,
                     controller: _controllerPassword,
-                    text: AppKeyTranslate.password,
+                    text: context.password,
                     onChanged: (value) {},
                   ),
                   Padding(
@@ -74,7 +74,7 @@ class LoginPage extends StatelessWidget {
                           );
                         },
                         child: MainTextWidget(
-                          text: AppKeyTranslate.forgetPassword,
+                          text: context.forgetPassword,
                           textStyle: boldStyle(
                               color: AppColors.greyColor, fontSize: 16.sp),
                         ),
@@ -88,7 +88,7 @@ class LoginPage extends StatelessWidget {
                     ),
                     child: MainButton(
                       isLoading: state.cubitStatus == CubitStatus.loading,
-                      text: AppKeyTranslate.signIn,
+                      text: context.signIn,
                       onTap: () {
                         if (_formState.currentState?.validate() ?? false) {
                           LoginRequiestModel loginRequiestModel =
@@ -108,8 +108,8 @@ class LoginPage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24),
                     child: CustomAskLoginOrRegister(
-                      textAsk: AppKeyTranslate.questionDontRegisterYet,
-                      textNavigate: AppKeyTranslate.signUp,
+                      textAsk: context.questionDontRegisterYet,
+                      textNavigate: context.signUp,
                       ontap: () {
                         Navigator.pushReplacementNamed(
                           context,
