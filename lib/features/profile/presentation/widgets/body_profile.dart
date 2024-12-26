@@ -31,7 +31,7 @@ class ShowBodyProfile extends StatelessWidget {
                       borderRadius: BorderRadius.circular(56.5.r),
                       child: Image.network(
                         state.chef.profilePic ?? "",
-                        fit: BoxFit.cover,
+                        fit: BoxFit.fill,
                       ),
                     ),
                   ),

@@ -11,8 +11,7 @@ void uploadFile(Function(File)? function) async {
 
   if (pickedImage != null) {
     file = File(pickedImage.path);
-    // String fileName = file.path.split('/').last;
-
+//     // String fileName = file.path.split('/').last;
     function!(file);
   }
 }

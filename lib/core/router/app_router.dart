@@ -13,6 +13,7 @@ import 'package:chef_app/features/profile/presentation/cubit/profile_cubit.dart'
 import 'package:chef_app/features/profile/presentation/pages/change_password_page.dart';
 import 'package:chef_app/features/profile/presentation/pages/edit_profile_page.dart';
 import 'package:chef_app/features/profile/presentation/pages/home_page.dart';
+import 'package:chef_app/features/profile/presentation/pages/setting_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -62,6 +63,8 @@ class AppRouter {
       case RouteNamedScreens.changeForgettonPassword:
         return MaterialPageRoute(builder: (_) => ChangeForgettonPassword());
       case RouteNamedScreens.settingScreenProfile:
+        return MaterialPageRoute(builder: (_) => SettingPage());
+
       case RouteNamedScreens.editScreenProfile:
         return MaterialPageRoute(builder: (_) => EditProfilePage());
       case RouteNamedScreens.changePasswordScreenProfile:

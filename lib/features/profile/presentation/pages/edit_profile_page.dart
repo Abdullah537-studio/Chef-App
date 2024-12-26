@@ -1,5 +1,6 @@
 import 'package:chef_app/core/function/validate.dart';
 import 'package:chef_app/core/strings/key_tanslate.dart';
+import 'package:chef_app/core/widgets/main_app_bar.dart';
 import 'package:chef_app/core/widgets/main_button.dart';
 import 'package:chef_app/core/widgets/main_text_form_field.dart';
 import 'package:chef_app/features/auth/presentation/widgets/custom_text_form_field_password.dart';
@@ -20,6 +21,7 @@ class EditProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: mainAppBar(context, AppKeyTranslate.editProfile),
       body: SingleChildScrollView(
         child: Column(
           children: [

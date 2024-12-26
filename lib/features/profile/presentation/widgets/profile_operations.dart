@@ -1,4 +1,5 @@
 import 'package:chef_app/core/router/app_router.dart';
+import 'package:chef_app/core/strings/key_tanslate.dart';
 import 'package:chef_app/features/profile/presentation/widgets/custom_setting_profile.dart';
 import 'package:chef_app/core/strings/image_svg.dart';
 import 'package:flutter/material.dart';
@@ -12,33 +13,40 @@ class ProfileOperations extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         CustomSettingProfile(
-          text: "Edit Profile",
+          text: AppKeyTranslate.editProfile,
           image: ImageSvg.personIcon,
           ontap: () {
-            Navigator.pushNamed(context, RouteNamedScreens.editScreenProfile);
+            Navigator.pushNamed(
+              context,
+              RouteNamedScreens.editScreenProfile,
+            );
           },
           colorTextIsPrimary: false,
         ),
         CustomSettingProfile(
-          text: "Password",
+          text: AppKeyTranslate.password,
           image: ImageSvg.hidePasswordIcon,
           ontap: () {
             Navigator.pushNamed(
-                context, RouteNamedScreens.changePasswordScreenProfile);
+              context,
+              RouteNamedScreens.changePasswordScreenProfile,
+            );
           },
           colorTextIsPrimary: false,
         ),
         CustomSettingProfile(
-          text: "Settings",
+          text: AppKeyTranslate.settings,
           image: ImageSvg.settingIcon,
           ontap: () {
             Navigator.pushNamed(
-                context, RouteNamedScreens.settingScreenProfile);
+              context,
+              RouteNamedScreens.settingScreenProfile,
+            );
           },
           colorTextIsPrimary: false,
         ),
         CustomSettingProfile(
-          text: "Logout",
+          text: AppKeyTranslate.logOut,
           image: ImageSvg.logoutIcon,
           ontap: () {},
           colorTextIsPrimary: true,

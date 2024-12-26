@@ -1,4 +1,6 @@
-import 'package:chef_app/core/router/app_router.dart';
+import 'package:chef_app/core/database/cache/cache_helper.dart';
+import 'package:chef_app/core/database/remote/api_url.dart';
+import 'package:chef_app/core/strings/key_tanslate.dart';
 
 import 'package:chef_app/core/widgets/main_button.dart';
 import 'package:flutter/material.dart';
@@ -17,14 +19,14 @@ class ShowBodyMeal extends StatelessWidget {
       child: Column(
         children: [
           MainButton(
-            text: "Add Meal",
+            text: AppKeyTranslate.addMeal,
             onTap: () async {
-              Navigator.pushNamed(context, RouteNamedScreens.addMealScreen);
-              // CacheHelper get = CacheHelper();
-              // String id = await get.getData(key: "id") ?? "";
-              // String token = await get.getData(key: "token") ?? "";
-              // debugPrint("token:$token");
-              // debugPrint("id:$id");
+              // Navigator.pushNamed(context, RouteNamedScreens.addMealScreen);
+              CacheHelper cache = CacheHelper();
+              String token = await cache.getData(key: ApiKey.token) ?? "";
+              String id = await cache.getData(key: ApiKey.id) ?? "";
+              debugPrint(token);
+              debugPrint(id);
             },
             isLoading: false,
           ),

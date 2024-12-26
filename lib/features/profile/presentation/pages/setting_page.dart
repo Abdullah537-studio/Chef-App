@@ -1,35 +1,74 @@
 import 'package:chef_app/core/function/main_text_style.dart';
+import 'package:chef_app/core/strings/constant_string.dart';
+import 'package:chef_app/core/strings/key_tanslate.dart';
 import 'package:chef_app/core/widgets/main_app_bar.dart';
 import 'package:chef_app/core/widgets/main_text_widget.dart';
-import 'package:chef_app/core/strings/color_strings.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SettingPage extends StatelessWidget {
+class SettingPage extends StatefulWidget {
   const SettingPage({super.key});
+
+  @override
+  State<SettingPage> createState() => _SettingPageState();
+}
+
+class _SettingPageState extends State<SettingPage> {
+  String? selectedLanguage;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    selectedLanguage = context.locale.languageCode;
+  }
+
+  void _updateLanguage(String languageCode) {
+    setState(() {
+      selectedLanguage = languageCode;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        context.setLocale(Locale(languageCode));
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: mainAppBar(context, "setting"),
+      appBar: mainAppBar(context, AppKeyTranslate.settings),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
         child: Card(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+          child: Column(
             children: [
-              MainTextWidget(text: "english", textStyle: regularStyle()),
-              Switch(
-                activeColor: AppColors.primaryColor,
-                onChanged: (value) {
-                  if (value) {
-                    context.setLocale(const Locale("en"));
-                  } else {
-                    context.setLocale(const Locale("ar"));
-                  }
-                },
-                value: context.locale == const Locale("ar") ? true : false,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  MainTextWidget(
+                    text: AppKeyTranslate.chooseLanguage,
+                    textStyle: regularStyle(),
+                  ),
+                  DropdownButton<String>(
+                    value: selectedLanguage,
+                    onChanged: (String? newValue) {
+                      if (newValue != null) {
+                        _updateLanguage(newValue);
+                      }
+                    },
+                    items: <String>[AppConstantString.ar, AppConstantString.en]
+                        .map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: MainTextWidget(
+                          text: value == AppConstantString.ar
+                              ? 'العربية'
+                              : 'English',
+                          textStyle: regularStyle(),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                ],
               ),
             ],
           ),
