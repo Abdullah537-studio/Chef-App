@@ -63,7 +63,7 @@ class AppRouter {
       case RouteNamedScreens.changeForgettonPassword:
         return MaterialPageRoute(builder: (_) => ChangeForgettonPassword());
       case RouteNamedScreens.settingScreenProfile:
-        return MaterialPageRoute(builder: (_) => SettingPage());
+        return MaterialPageRoute(builder: (_) => const SettingPage());
 
       case RouteNamedScreens.editScreenProfile:
         return MaterialPageRoute(builder: (_) => EditProfilePage());
