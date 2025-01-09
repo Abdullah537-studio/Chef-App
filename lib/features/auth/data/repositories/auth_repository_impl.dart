@@ -36,11 +36,11 @@ class AuthRepositoryImpl implements AuthRepository {
 //!---------------------------------register------------------------------------
   @override
   Future<Either<ErrorModel, RegisterResponseModel>> signup(
-      {required RegisterRequiestModel registerRequiestModel}) async {
+      {required RegisterRequestModel registerRequestModel}) async {
     if (await networkInfo.isConnected) {
       try {
-        final registerData = await authRemote.signup(
-            registerRequiestModel: registerRequiestModel);
+        final registerData =
+            await authRemote.signup(registerRequestModel: registerRequestModel);
         return Right(registerData);
       } on ServerException catch (e) {
         return Left(e.errorModel!);

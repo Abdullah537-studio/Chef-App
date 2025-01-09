@@ -45,4 +45,7 @@ extension AppKeyTranslate on BuildContext {
   String get editProfile => "edit_profile".tr();
   String get logOut => "log_out".tr();
   String get nowLanguage => "now_language".tr();
+  String get continueDialog => "Continue".tr();
+  String get cancleDialog => "Cancle".tr();
+  String get bodyDialog => "bodyDialog".tr();
 }

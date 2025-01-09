@@ -29,7 +29,7 @@ class RegisterPage extends StatelessWidget {
   final TextEditingController controllerMinCharge = TextEditingController();
   final TextEditingController controllerBradName = TextEditingController();
   final GlobalKey<FormState> formState = GlobalKey();
-  final RegisterRequiestModel registerRequiestModel = RegisterRequiestModel();
+  final RegisterRequestModel registerRequestModel = RegisterRequestModel();
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<RegisterCubit, RegisterState>(
@@ -115,7 +115,8 @@ class RegisterPage extends StatelessWidget {
                     vertical: 14.h,
                     text: context.healthCertificate,
                     file: (value) {
-                      return registerRequiestModel.healthCertificate = value;
+                      return registerRequestModel.healthCertificate =
+                          value.path;
                     },
                   ),
                   //! frontId الهوية الأمامية
@@ -124,7 +125,7 @@ class RegisterPage extends StatelessWidget {
                     vertical: 14.h,
                     text: context.frontId,
                     file: (value) {
-                      return registerRequiestModel.frontId = value;
+                      return registerRequestModel.frontId = value.path;
                     },
                   ),
 
@@ -134,7 +135,7 @@ class RegisterPage extends StatelessWidget {
                     vertical: 14.h,
                     text: context.backId,
                     file: (value) {
-                      return registerRequiestModel.backId = value;
+                      return registerRequestModel.backId = value.path;
                     },
                   ),
 
@@ -144,7 +145,7 @@ class RegisterPage extends StatelessWidget {
                     vertical: 14.h,
                     text: context.profilePicture,
                     file: (value) {
-                      return registerRequiestModel.profilePic = value;
+                      return registerRequestModel.profilePic = value.path;
                     },
                   ),
 
@@ -185,23 +186,23 @@ class RegisterPage extends StatelessWidget {
                       text: context.signUp,
                       onTap: () {
                         if (formState.currentState?.validate() ?? false) {
-                          registerRequiestModel.name = controllerName.text;
-                          registerRequiestModel.phone = controllerPhone.text;
-                          registerRequiestModel.email = controllerEmail.text;
-                          registerRequiestModel.password =
+                          registerRequestModel.name = controllerName.text;
+                          registerRequestModel.phone = controllerPhone.text;
+                          registerRequestModel.email = controllerEmail.text;
+                          registerRequestModel.password =
                               controllerPassword.text;
-                          registerRequiestModel.confirmPassword =
+                          registerRequestModel.confirmPassword =
                               controllerConfirmPassword.text;
-                          registerRequiestModel.location =
+                          registerRequestModel.location =
                               controllerLocation.text;
-                          registerRequiestModel.minCharge =
+                          registerRequestModel.minCharge =
                               controllerMinCharge.text;
-                          registerRequiestModel.brandName =
+                          registerRequestModel.brandName =
                               controllerBradName.text;
-                          registerRequiestModel.disc = controllerDisc.text;
+                          registerRequestModel.disc = controllerDisc.text;
 
                           context.read<RegisterCubit>().register(
-                                registerRequiestModel: registerRequiestModel,
+                                registerRequestModel: registerRequestModel,
                               );
                         }
                       },

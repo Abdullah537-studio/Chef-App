@@ -1,6 +1,6 @@
-import 'dart:io';
+import 'package:dio/dio.dart';
 
-class RegisterRequiestModel {
+class RegisterRequestModel {
   String? name;
   String? phone;
   String? email;
@@ -10,12 +10,12 @@ class RegisterRequiestModel {
   String? brandName;
   String? minCharge;
   String? disc;
-  File? healthCertificate;
-  File? frontId;
-  File? backId;
-  File? profilePic;
+  String? healthCertificate;
+  String? frontId;
+  String? backId;
+  String? profilePic;
 
-  RegisterRequiestModel({
+  RegisterRequestModel({
     this.name,
     this.phone,
     this.email,
@@ -30,6 +30,7 @@ class RegisterRequiestModel {
     this.backId,
     this.profilePic,
   });
+
   Map<String, dynamic> toJson() {
     return {
       "name": name,
@@ -42,9 +43,18 @@ class RegisterRequiestModel {
       "minCharge": minCharge,
       "disc": disc,
       "healthCertificate": healthCertificate,
-      "frontId": frontId,
-      "backId": backId,
-      "profilePic": profilePic
     };
+  }
+
+  Future<FormData> toFormData() async {
+    return FormData.fromMap({
+      ...toJson(),
+      "frontId": await MultipartFile.fromFile(frontId ?? "",
+          filename: 'frontId_${DateTime.now().millisecondsSinceEpoch}.jpg'),
+      "backId": await MultipartFile.fromFile(backId ?? "",
+          filename: 'backId_${DateTime.now().millisecondsSinceEpoch}.jpg'),
+      "profilePic": await MultipartFile.fromFile(profilePic ?? "",
+          filename: 'profilePic_${DateTime.now().millisecondsSinceEpoch}.jpg'),
+    });
   }
 }

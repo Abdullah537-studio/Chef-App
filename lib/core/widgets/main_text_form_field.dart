@@ -1,3 +1,4 @@
+import 'package:chef_app/core/function/main_text_style.dart';
 import 'package:chef_app/core/strings/color_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -33,7 +34,7 @@ class MainTextFormField extends StatelessWidget {
         cursorColor: AppColors.primaryColor,
         decoration: InputDecoration(
           hintText: text,
-          hintStyle: TextStyle(
+          hintStyle: regularStyle(
             color: const Color(0xff9D9FA0),
             fontSize: 16.sp,
           ),

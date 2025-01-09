@@ -67,10 +67,10 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   // Future<void> register(
-  //     {required RegisterRequiestModel registerRequiestModel}) async {
+  //     {required RegisterRequestModel RegisterRequestModel}) async {
   //   emit(state.copyWith(cubitStatus: CubitStatus.loading));
   //   final registerData =
-  //       await registerUsecase(registerRequiestModel: registerRequiestModel);
+  //       await registerUsecase(RegisterRequestModel: RegisterRequestModel);
   //   registerData.fold((failure) {
   //     try {
   //       emit(state.copyWith(

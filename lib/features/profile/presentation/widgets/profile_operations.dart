@@ -1,3 +1,4 @@
+import 'package:chef_app/core/function/show_alert_dialog.dart';
 import 'package:chef_app/core/router/app_router.dart';
 import 'package:chef_app/core/strings/key_tanslate.dart';
 import 'package:chef_app/features/profile/presentation/widgets/custom_change_lang_dropdown.dart';
@@ -46,7 +47,13 @@ class _ProfileOperationsState extends State<ProfileOperations> {
         CustomSettingProfile(
           text: context.logOut,
           image: ImageSvg.logoutIcon,
-          ontap: () {},
+          ontap: () {
+            showAlertDialog(
+              context: context,
+              body: context.bodyDialog,
+              title: context.warning,
+            );
+          },
           colorTextIsPrimary: true,
         ),
       ],

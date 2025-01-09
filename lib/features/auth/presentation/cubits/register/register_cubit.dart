@@ -9,10 +9,10 @@ class RegisterCubit extends Cubit<RegisterState> {
   final RegisterUsecase registerUsecase;
 
   Future<void> register(
-      {required RegisterRequiestModel registerRequiestModel}) async {
+      {required RegisterRequestModel registerRequestModel}) async {
     emit(state.copyWith(cubitStatus: CubitStatus.loading));
     final registerData =
-        await registerUsecase(registerRequiestModel: registerRequiestModel);
+        await registerUsecase(registerRequestModel: registerRequestModel);
     registerData.fold((failure) {
       try {
         if (isClosed) {

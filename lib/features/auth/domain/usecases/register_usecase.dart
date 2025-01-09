@@ -9,10 +9,10 @@ class RegisterUsecase {
 
   const RegisterUsecase({required this.repository});
   Future<Either<ErrorModel, RegisterResponseModel>> call({
-    required RegisterRequiestModel registerRequiestModel,
+    required RegisterRequestModel registerRequestModel,
   }) async {
     return await repository.signup(
-      registerRequiestModel: registerRequiestModel,
+      registerRequestModel: registerRequestModel,
     );
   }
 }

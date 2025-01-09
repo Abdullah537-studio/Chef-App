@@ -41,6 +41,9 @@
     "settings": "Settings",
     "edit_profile": "Edit Profile",
     "log_out": "Log Out",
-    "now_language": "Current Language"
+    "now_language": "Current Language",
+    "Cancle": "Cancle",
+    "Continue": "Continue",
+    "bodyDialog": "Are you sure to logout from your account??"
   }
   

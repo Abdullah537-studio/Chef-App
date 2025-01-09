@@ -13,7 +13,7 @@ abstract class AuthRepository {
       {required LoginRequiestModel loginRequiestModel});
   //? register
   Future<Either<ErrorModel, RegisterResponseModel>> signup({
-    required RegisterRequiestModel registerRequiestModel,
+    required RegisterRequestModel registerRequestModel,
   });
   Future<Either<ErrorModel, SendCodeResponseModel>> sendCode(
       {required SendCodeRequistModel sendCodeRequistModel});

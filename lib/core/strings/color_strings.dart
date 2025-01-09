@@ -12,8 +12,11 @@ class AppColors {
   static const Color darkCharcoal = Color(0xff1E1E1E);
   static const Color greyColor = Color(0xff9D9FA0);
   static Color iconStateTextFormFieldColor = WidgetStateColor.resolveWith(
-    (states) => states.contains(WidgetState.focused)
-        ? AppColors.primaryColor
-        : AppColors.greyColor,
+    (Set<WidgetState> states) {
+      if (states.contains(WidgetState.focused)) {
+        return Colors.blue; // Cor quando focado
+      }
+      return Colors.grey; // Cor padrão
+    },
   );
 }
