@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:chef_app/core/enum/cubit_status.dart';
 import 'package:chef_app/core/function/show_toast.dart';
 import 'package:chef_app/core/function/validate.dart';
@@ -31,31 +29,25 @@ class RegisterPage extends StatelessWidget {
   final TextEditingController controllerMinCharge = TextEditingController();
   final TextEditingController controllerBradName = TextEditingController();
   final GlobalKey<FormState> formState = GlobalKey();
-  final RegisterRequestModel registerRequestModel = RegisterRequestModel();
-  Future<File?> uploadImageAndGetFile(String imagePath) async {
-    try {
-      // تحقق من وجود المسار الصحيح للصورة
-      if (imagePath.isNotEmpty) {
-        // إنشاء كائن File من المسار
-        File imageFile = File(imagePath);
 
-        // تحقق من وجود الملف
-        if (await imageFile.exists()) {
-          // إرجاع كائن File للاستخدام في RegisterRequestModel
-          return imageFile;
-        } else {
-          // إذا لم يتم العثور على الملف، أرجع null
-          return null;
-        }
-      } else {
-        // إذا كان المسار فارغًا، أرجع null
-        return null;
-      }
-    } catch (e) {
-      // إذا حدث خطأ أثناء التعامل مع الملف، أرجع null
-      return null;
-    }
-  }
+  final RegisterRequestModel registerRequestModel = RegisterRequestModel(
+    name: "abdullah",
+    phone: "1101459565",
+    email: "abdullah@gmail.com",
+    password: "abd12345",
+    confirmPassword: "abd12345",
+    location: Location(
+        name: "methalfa",
+        address: "meet halfa",
+        coordinates: [1214451511, 12541845]),
+    minCharge: 150,
+    disc: "anas mohamed gooooooooood",
+    brandName: "abd55Chef",
+    backId: "",
+    frontId: "",
+    healthCertificate: "",
+    profilePic: "",
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -144,7 +136,8 @@ class RegisterPage extends StatelessWidget {
                     fileFunction: (value) {
                       print("healthCertificate:$value");
 
-                      return registerRequestModel.healthCertificate = value;
+                      return registerRequestModel.healthCertificate =
+                          value.path;
                     },
                   ),
                   //! frontId الهوية الأمامية
@@ -155,7 +148,7 @@ class RegisterPage extends StatelessWidget {
                     fileFunction: (value) {
                       print("frontId:$value");
 
-                      return registerRequestModel.frontId = value;
+                      return registerRequestModel.frontId = value.path;
                     },
                   ),
 
@@ -166,7 +159,7 @@ class RegisterPage extends StatelessWidget {
                     text: context.backId,
                     fileFunction: (value) {
                       print("backId:$value");
-                      return registerRequestModel.backId = value;
+                      return registerRequestModel.backId = value.path;
                     },
                   ),
 
@@ -178,7 +171,7 @@ class RegisterPage extends StatelessWidget {
                     fileFunction: (value) {
                       print("profilepicture:$value");
 
-                      return registerRequestModel.profilePic = value;
+                      return registerRequestModel.profilePic = value.path;
                     },
                   ),
 
@@ -218,21 +211,6 @@ class RegisterPage extends StatelessWidget {
                         isLoading: state.cubitStatus == CubitStatus.loading,
                         text: context.signUp,
                         onTap: () async {
-                          registerRequestModel.name = "abdullah";
-                          registerRequestModel.phone = "1101459565";
-                          registerRequestModel.email = "abdullah@gmail.com";
-                          registerRequestModel.password = "abd12345";
-                          registerRequestModel.confirmPassword = "abd12345";
-                          registerRequestModel.location = {
-                            "name": "methalfa",
-                            "address": "meet halfa",
-                            "coordinates": [1214451511, 12541845]
-                          };
-                          registerRequestModel.minCharge = 150;
-                          registerRequestModel.disc =
-                              "anas mohamed gooooooooood";
-
-                          registerRequestModel.brandName = "abd55Chef";
                           print(
                               "---------------------------------------------");
                           print(registerRequestModel.toJson());
