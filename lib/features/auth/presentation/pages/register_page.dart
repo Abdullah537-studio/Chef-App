@@ -29,25 +29,10 @@ class RegisterPage extends StatelessWidget {
   final TextEditingController controllerMinCharge = TextEditingController();
   final TextEditingController controllerBradName = TextEditingController();
   final GlobalKey<FormState> formState = GlobalKey();
-
-  final RegisterRequestModel registerRequestModel = RegisterRequestModel(
-    name: "abdullah",
-    phone: "1101459565",
-    email: "abdullah@gmail.com",
-    password: "abd12345",
-    confirmPassword: "abd12345",
-    location: Location(
-        name: "methalfa",
-        address: "meet halfa",
-        coordinates: [1214451511, 12541845]),
-    minCharge: 150,
-    disc: "anas mohamed gooooooooood",
-    brandName: "abd55Chef",
-    backId: "",
-    frontId: "",
-    healthCertificate: "",
-    profilePic: "",
-  );
+  String profilePic = "";
+  String healthCertificate = "";
+  String frontId = "";
+  String backId = "";
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +45,7 @@ class RegisterPage extends StatelessWidget {
           );
         } else if (state.cubitStatus == CubitStatus.loaded) {
           showToast(ToastMessageStatus.success, state.message);
+          Navigator.pushNamed(context, RouteNamedScreens.logiscreen);
         }
       },
       builder: (context, state) {
@@ -134,10 +120,7 @@ class RegisterPage extends StatelessWidget {
                     vertical: 14.h,
                     text: context.healthCertificate,
                     fileFunction: (value) {
-                      print("healthCertificate:$value");
-
-                      return registerRequestModel.healthCertificate =
-                          value.path;
+                      return healthCertificate = value.path;
                     },
                   ),
                   //! frontId الهوية الأمامية
@@ -146,9 +129,7 @@ class RegisterPage extends StatelessWidget {
                     vertical: 14.h,
                     text: context.frontId,
                     fileFunction: (value) {
-                      print("frontId:$value");
-
-                      return registerRequestModel.frontId = value.path;
+                      return frontId = value.path;
                     },
                   ),
 
@@ -158,8 +139,7 @@ class RegisterPage extends StatelessWidget {
                     vertical: 14.h,
                     text: context.backId,
                     fileFunction: (value) {
-                      print("backId:$value");
-                      return registerRequestModel.backId = value.path;
+                      return backId = value.path;
                     },
                   ),
 
@@ -169,9 +149,7 @@ class RegisterPage extends StatelessWidget {
                     vertical: 14.h,
                     text: context.profilePicture,
                     fileFunction: (value) {
-                      print("profilepicture:$value");
-
-                      return registerRequestModel.profilePic = value.path;
+                      return profilePic = value.path;
                     },
                   ),
 
@@ -211,18 +189,28 @@ class RegisterPage extends StatelessWidget {
                         isLoading: state.cubitStatus == CubitStatus.loading,
                         text: context.signUp,
                         onTap: () async {
-                          print(
-                              "---------------------------------------------");
-                          print(registerRequestModel.toJson());
-                          print("frontId:${registerRequestModel.frontId}");
-                          print("backId:${registerRequestModel.backId}");
-                          print(
-                              "healthCertificate:${registerRequestModel.healthCertificate}");
-                          print(
-                              "profilePic:${registerRequestModel.profilePic}");
-
-                          print(
-                              "---------------------------------------------");
+                          final RegisterRequestModel registerRequestModel =
+                              RegisterRequestModel(
+                            name: controllerName.text,
+                            phone: controllerPhone.text,
+                            email: controllerEmail.text,
+                            password: controllerPassword.text,
+                            confirmPassword: controllerConfirmPassword.text,
+                            location: Location(
+                                name: "methalfa",
+                                address: "meet halfa",
+                                coordinates: [1214451511, 12541845]),
+                            minCharge: int.parse(controllerMinCharge.text),
+                            disc: controllerDisc.text,
+                            brandName: controllerBradName.text,
+                            backId: "",
+                            frontId: "",
+                            healthCertificate: "",
+                            profilePic: "",
+                          );
+                          print("------------------------------------------");
+                          print(registerRequestModel.toFormData());
+                          print("------------------------------------------");
                           context.read<RegisterCubit>().register(
                                 registerRequestModel: registerRequestModel,
                               );

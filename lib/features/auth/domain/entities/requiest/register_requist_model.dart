@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 
 class RegisterRequestModel {
@@ -31,20 +33,6 @@ class RegisterRequestModel {
     required this.profilePic,
   });
 
-  Map<String, dynamic> toJson() {
-    return {
-      "name": name,
-      "phone": phone,
-      "email": email,
-      "password": password,
-      "confirmPassword": confirmPassword,
-      "location": location,
-      "brandName": brandName,
-      "minCharge": minCharge,
-      "disc": disc,
-    };
-  }
-
   Future<FormData> toFormData() async {
     return FormData.fromMap({
       'name': name,
@@ -52,9 +40,7 @@ class RegisterRequestModel {
       'email': email,
       'password': password,
       'confirmPassword': confirmPassword,
-      'location[name]': location.name,
-      'location[address]': location.address,
-      'location[coordinates]': location.coordinates,
+      'location': jsonEncode(location.toJson()),
       'brandName': brandName,
       'minCharge': minCharge,
       'disc': disc,
@@ -63,25 +49,13 @@ class RegisterRequestModel {
       'backId': await MultipartFile.fromFile(backId),
       'profilePic': await MultipartFile.fromFile(profilePic),
     });
-    // return FormData.fromMap({
-    //   ...toJson(),
-    //   "healthCertificate": await MultipartFile.fromFile(
-    //       healthCertificate?.path ?? "",
-    //       filename: healthCertificate?.path.split('/').last),
-    //   "frontId": await MultipartFile.fromFile(frontId?.path ?? "",
-    //       filename: frontId?.path.split('/').last),
-    //   "backId": await MultipartFile.fromFile(backId?.path ?? "",
-    //       filename: backId?.path.split('/').last),
-    //   "profilePic": await MultipartFile.fromFile(profilePic?.path ?? "",
-    //       filename: profilePic?.path.split('/').last),
-    // });
   }
 }
 
 class Location {
   String name;
   String address;
-  List<int> coordinates;
+  List<double> coordinates;
 
   Location({
     required this.name,
@@ -95,5 +69,22 @@ class Location {
       'address': address,
       'coordinates': coordinates,
     };
+  }
+
+  factory Location.fromString(String locationString) {
+    final parts = locationString.split(',');
+    final name = parts[0].split(':')[1].trim();
+    final address = parts[1].split(':')[1].trim();
+    final coordinatesString = parts[2].split(':')[1].trim();
+    final coordinatesParts = coordinatesString
+        .split(',')
+        .map((part) => double.parse(part.trim()))
+        .toList();
+
+    return Location(
+      name: name,
+      address: address,
+      coordinates: coordinatesParts,
+    );
   }
 }

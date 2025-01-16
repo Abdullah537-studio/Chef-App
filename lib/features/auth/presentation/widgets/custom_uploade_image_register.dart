@@ -56,7 +56,7 @@ class _CustomUploadeImageRegisterState
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: () {
         if (!chooseNameOrEmpty) {
           selectImage(); // اختيار صورة جديدة

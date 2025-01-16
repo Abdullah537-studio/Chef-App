@@ -18,6 +18,8 @@ class RegisterCubit extends Cubit<RegisterState> {
         if (isClosed) {
           return;
         }
+
+        print("Failure Error: ${failure.error}");
         emit(state.copyWith(
           cubitStatus: CubitStatus.error,
           message: failure.errorMessage,
