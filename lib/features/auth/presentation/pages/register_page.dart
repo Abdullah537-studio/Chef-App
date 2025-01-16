@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:chef_app/core/enum/cubit_status.dart';
 import 'package:chef_app/core/function/show_toast.dart';
 import 'package:chef_app/core/function/validate.dart';
@@ -30,6 +32,31 @@ class RegisterPage extends StatelessWidget {
   final TextEditingController controllerBradName = TextEditingController();
   final GlobalKey<FormState> formState = GlobalKey();
   final RegisterRequestModel registerRequestModel = RegisterRequestModel();
+  Future<File?> uploadImageAndGetFile(String imagePath) async {
+    try {
+      // تحقق من وجود المسار الصحيح للصورة
+      if (imagePath.isNotEmpty) {
+        // إنشاء كائن File من المسار
+        File imageFile = File(imagePath);
+
+        // تحقق من وجود الملف
+        if (await imageFile.exists()) {
+          // إرجاع كائن File للاستخدام في RegisterRequestModel
+          return imageFile;
+        } else {
+          // إذا لم يتم العثور على الملف، أرجع null
+          return null;
+        }
+      } else {
+        // إذا كان المسار فارغًا، أرجع null
+        return null;
+      }
+    } catch (e) {
+      // إذا حدث خطأ أثناء التعامل مع الملف، أرجع null
+      return null;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<RegisterCubit, RegisterState>(
@@ -114,9 +141,10 @@ class RegisterPage extends StatelessWidget {
                     horizontal: 26.w,
                     vertical: 14.h,
                     text: context.healthCertificate,
-                    file: (value) {
-                      return registerRequestModel.healthCertificate =
-                          value.path;
+                    fileFunction: (value) {
+                      print("healthCertificate:$value");
+
+                      return registerRequestModel.healthCertificate = value;
                     },
                   ),
                   //! frontId الهوية الأمامية
@@ -124,8 +152,10 @@ class RegisterPage extends StatelessWidget {
                     horizontal: 26.w,
                     vertical: 14.h,
                     text: context.frontId,
-                    file: (value) {
-                      return registerRequestModel.frontId = value.path;
+                    fileFunction: (value) {
+                      print("frontId:$value");
+
+                      return registerRequestModel.frontId = value;
                     },
                   ),
 
@@ -134,8 +164,9 @@ class RegisterPage extends StatelessWidget {
                     horizontal: 26.w,
                     vertical: 14.h,
                     text: context.backId,
-                    file: (value) {
-                      return registerRequestModel.backId = value.path;
+                    fileFunction: (value) {
+                      print("backId:$value");
+                      return registerRequestModel.backId = value;
                     },
                   ),
 
@@ -144,8 +175,10 @@ class RegisterPage extends StatelessWidget {
                     horizontal: 26.w,
                     vertical: 14.h,
                     text: context.profilePicture,
-                    file: (value) {
-                      return registerRequestModel.profilePic = value.path;
+                    fileFunction: (value) {
+                      print("profilepicture:$value");
+
+                      return registerRequestModel.profilePic = value;
                     },
                   ),
 
@@ -182,31 +215,42 @@ class RegisterPage extends StatelessWidget {
                       vertical: 64.h,
                     ),
                     child: MainButton(
-                      isLoading: state.cubitStatus == CubitStatus.loading,
-                      text: context.signUp,
-                      onTap: () {
-                        if (formState.currentState?.validate() ?? false) {
-                          registerRequestModel.name = controllerName.text;
-                          registerRequestModel.phone = controllerPhone.text;
-                          registerRequestModel.email = controllerEmail.text;
-                          registerRequestModel.password =
-                              controllerPassword.text;
-                          registerRequestModel.confirmPassword =
-                              controllerConfirmPassword.text;
-                          registerRequestModel.location =
-                              controllerLocation.text;
-                          registerRequestModel.minCharge =
-                              controllerMinCharge.text;
-                          registerRequestModel.brandName =
-                              controllerBradName.text;
-                          registerRequestModel.disc = controllerDisc.text;
+                        isLoading: state.cubitStatus == CubitStatus.loading,
+                        text: context.signUp,
+                        onTap: () async {
+                          registerRequestModel.name = "abdullah";
+                          registerRequestModel.phone = "1101459565";
+                          registerRequestModel.email = "abdullah@gmail.com";
+                          registerRequestModel.password = "abd12345";
+                          registerRequestModel.confirmPassword = "abd12345";
+                          registerRequestModel.location = {
+                            "name": "methalfa",
+                            "address": "meet halfa",
+                            "coordinates": [1214451511, 12541845]
+                          };
+                          registerRequestModel.minCharge = 150;
+                          registerRequestModel.disc =
+                              "anas mohamed gooooooooood";
 
+                          registerRequestModel.brandName = "abd55Chef";
+                          print(
+                              "---------------------------------------------");
+                          print(registerRequestModel.toJson());
+                          print("frontId:${registerRequestModel.frontId}");
+                          print("backId:${registerRequestModel.backId}");
+                          print(
+                              "healthCertificate:${registerRequestModel.healthCertificate}");
+                          print(
+                              "profilePic:${registerRequestModel.profilePic}");
+
+                          print(
+                              "---------------------------------------------");
                           context.read<RegisterCubit>().register(
                                 registerRequestModel: registerRequestModel,
                               );
                         }
-                      },
-                    ),
+                        // },
+                        ),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24),

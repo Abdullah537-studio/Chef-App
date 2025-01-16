@@ -10,6 +10,7 @@ import 'package:chef_app/core/widgets/main_text_widget.dart';
 import 'package:chef_app/features/auth/domain/entities/requiest/login_requist_model.dart';
 import 'package:chef_app/features/auth/presentation/cubits/auth/auth_cubit.dart';
 import 'package:chef_app/features/auth/presentation/widgets/custom_ask_login_or_register.dart';
+import 'package:chef_app/features/auth/presentation/widgets/custom_text_form_field_password.dart';
 import 'package:chef_app/features/auth/presentation/widgets/cuton_welcome_auth.dart';
 import 'package:chef_app/core/strings/color_strings.dart';
 import 'package:flutter/material.dart';
@@ -51,7 +52,7 @@ class LoginPage extends StatelessWidget {
                     text: context.email,
                     onChanged: (value) {},
                   ),
-                  MainTextFormField(
+                  CustomTextFormFieldPassword(
                     validate: (val) => Validate.passwordValidate(context, val),
                     horizontal: 26.w,
                     vertical: 14.h,

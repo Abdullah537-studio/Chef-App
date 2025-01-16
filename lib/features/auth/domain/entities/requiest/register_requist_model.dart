@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 
 class RegisterRequestModel {
@@ -6,14 +8,14 @@ class RegisterRequestModel {
   String? email;
   String? password;
   String? confirmPassword;
-  String? location;
+  Map<String, dynamic>? location;
   String? brandName;
-  String? minCharge;
+  int? minCharge;
   String? disc;
-  String? healthCertificate;
-  String? frontId;
-  String? backId;
-  String? profilePic;
+  File? healthCertificate;
+  File? frontId;
+  File? backId;
+  File? profilePic;
 
   RegisterRequestModel({
     this.name,
@@ -42,19 +44,21 @@ class RegisterRequestModel {
       "brandName": brandName,
       "minCharge": minCharge,
       "disc": disc,
-      "healthCertificate": healthCertificate,
     };
   }
 
   Future<FormData> toFormData() async {
     return FormData.fromMap({
       ...toJson(),
-      "frontId": await MultipartFile.fromFile(frontId ?? "",
-          filename: 'frontId_${DateTime.now().millisecondsSinceEpoch}.jpg'),
-      "backId": await MultipartFile.fromFile(backId ?? "",
-          filename: 'backId_${DateTime.now().millisecondsSinceEpoch}.jpg'),
-      "profilePic": await MultipartFile.fromFile(profilePic ?? "",
-          filename: 'profilePic_${DateTime.now().millisecondsSinceEpoch}.jpg'),
+      "healthCertificate": await MultipartFile.fromFile(
+          healthCertificate?.path ?? "",
+          filename: healthCertificate?.path.split('/').last),
+      "frontId": await MultipartFile.fromFile(frontId?.path ?? "",
+          filename: frontId?.path.split('/').last),
+      "backId": await MultipartFile.fromFile(backId?.path ?? "",
+          filename: backId?.path.split('/').last),
+      "profilePic": await MultipartFile.fromFile(profilePic?.path ?? "",
+          filename: profilePic?.path.split('/').last),
     });
   }
 }

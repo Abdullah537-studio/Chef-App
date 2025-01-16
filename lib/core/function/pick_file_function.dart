@@ -1,17 +1,16 @@
 import 'dart:io';
-
 import 'package:image_picker/image_picker.dart';
 
-void uploadFile(Function(File)? function) async {
-  File? file;
-  final ImagePicker imagePicker = ImagePicker();
-  var pickedImage = await imagePicker.pickImage(
-    source: ImageSource.gallery,
-  );
+Future<void> pickImage(
+    Function(File) function, Function(String) updateBaseName) async {
+  final picker = ImagePicker();
+  final pickedFile = await picker.pickImage(source: ImageSource.gallery);
 
-  if (pickedImage != null) {
-    file = File(pickedImage.path);
-//     // String fileName = file.path.split('/').last;
-    function!(file);
+  if (pickedFile != null) {
+    File image = File(pickedFile.path);
+    function(image);
+
+    String baseName = image.path.split('/').last;
+    updateBaseName(baseName);
   }
 }

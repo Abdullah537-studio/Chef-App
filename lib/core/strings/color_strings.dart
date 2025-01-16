@@ -14,9 +14,9 @@ class AppColors {
   static Color iconStateTextFormFieldColor = WidgetStateColor.resolveWith(
     (Set<WidgetState> states) {
       if (states.contains(WidgetState.focused)) {
-        return Colors.blue; // Cor quando focado
+        return AppColors.primaryColor;
       }
-      return Colors.grey; // Cor padrão
+      return AppColors.greyColor;
     },
   );
 }

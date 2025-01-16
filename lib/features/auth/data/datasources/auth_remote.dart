@@ -36,8 +36,9 @@ class AuthRemoteImpl implements AuthRemote {
   @override
   Future<RegisterResponseModel> signup(
       {required RegisterRequestModel registerRequestModel}) async {
-    Response response = await sl<ApiConsumer>()
-        .post(ApiPost.chefSignUp, data: registerRequestModel.toFormData());
+    FormData formData = await registerRequestModel.toFormData();
+    Response response =
+        await sl<ApiConsumer>().post(ApiPost.chefSignUp, data: formData);
 
     if (response.statusCode == 200 || response.statusCode == 202) {
       return RegisterResponseModel.fromJson(response.data);

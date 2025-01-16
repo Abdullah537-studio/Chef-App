@@ -24,12 +24,12 @@ class _CustomChangeLangDropdownState extends State<CustomChangeLangDropdown> {
     selectedLanguage = context.locale.languageCode;
   }
 
-  void _updateLanguage(String languageCode) {
-    selectedLanguage = languageCode;
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.setLocale(Locale(languageCode));
-    });
-  }
+  // void _updateLanguage(String languageCode) {
+  //   selectedLanguage = languageCode;
+  //   WidgetsBinding.instance.addPostFrameCallback((_) {
+  //     context.setLocale(Locale(languageCode));
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {

@@ -1,3 +1,4 @@
+import 'package:chef_app/core/function/theme_data_function.dart';
 import 'package:chef_app/core/router/app_router.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -13,9 +14,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return SafeArea(
           child: MaterialApp(
-            // theme: ThemeData(
-            //   hintColor: Colors.blue,
-            // ),
+            theme: mainThemeData(),
             debugShowCheckedModeBanner: false,
             debugShowMaterialGrid: false,
             title: 'Flutter Demo',
