@@ -7,9 +7,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class CustomChangeLangDropdown extends StatefulWidget {
-  const CustomChangeLangDropdown({
-    super.key,
-  });
+  const CustomChangeLangDropdown({super.key});
 
   @override
   _CustomChangeLangDropdownState createState() =>
@@ -18,18 +16,12 @@ class CustomChangeLangDropdown extends StatefulWidget {
 
 class _CustomChangeLangDropdownState extends State<CustomChangeLangDropdown> {
   String? selectedLanguage;
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     selectedLanguage = context.locale.languageCode;
   }
-
-  // void _updateLanguage(String languageCode) {
-  //   selectedLanguage = languageCode;
-  //   WidgetsBinding.instance.addPostFrameCallback((_) {
-  //     context.setLocale(Locale(languageCode));
-  //   });
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -43,19 +35,20 @@ class _CustomChangeLangDropdownState extends State<CustomChangeLangDropdown> {
         DropdownButton<String>(
           value: selectedLanguage,
           onChanged: (String? newValue) {
-            setState(() {
-              selectedLanguage = newValue;
-            });
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              context.setLocale(Locale(selectedLanguage ?? "en"));
-            });
+            if (newValue != null) {
+              setState(() {
+                selectedLanguage = newValue;
+              });
+              context
+                  .setLocale(Locale(selectedLanguage ?? "en")); // تغيير اللغة
+            }
           },
           items: <String>[AppConstantString.ar, AppConstantString.en]
               .map<DropdownMenuItem<String>>((String value) {
             return DropdownMenuItem<String>(
               value: value,
               child: MainTextWidget(
-                text: value == "ar" ? 'العربية' : 'English',
+                text: value == AppConstantString.ar ? 'العربية' : 'English',
                 textStyle: regularStyle(color: AppColors.blackColor),
               ),
             );

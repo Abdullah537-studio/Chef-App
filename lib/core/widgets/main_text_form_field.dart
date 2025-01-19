@@ -10,6 +10,7 @@ class MainTextFormField extends StatelessWidget {
     required this.vertical,
     required this.horizontal,
     required this.validate,
+    this.textinputType,
   });
   final String text;
   final double vertical;
@@ -17,6 +18,7 @@ class MainTextFormField extends StatelessWidget {
   final String? Function(String?)? validate;
   final TextEditingController controller;
   final Function(String)? onChanged;
+  final TextInputType? textinputType;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,6 +27,7 @@ class MainTextFormField extends StatelessWidget {
         vertical: vertical,
       ),
       child: TextFormField(
+        keyboardType: textinputType,
         validator: validate,
         controller: controller,
         onChanged: onChanged,

@@ -70,7 +70,9 @@ class RegisterPage extends StatelessWidget {
                   ),
                   //! Phone
                   MainTextFormField(
-                    validate: (val) => Validate.generalValidate(context, val),
+                    textinputType:
+                        const TextInputType.numberWithOptions(decimal: false),
+                    validate: (val) => Validate.phoneValidate(context, val),
                     horizontal: 26.w,
                     vertical: 14.h,
                     controller: controllerPhone,
@@ -88,7 +90,8 @@ class RegisterPage extends StatelessWidget {
                   ),
                   //! min charge
                   MainTextFormField(
-                    validate: (val) => Validate.generalValidate(context, val),
+                    textinputType: TextInputType.number,
+                    validate: (val) => Validate.minChargeValidate(context, val),
                     horizontal: 26.w,
                     vertical: 14.h,
                     controller: controllerMinCharge,
@@ -97,7 +100,7 @@ class RegisterPage extends StatelessWidget {
                   ),
                   //! discription
                   MainTextFormField(
-                    validate: (val) => Validate.generalValidate(context, val),
+                    validate: (val) => Validate.discValidate(context, val),
                     horizontal: 26.w,
                     vertical: 14.h,
                     controller: controllerDisc,
@@ -122,6 +125,7 @@ class RegisterPage extends StatelessWidget {
                     fileFunction: (value) {
                       return healthCertificate = value.path;
                     },
+                    isValid: healthCertificate.isNotEmpty,
                   ),
                   //! frontId الهوية الأمامية
                   CustomUploadeImageRegister(
@@ -131,6 +135,7 @@ class RegisterPage extends StatelessWidget {
                     fileFunction: (value) {
                       return frontId = value.path;
                     },
+                    isValid: frontId.isNotEmpty,
                   ),
 
                   //! backId الهوية الخلفية
@@ -141,6 +146,7 @@ class RegisterPage extends StatelessWidget {
                     fileFunction: (value) {
                       return backId = value.path;
                     },
+                    isValid: backId.isNotEmpty,
                   ),
 
                   //! profilePic صورة الملف الشخصي
@@ -151,6 +157,7 @@ class RegisterPage extends StatelessWidget {
                     fileFunction: (value) {
                       return profilePic = value.path;
                     },
+                    isValid: profilePic.isNotEmpty,
                   ),
 
                   //! Email
@@ -164,7 +171,7 @@ class RegisterPage extends StatelessWidget {
                   ),
                   //! Password
                   CustomTextFormFieldPassword(
-                    validate: (val) => Validate.generalValidate(context, val),
+                    validate: (val) => Validate.passwordValidate(context, val),
                     horizontal: 24.w,
                     vertical: 12.h,
                     controller: controllerPassword,
@@ -173,7 +180,8 @@ class RegisterPage extends StatelessWidget {
                   ),
                   //! Confirm Password
                   CustomTextFormFieldPassword(
-                    validate: (val) => Validate.generalValidate(context, val),
+                    validate: (val) => Validate.confirmPasswordValidate(
+                        context, val, controllerPassword.text),
                     horizontal: 24.w,
                     vertical: 12.h,
                     controller: controllerConfirmPassword,
@@ -189,34 +197,40 @@ class RegisterPage extends StatelessWidget {
                         isLoading: state.cubitStatus == CubitStatus.loading,
                         text: context.signUp,
                         onTap: () async {
-                          final RegisterRequestModel registerRequestModel =
-                              RegisterRequestModel(
-                            name: controllerName.text,
-                            phone: controllerPhone.text,
-                            email: controllerEmail.text,
-                            password: controllerPassword.text,
-                            confirmPassword: controllerConfirmPassword.text,
-                            location: Location(
-                                name: "methalfa",
-                                address: "meet halfa",
-                                coordinates: [1214451511, 12541845]),
-                            minCharge: int.parse(controllerMinCharge.text),
-                            disc: controllerDisc.text,
-                            brandName: controllerBradName.text,
-                            backId: "",
-                            frontId: "",
-                            healthCertificate: "",
-                            profilePic: "",
-                          );
-                          print("------------------------------------------");
-                          print(registerRequestModel.toFormData());
-                          print("------------------------------------------");
-                          context.read<RegisterCubit>().register(
-                                registerRequestModel: registerRequestModel,
-                              );
-                        }
-                        // },
-                        ),
+                          if (formState.currentState!.validate() &&
+                              healthCertificate.isNotEmpty &&
+                              frontId.isNotEmpty &&
+                              backId.isNotEmpty &&
+                              profilePic.isNotEmpty) {
+                            final RegisterRequestModel registerRequestModel =
+                                RegisterRequestModel(
+                              name: controllerName.text,
+                              phone: controllerPhone.text,
+                              email: controllerEmail.text,
+                              password: controllerPassword.text,
+                              confirmPassword: controllerConfirmPassword.text,
+                              location: Location(
+                                  name: "methalfa",
+                                  address: "meet halfa",
+                                  coordinates: [1214451511, 12541845]),
+                              minCharge: int.parse(controllerMinCharge.text),
+                              disc: controllerDisc.text,
+                              brandName: controllerBradName.text,
+                              backId: backId,
+                              frontId: frontId,
+                              healthCertificate: healthCertificate,
+                              profilePic: profilePic,
+                            );
+                            print("------------------------------------------");
+                            print(registerRequestModel.toFormData());
+                            print("------------------------------------------");
+
+                            context.read<RegisterCubit>().register(
+                                  registerRequestModel: registerRequestModel,
+                                );
+                          }
+                          return null;
+                        }),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24),

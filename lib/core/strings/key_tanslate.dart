@@ -36,7 +36,11 @@ extension AppKeyTranslate on BuildContext {
   String get sendCodeBody2 => "send_code_body_2".tr();
   String get sendCode => "send_code".tr();
   String get thisFieldRequiredValidate => "thisFieldRequiredValidate".tr();
+  String get invalidPasswordValidate => "invalidPasswordValidate".tr();
+  String get lengthPhoneValidation => "lengthPhoneValidation".tr();
+  String get lengthDiscValidation => "lengthDiscValidation".tr();
   String get invalidEmailValidate => "invalidEmailValidate".tr();
+  String get confirmPasswordValidatoin => "confirmPasswordValidatoin".tr();
   String get home => "home".tr();
   String get meal => "meal".tr();
   String get profile => "profile".tr();
@@ -48,4 +52,5 @@ extension AppKeyTranslate on BuildContext {
   String get continueDialog => "Continue".tr();
   String get cancleDialog => "Cancle".tr();
   String get bodyDialog => "bodyDialog".tr();
+  String get skip => "skip".tr();
 }

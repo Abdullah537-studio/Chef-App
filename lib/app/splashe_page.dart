@@ -28,7 +28,8 @@ class _SplasheScreenState extends State<SplasheScreen> {
         if (token != null) {
           Navigator.pushReplacementNamed(context, RouteNamedScreens.homescreen);
         } else {
-          Navigator.pushReplacementNamed(context, RouteNamedScreens.chooseLang);
+          Navigator.pushReplacementNamed(
+              context, RouteNamedScreens.onBoardingScreen);
         }
       },
     );

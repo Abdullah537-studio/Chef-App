@@ -28,6 +28,13 @@ ThemeData? mainThemeData() {
         ),
         borderRadius: BorderRadius.circular(12.r),
       ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderSide: const BorderSide(
+          color: AppColors.redColor,
+          width: 2.5,
+        ),
+        borderRadius: BorderRadius.circular(12.r),
+      ),
       border: OutlineInputBorder(
         borderSide: const BorderSide(
           color: AppColors.greyColor,

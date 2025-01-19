@@ -1,6 +1,7 @@
 import 'package:chef_app/app/splashe_page.dart';
 import 'package:chef_app/core/cubits/cubit/bootom_navbar_cubit.dart';
 import 'package:chef_app/core/injection/injection_container.dart';
+import 'package:chef_app/core/on_boarding_screen/screen/on_boarding_screen.dart';
 import 'package:chef_app/features/auth/presentation/cubits/auth/auth_cubit.dart';
 import 'package:chef_app/features/auth/presentation/cubits/register/register_cubit.dart';
 import 'package:chef_app/features/auth/presentation/pages/choose_lang_page.dart';
@@ -22,6 +23,8 @@ class AppRouter {
     switch (settings.name) {
       case RouteNamedScreens.initialRoute:
         return MaterialPageRoute(builder: (_) => const SplasheScreen());
+      case RouteNamedScreens.onBoardingScreen:
+        return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
       case RouteNamedScreens.chooseLang:
         return MaterialPageRoute(
           builder: (_) => const ChooseLangPage(),
@@ -78,6 +81,7 @@ class AppRouter {
 
 class RouteNamedScreens {
   static const String initialRoute = '/';
+  static const String onBoardingScreen = '/on_boarding_screen';
   static const String homescreen = '/home_screen';
   static const String chooseLang = '/choose_lang';
   static const String logiscreen = '/login_screen';
