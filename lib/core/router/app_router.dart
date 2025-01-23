@@ -31,17 +31,18 @@ class AppRouter {
         );
       case RouteNamedScreens.homescreen:
         return MaterialPageRoute(
-            builder: (_) => MultiBlocProvider(
-                  providers: [
-                    BlocProvider(
-                      create: (context) => sl<ProfileCubit>()..getChefData(),
-                    ),
-                    BlocProvider(
-                      create: (context) => sl<BootomNavbarCubit>(),
-                    ),
-                  ],
-                  child: const HomePage(),
-                ));
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => sl<ProfileCubit>()..getChefData(),
+              ),
+              BlocProvider(
+                create: (context) => sl<BootomNavbarCubit>(),
+              ),
+            ],
+            child: const HomePage(),
+          ),
+        );
 
       case RouteNamedScreens.logiscreen:
         return MaterialPageRoute(
@@ -73,7 +74,7 @@ class AppRouter {
       case RouteNamedScreens.changePasswordScreenProfile:
         return MaterialPageRoute(builder: (_) => ChangePasswordPage());
       case RouteNamedScreens.addMealScreen:
-        return MaterialPageRoute(builder: (_) => const AddMealPage());
+        return MaterialPageRoute(builder: (_) => AddMealPage());
     }
     return null;
   }

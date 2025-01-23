@@ -24,7 +24,6 @@ class CustomIconBootomNavBar extends StatelessWidget {
         children: [
           SvgPicture.asset(
             image,
-            // ignore: deprecated_member_use
             color: color,
           ),
           Padding(

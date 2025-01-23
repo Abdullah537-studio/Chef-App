@@ -1,15 +1,16 @@
 import 'package:chef_app/core/function/validate.dart';
 import 'package:chef_app/core/strings/key_tanslate.dart';
+import 'package:chef_app/core/widgets/custom_image_edit.dart';
 import 'package:chef_app/core/widgets/main_app_bar.dart';
 import 'package:chef_app/core/widgets/main_button.dart';
 import 'package:chef_app/core/widgets/main_text_form_field.dart';
 import 'package:chef_app/features/auth/presentation/widgets/custom_text_form_field_password.dart';
-import 'package:chef_app/core/strings/image_png.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EditProfilePage extends StatelessWidget {
-  EditProfilePage({super.key});
+  EditProfilePage({super.key, this.image});
+  final String? image;
   final TextEditingController controllerEmail = TextEditingController();
   final TextEditingController controllerPassword = TextEditingController();
   final TextEditingController controllerConfirmPassword =
@@ -27,18 +28,9 @@ class EditProfilePage extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsets.symmetric(vertical: 24.h),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CircleAvatar(
-                    radius: 74.r,
-                    child: Image.asset(ImageString.imageTest),
-                  ),
-                  InkWell(
-                    onTap: () {},
-                    child: Image.asset(ImageString.editeImageProfile),
-                  ),
-                ],
+              child: CustomImageWithEdit(
+                image: image,
+                ontap: () {},
               ),
             ),
             MainTextFormField(

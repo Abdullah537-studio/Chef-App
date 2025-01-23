@@ -41,13 +41,17 @@
     "edit_profile": "تعديل الملف الشخصي",
     "log_out": "تسجيل الخروج",
     "now_language": "اللغة الحالية",
-    "Cancle": "إلغاء",
+    "cancle": "إلغاء",
     "Continue": "إستمرار",
     "bodyDialog": "هل ترغب بتسجيل الخروج من حسابك",
     "lengthPhoneValidation": "يجب أن يكون طول الرقم على الأقل عشر أحرف",
     "lengthDiscValidation": "يجب أن يكون طول الرقم على الأقل عشرين أحرف",
     "confirmPasswordValidatoin": "خطأ بتأكيد كلمة المرور",
     "invalidPasswordValidate":"كلمة مرور غير مقبولة",
-    "skip":"تخطي"
+    "skip":"تخطي", 
+    "price":"السعر",
+    "category":"الفئة",
+    "description":"الوصف",
+    "number":"الرقم"
   }
   

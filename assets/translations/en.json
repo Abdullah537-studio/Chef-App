@@ -42,14 +42,18 @@
     "edit_profile": "Edit Profile",
     "log_out": "Log Out",
     "now_language": "Current Language",
-    "Cancle": "Cancle",
+    "cancle": "Cancle",
     "Continue": "Continue",
     "bodyDialog": "Are you sure to logout from your account??",
     "lengthPhoneValidation": "length must be at least 10 characters long",
     "lengthDiscValidation": "length must be at least 20 characters long",
     "confirmPasswordValidatoin": "wrong confirm password",
     "invalidPasswordValidate":"Invalid Password Validate",
-    "skip":"skip"
+    "skip":"Skip",
+    "price":"Price",
+    "category":"Category",
+    "description":"Description",
+    "number":"Number"
 
 
   }

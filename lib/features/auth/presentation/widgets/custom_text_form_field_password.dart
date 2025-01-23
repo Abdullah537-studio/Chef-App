@@ -4,7 +4,7 @@ class CustomTextFormFieldPassword extends StatefulWidget {
   const CustomTextFormFieldPassword({
     super.key,
     required this.text,
-    required this.onChanged,
+    this.onChanged,
     required this.controller,
     required this.horizontal,
     required this.vertical,
@@ -15,7 +15,7 @@ class CustomTextFormFieldPassword extends StatefulWidget {
   final double horizontal;
   final double vertical;
   final TextEditingController controller;
-  final Function(String) onChanged;
+  final Function(String)? onChanged;
   final String? Function(String?)? validate;
   @override
   State<CustomTextFormFieldPassword> createState() =>

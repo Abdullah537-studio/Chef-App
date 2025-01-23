@@ -34,7 +34,7 @@ class Validate {
   static String? discValidate(BuildContext context, String? value) {
     if (value?.isEmpty ?? true) {
       return context.thisFieldRequiredValidate;
-    } else if (value!.length > 20) {
+    } else if (value!.length < 20) {
       return context.lengthDiscValidation;
     }
     return null;

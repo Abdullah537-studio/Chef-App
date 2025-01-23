@@ -18,19 +18,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RegisterPage extends StatelessWidget {
   RegisterPage({super.key});
+
+  final TextEditingController controllerName = TextEditingController();
   final TextEditingController controllerEmail = TextEditingController();
   final TextEditingController controllerPassword = TextEditingController();
   final TextEditingController controllerConfirmPassword =
       TextEditingController();
-  final TextEditingController controllerName = TextEditingController();
   final TextEditingController controllerPhone = TextEditingController();
   final TextEditingController controllerLocation = TextEditingController();
   final TextEditingController controllerDisc = TextEditingController();
   final TextEditingController controllerMinCharge = TextEditingController();
   final TextEditingController controllerBradName = TextEditingController();
   final GlobalKey<FormState> formState = GlobalKey();
-  String profilePic = "";
   String healthCertificate = "";
+  String profilePic = "";
   String frontId = "";
   String backId = "";
 
@@ -66,7 +67,6 @@ class RegisterPage extends StatelessWidget {
                     vertical: 14.h,
                     controller: controllerName,
                     text: context.name,
-                    onChanged: (value) {},
                   ),
                   //! Phone
                   MainTextFormField(
@@ -77,7 +77,6 @@ class RegisterPage extends StatelessWidget {
                     vertical: 14.h,
                     controller: controllerPhone,
                     text: context.phone,
-                    onChanged: (value) {},
                   ),
                   //! location
                   MainTextFormField(
@@ -86,7 +85,6 @@ class RegisterPage extends StatelessWidget {
                     vertical: 14.h,
                     controller: controllerLocation,
                     text: context.location,
-                    onChanged: (value) {},
                   ),
                   //! min charge
                   MainTextFormField(
@@ -96,7 +94,6 @@ class RegisterPage extends StatelessWidget {
                     vertical: 14.h,
                     controller: controllerMinCharge,
                     text: context.minCharge,
-                    onChanged: (value) {},
                   ),
                   //! discription
                   MainTextFormField(
@@ -105,7 +102,6 @@ class RegisterPage extends StatelessWidget {
                     vertical: 14.h,
                     controller: controllerDisc,
                     text: context.disc,
-                    onChanged: (value) {},
                   ),
                   //! Brand Name
                   MainTextFormField(
@@ -114,7 +110,6 @@ class RegisterPage extends StatelessWidget {
                     vertical: 14.h,
                     controller: controllerBradName,
                     text: context.brandNamed,
-                    onChanged: (value) {},
                   ),
 
                   //! healthCertificate شهادة صحية
@@ -167,16 +162,14 @@ class RegisterPage extends StatelessWidget {
                     vertical: 14.h,
                     controller: controllerEmail,
                     text: context.email,
-                    onChanged: (value) {},
                   ),
                   //! Password
                   CustomTextFormFieldPassword(
-                    validate: (val) => Validate.passwordValidate(context, val),
+                    validate: (val) => Validate.generalValidate(context, val),
                     horizontal: 24.w,
                     vertical: 12.h,
                     controller: controllerPassword,
                     text: context.password,
-                    onChanged: (value) {},
                   ),
                   //! Confirm Password
                   CustomTextFormFieldPassword(
@@ -186,7 +179,6 @@ class RegisterPage extends StatelessWidget {
                     vertical: 12.h,
                     controller: controllerConfirmPassword,
                     text: context.confirmPassword,
-                    onChanged: (value) {},
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(
@@ -194,43 +186,40 @@ class RegisterPage extends StatelessWidget {
                       vertical: 64.h,
                     ),
                     child: MainButton(
-                        isLoading: state.cubitStatus == CubitStatus.loading,
-                        text: context.signUp,
-                        onTap: () async {
-                          if (formState.currentState!.validate() &&
-                              healthCertificate.isNotEmpty &&
-                              frontId.isNotEmpty &&
-                              backId.isNotEmpty &&
-                              profilePic.isNotEmpty) {
-                            final RegisterRequestModel registerRequestModel =
-                                RegisterRequestModel(
-                              name: controllerName.text,
-                              phone: controllerPhone.text,
-                              email: controllerEmail.text,
-                              password: controllerPassword.text,
-                              confirmPassword: controllerConfirmPassword.text,
-                              location: Location(
-                                  name: "methalfa",
-                                  address: "meet halfa",
-                                  coordinates: [1214451511, 12541845]),
-                              minCharge: int.parse(controllerMinCharge.text),
-                              disc: controllerDisc.text,
-                              brandName: controllerBradName.text,
-                              backId: backId,
-                              frontId: frontId,
-                              healthCertificate: healthCertificate,
-                              profilePic: profilePic,
-                            );
-                            print("------------------------------------------");
-                            print(registerRequestModel.toFormData());
-                            print("------------------------------------------");
-
-                            context.read<RegisterCubit>().register(
-                                  registerRequestModel: registerRequestModel,
-                                );
-                          }
-                          return null;
-                        }),
+                      isLoading: state.cubitStatus == CubitStatus.loading,
+                      text: context.signUp,
+                      onTap: () async {
+                        if (formState.currentState!.validate() &&
+                            healthCertificate.isNotEmpty &&
+                            frontId.isNotEmpty &&
+                            backId.isNotEmpty &&
+                            profilePic.isNotEmpty) {
+                          final RegisterRequestModel registerRequestModel =
+                              RegisterRequestModel(
+                            name: controllerName.text,
+                            phone: controllerPhone.text,
+                            email: controllerEmail.text,
+                            password: controllerPassword.text,
+                            confirmPassword: controllerConfirmPassword.text,
+                            location: Location(
+                                name: "methalfa",
+                                address: "meet halfa",
+                                coordinates: [1214451511, 12541845]),
+                            minCharge: int.parse(controllerMinCharge.text),
+                            disc: controllerDisc.text,
+                            brandName: controllerBradName.text,
+                            backId: backId,
+                            frontId: frontId,
+                            healthCertificate: healthCertificate,
+                            profilePic: profilePic,
+                          );
+                          context.read<RegisterCubit>().register(
+                                registerRequestModel: registerRequestModel,
+                              );
+                        }
+                        return null;
+                      },
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -239,7 +228,9 @@ class RegisterPage extends StatelessWidget {
                       textNavigate: context.signIn,
                       ontap: () {
                         Navigator.pushReplacementNamed(
-                            context, RouteNamedScreens.logiscreen);
+                          context,
+                          RouteNamedScreens.logiscreen,
+                        );
                       },
                     ),
                   )

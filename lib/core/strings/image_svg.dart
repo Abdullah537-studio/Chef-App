@@ -8,4 +8,6 @@ class ImageSvg {
       "assets/svg/profile-icon-bootom-nav-bar.svg";
   static const String homeIconBottomNavBar =
       "assets/svg/Home-icon-bootom-nav-bar.svg";
+  static const String arrowIconDropDownButton =
+      "assets/svg/arrow_icon_drop_down_button.svg";
 }

@@ -50,7 +50,12 @@ extension AppKeyTranslate on BuildContext {
   String get logOut => "log_out".tr();
   String get nowLanguage => "now_language".tr();
   String get continueDialog => "Continue".tr();
-  String get cancleDialog => "Cancle".tr();
+  String get cancleDialog => "cancle".tr();
   String get bodyDialog => "bodyDialog".tr();
   String get skip => "skip".tr();
+  // String get addMeal => "Add Meal".tr();
+  String get price => "price".tr();
+  String get category => "category".tr();
+  String get description => "description".tr();
+  String get number => "number".tr();
 }

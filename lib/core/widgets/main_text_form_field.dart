@@ -5,8 +5,8 @@ class MainTextFormField extends StatelessWidget {
   const MainTextFormField({
     super.key,
     required this.text,
-    required this.onChanged,
-    required this.controller,
+    this.onChanged,
+    this.controller,
     required this.vertical,
     required this.horizontal,
     required this.validate,
@@ -16,7 +16,7 @@ class MainTextFormField extends StatelessWidget {
   final double vertical;
   final double horizontal;
   final String? Function(String?)? validate;
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final Function(String)? onChanged;
   final TextInputType? textinputType;
   @override
