@@ -13,6 +13,7 @@ import 'package:chef_app/features/meal/presentation/pages/add_meal_page.dart';
 import 'package:chef_app/features/profile/presentation/cubit/edit_profile_cubit/edit_profile_cubit.dart';
 import 'package:chef_app/features/profile/presentation/cubit/get_profile_cubit/profile_cubit.dart';
 import 'package:chef_app/features/profile/presentation/pages/change_password_page.dart';
+import 'package:chef_app/features/profile/presentation/pages/edit_profile_page.dart';
 import 'package:chef_app/features/profile/presentation/pages/home_page.dart';
 import 'package:chef_app/features/profile/presentation/pages/setting_page.dart';
 import 'package:flutter/material.dart';
@@ -39,9 +40,6 @@ class AppRouter {
               BlocProvider(
                 create: (context) => sl<BootomNavbarCubit>(),
               ),
-              BlocProvider(
-                create: (context) => sl<EditProfileCubit>(),
-              )
             ],
             child: const HomePage(),
           ),
@@ -72,8 +70,20 @@ class AppRouter {
       case RouteNamedScreens.settingScreenProfile:
         return MaterialPageRoute(builder: (_) => const SettingPage());
 
-      // case RouteNamedScreens.editScreenProfile:
-      //   return MaterialPageRoute(builder: (_) => const EditProfilePage());
+      case RouteNamedScreens.editScreenProfile:
+        return MaterialPageRoute(
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => sl<EditProfileCubit>(),
+              ),
+              BlocProvider(
+                create: (context) => sl<ProfileCubit>(),
+              ),
+            ],
+            child: const EditProfilePage(),
+          ),
+        );
       case RouteNamedScreens.changePasswordScreenProfile:
         return MaterialPageRoute(builder: (_) => ChangePasswordPage());
       case RouteNamedScreens.addMealScreen:

@@ -26,10 +26,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
-        if (state.cubitStatus == CubitStatus.loaded) {
-          showToast(ToastMessageStatus.success, state.message);
-          Navigator.pushReplacementNamed(context, RouteNamedScreens.homescreen);
-        } else if (state.cubitStatus == CubitStatus.error) {
+        if (state.cubitStatus == CubitStatus.error) {
           showToast(ToastMessageStatus.error, state.message);
         }
       },
