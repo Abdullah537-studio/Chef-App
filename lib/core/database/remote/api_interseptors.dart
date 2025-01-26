@@ -1,5 +1,5 @@
 import 'package:chef_app/core/database/cache/cache_helper.dart';
-import 'package:chef_app/core/database/remote/api_url.dart';
+import 'package:chef_app/core/database/remote/api_urls.dart';
 import 'package:dio/dio.dart';
 
 //  Interceptor from dio

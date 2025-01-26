@@ -14,6 +14,8 @@ class ChefDataEntity {
 
 class Chef {
   Chef({
+    this.password,
+    this.confirmPassword,
     this.location,
     this.id,
     this.name,
@@ -50,9 +52,13 @@ class Chef {
   final int? stock;
   final String? status;
   final DateTime? createdAt;
+  final String? password;
+  final String? confirmPassword;
 
   factory Chef.fromJson(Map<String, dynamic> json) {
     return Chef(
+      password: json["password"],
+      confirmPassword: json["confirmPassword"],
       location:
           json["location"] == null ? null : Location.fromJson(json["location"]),
       id: json["_id"],

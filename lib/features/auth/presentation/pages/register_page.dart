@@ -30,10 +30,8 @@ class RegisterPage extends StatelessWidget {
   final TextEditingController controllerMinCharge = TextEditingController();
   final TextEditingController controllerBradName = TextEditingController();
   final GlobalKey<FormState> formState = GlobalKey();
-  String healthCertificate = "";
-  String profilePic = "";
-  String frontId = "";
-  String backId = "";
+
+  String? healthCertificate, profilePic, frontId, backId;
 
   @override
   Widget build(BuildContext context) {
@@ -120,7 +118,7 @@ class RegisterPage extends StatelessWidget {
                     fileFunction: (value) {
                       return healthCertificate = value.path;
                     },
-                    isValid: healthCertificate.isNotEmpty,
+                    isValid: healthCertificate == null,
                   ),
                   //! frontId الهوية الأمامية
                   CustomUploadeImageRegister(
@@ -130,7 +128,7 @@ class RegisterPage extends StatelessWidget {
                     fileFunction: (value) {
                       return frontId = value.path;
                     },
-                    isValid: frontId.isNotEmpty,
+                    isValid: frontId == null,
                   ),
 
                   //! backId الهوية الخلفية
@@ -141,7 +139,7 @@ class RegisterPage extends StatelessWidget {
                     fileFunction: (value) {
                       return backId = value.path;
                     },
-                    isValid: backId.isNotEmpty,
+                    isValid: backId == null,
                   ),
 
                   //! profilePic صورة الملف الشخصي
@@ -152,7 +150,7 @@ class RegisterPage extends StatelessWidget {
                     fileFunction: (value) {
                       return profilePic = value.path;
                     },
-                    isValid: profilePic.isNotEmpty,
+                    isValid: profilePic == null,
                   ),
 
                   //! Email
@@ -190,10 +188,10 @@ class RegisterPage extends StatelessWidget {
                       text: context.signUp,
                       onTap: () async {
                         if (formState.currentState!.validate() &&
-                            healthCertificate.isNotEmpty &&
-                            frontId.isNotEmpty &&
-                            backId.isNotEmpty &&
-                            profilePic.isNotEmpty) {
+                            healthCertificate == null &&
+                            frontId == null &&
+                            backId == null &&
+                            profilePic == null) {
                           final RegisterRequestModel registerRequestModel =
                               RegisterRequestModel(
                             name: controllerName.text,
@@ -208,10 +206,10 @@ class RegisterPage extends StatelessWidget {
                             minCharge: int.parse(controllerMinCharge.text),
                             disc: controllerDisc.text,
                             brandName: controllerBradName.text,
-                            backId: backId,
-                            frontId: frontId,
-                            healthCertificate: healthCertificate,
-                            profilePic: profilePic,
+                            backId: backId!,
+                            frontId: frontId!,
+                            healthCertificate: healthCertificate!,
+                            profilePic: profilePic!,
                           );
                           context.read<RegisterCubit>().register(
                                 registerRequestModel: registerRequestModel,

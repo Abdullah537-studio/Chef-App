@@ -1,5 +1,5 @@
 import 'package:chef_app/core/database/cache/cache_helper.dart';
-import 'package:chef_app/core/database/remote/api_url.dart';
+import 'package:chef_app/core/database/remote/api_urls.dart';
 import 'package:chef_app/features/auth/domain/entities/requiest/send_code_requist_model.dart';
 import 'package:chef_app/features/auth/domain/entities/requiest/login_requist_model.dart';
 import 'package:chef_app/features/auth/domain/entities/response/login_response_model.dart';

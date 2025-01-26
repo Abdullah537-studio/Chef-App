@@ -12,10 +12,10 @@ class RegisterRequestModel {
   final String brandName;
   final int minCharge;
   final String disc;
-  String healthCertificate;
-  String frontId;
-  String backId;
-  String profilePic;
+  final String healthCertificate;
+  final String frontId;
+  final String backId;
+  final String profilePic;
 
   RegisterRequestModel({
     required this.name,
@@ -69,22 +69,5 @@ class Location {
       'address': address,
       'coordinates': coordinates,
     };
-  }
-
-  factory Location.fromString(String locationString) {
-    final parts = locationString.split(',');
-    final name = parts[0].split(':')[1].trim();
-    final address = parts[1].split(':')[1].trim();
-    final coordinatesString = parts[2].split(':')[1].trim();
-    final coordinatesParts = coordinatesString
-        .split(',')
-        .map((part) => double.parse(part.trim()))
-        .toList();
-
-    return Location(
-      name: name,
-      address: address,
-      coordinates: coordinatesParts,
-    );
   }
 }

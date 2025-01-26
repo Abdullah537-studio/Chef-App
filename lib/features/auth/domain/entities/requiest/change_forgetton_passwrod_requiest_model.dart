@@ -1,4 +1,4 @@
-import 'package:chef_app/core/database/remote/api_url.dart';
+import 'package:chef_app/core/database/remote/api_urls.dart';
 
 class ChangeForgettonPasswrodRequiestModel {
   final String email;

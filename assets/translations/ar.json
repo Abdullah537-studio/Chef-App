@@ -52,6 +52,7 @@
     "price":"السعر",
     "category":"الفئة",
     "description":"الوصف",
-    "number":"الرقم"
+    "number":"الرقم",
+    "quantity":"الكمية"
   }
   

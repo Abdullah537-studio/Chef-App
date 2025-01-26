@@ -58,4 +58,5 @@ extension AppKeyTranslate on BuildContext {
   String get category => "category".tr();
   String get description => "description".tr();
   String get number => "number".tr();
+  String get quantity => "quantity".tr();
 }

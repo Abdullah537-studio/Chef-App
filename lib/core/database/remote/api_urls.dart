@@ -1,4 +1,4 @@
-class ApiUrl {
+class ApiBaseUrl {
   static const baseUrl = 'https://food-api-omega.vercel.app/api/v1/';
 }
 
@@ -19,6 +19,7 @@ class ApiPost {
   static const chefSignIn = 'chef/signin';
   static const chefSendCode = 'chef/send-code';
   static const chefChangePassword = 'chef/change-password';
+  static const chefUpdateProfile = 'chef/update';
   static const addMeal = 'meal/add-to-menu';
 }
 

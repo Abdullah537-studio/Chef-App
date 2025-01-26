@@ -3,7 +3,7 @@ import 'package:chef_app/core/strings/constant_string.dart';
 import 'package:chef_app/core/strings/key_tanslate.dart';
 import 'package:chef_app/core/widgets/main_app_bar.dart';
 import 'package:chef_app/core/widgets/main_text_widget.dart';
-import 'package:chef_app/features/profile/presentation/cubit/profile_cubit.dart';
+import 'package:chef_app/features/profile/presentation/cubit/get_profile_cubit/profile_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

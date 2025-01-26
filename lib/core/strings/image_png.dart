@@ -7,4 +7,6 @@ class ImageString {
   static const String backgroundWelcomeAuth =
       "assets/png/background_image 1.png";
   static const String editeImageProfile = "assets/png/edit_photo.png";
+  static const String imageNotFound = "assets/png/image_not_found.jpeg";
+  static const String cancelImage = "assets/svg/cancel_meal.svg";
 }

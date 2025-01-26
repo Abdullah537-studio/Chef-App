@@ -53,7 +53,8 @@
     "price":"Price",
     "category":"Category",
     "description":"Description",
-    "number":"Number"
+    "number":"Number",
+    "quantity":"Quantity"
 
 
   }

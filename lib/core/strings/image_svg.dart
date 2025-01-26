@@ -10,4 +10,5 @@ class ImageSvg {
       "assets/svg/Home-icon-bootom-nav-bar.svg";
   static const String arrowIconDropDownButton =
       "assets/svg/arrow_icon_drop_down_button.svg";
+  static const String cancelMeal = "assets/svg/cancel_meal.svg";
 }

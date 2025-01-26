@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:chef_app/core/enum/cubit_status.dart';
-import 'package:chef_app/features/profile/domain/entities/chef_data_entity.dart';
+import 'package:chef_app/features/profile/domain/entities/request/chef_data_entity.dart';
 import 'package:chef_app/features/profile/domain/usecases/get_chef_data_usecase.dart';
 import 'package:equatable/equatable.dart';
 

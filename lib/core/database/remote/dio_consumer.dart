@@ -2,7 +2,7 @@ import 'package:chef_app/core/database/error/error_model.dart';
 import 'package:chef_app/core/database/error/server_exception.dart';
 import 'package:chef_app/core/database/remote/api_consumer.dart';
 import 'package:chef_app/core/database/remote/api_interseptors.dart';
-import 'package:chef_app/core/database/remote/api_url.dart';
+import 'package:chef_app/core/database/remote/api_urls.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +10,7 @@ class DioConsumer extends ApiConsumer {
   final Dio dio;
 
   DioConsumer(this.dio) {
-    dio.options.baseUrl = ApiUrl.baseUrl;
+    dio.options.baseUrl = ApiBaseUrl.baseUrl;
     dio.interceptors.add(ApiInterseptors());
     dio.interceptors.add(LogInterceptor());
   }
