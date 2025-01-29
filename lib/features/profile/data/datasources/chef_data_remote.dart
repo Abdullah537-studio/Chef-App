@@ -45,7 +45,11 @@ class ChefDataRemoteImpl implements ChefDataRemote {
   @override
   Future<EditProfileResponse> editProfileData(
       {required EditProfileRequest editProfileRequest}) async {
-    Response response = await sl<ApiConsumer>().post(ApiPost.chefUpdateProfile);
+    FormData formData = await editProfileRequest.toFormData();
+    Response response = await sl<ApiConsumer>().post(
+      ApiPost.chefUpdateProfile,
+      data: formData,
+    );
     if (response.statusCode == 200 || response.statusCode == 202) {
       return EditProfileResponse.fromJson(response.data);
     } else {

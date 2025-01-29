@@ -34,10 +34,10 @@ class AppRouter {
           builder: (_) => MultiBlocProvider(
             providers: [
               BlocProvider(
-                create: (context) => sl<BootomNavbarCubit>(),
+                create: (context) => sl<ProfileCubit>()..getChefData(),
               ),
               BlocProvider(
-                create: (context) => sl<ProfileCubit>()..getChefData(),
+                create: (context) => sl<BootomNavbarCubit>(),
               ),
             ],
             child: const HomePage(),
@@ -70,16 +70,27 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const SettingPage());
 
       case RouteNamedScreens.editScreenProfile:
-        return MaterialPageRoute(
-          builder: (_) => MultiBlocProvider(
-            providers: [
-              BlocProvider(
-                create: (context) => sl<ProfileCubit>(),
-              ),
-            ],
-            child: const EditProfilePage(),
-          ),
-        );
+        final args = settings.arguments;
+        if (args is ProfileCubit) {
+          return MaterialPageRoute(
+            builder: (context) => EditProfilePage(
+              profileCubit: args,
+            ),
+          );
+        } else {
+          break;
+        }
+
+      // return MaterialPageRoute(
+      //   builder: (_) => MultiBlocProvider(
+      //     providers: [
+      //       BlocProvider(
+      //         create: (context) => sl<ProfileCubit>(),
+      //       ),
+      //     ],
+      //     child: const EditProfilePage(),
+      //   ),
+      // );
       case RouteNamedScreens.changePasswordScreenProfile:
         return MaterialPageRoute(builder: (_) => ChangePasswordPage());
       case RouteNamedScreens.addMealScreen:

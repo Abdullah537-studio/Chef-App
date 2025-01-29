@@ -27,9 +27,10 @@ class MainButton extends StatelessWidget {
           ? SizedBox(
               height: 20.h,
               width: 20.w,
-              child: const Center(
+              child: Center(
                 child: CircularProgressIndicator(
                   color: AppColors.whiteColor,
+                  strokeWidth: 4.w,
                 ),
               ),
             )

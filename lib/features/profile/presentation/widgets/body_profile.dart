@@ -48,13 +48,13 @@ class ShowBodyProfile extends StatelessWidget {
                   text: context.editProfile,
                   image: ImageSvg.personIcon,
                   ontap: () {
-                    // Navigator.push(context, MaterialPageRoute(
-                    //   builder: (context) {
-                    //     return EditProfilePage(cubit: cubit);
-                    //   },
-                    // ));
+                    final profileCubit = context.read<ProfileCubit>();
+
                     Navigator.pushNamed(
-                        context, RouteNamedScreens.editScreenProfile);
+                        context, RouteNamedScreens.editScreenProfile,
+                        arguments: profileCubit
+                        //  RouteSettings(arguments: profileCubit),
+                        );
                   },
                   colorTextIsPrimary: false,
                 ),

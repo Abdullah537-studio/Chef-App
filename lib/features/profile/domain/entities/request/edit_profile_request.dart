@@ -2,42 +2,32 @@ import 'package:chef_app/features/profile/domain/entities/request/chef_data_enti
 import 'package:dio/dio.dart';
 
 class EditProfileRequest {
-  final String? name;
-  final String? phone;
-  final Location? location;
-  final String? brandName;
-  final int? minCharge;
-  final String? disc;
-  final String? profilePic;
+  String? name;
+  String? phone;
+  Location? location;
+  String? brandName;
+  int? minCharge;
+  String? disc;
+  String? profilePic;
 
-  const EditProfileRequest({
-    required this.name,
-    required this.phone,
+  EditProfileRequest({
+    this.name,
+    this.phone,
     this.location,
-    required this.brandName,
-    required this.minCharge,
-    required this.disc,
-    required this.profilePic,
+    this.brandName,
+    this.minCharge,
+    this.disc,
+    this.profilePic,
   });
-  Map<String, dynamic> toJson() {
-    return {
-      "name": name,
-      "phone": phone,
-      "location": location!.toJson(),
-      // Location(
-      //   name: "methalfa",
-      //   address: "meet halfa",
-      //   coordinates: [1214451511, 12541845],
-      // ),
-      "brandName": brandName,
-      "minCharge": minCharge,
-      "disc": disc,
-    };
-  }
 
   Future<FormData> toFormData() async {
     return FormData.fromMap({
-      ...toJson(),
+      "name": name,
+      "phone": phone,
+      "location": location!.toJson(),
+      "brandName": brandName,
+      "minCharge": minCharge,
+      "disc": disc,
       "profilePic": await MultipartFile.fromFile(profilePic!),
     });
   }

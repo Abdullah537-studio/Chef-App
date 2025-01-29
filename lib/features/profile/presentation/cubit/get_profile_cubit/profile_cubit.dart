@@ -15,15 +15,17 @@ class ProfileCubit extends Cubit<ProfileState> {
   final EditProfileUsecase editProfileUseCase;
   EditProfileRequest? data;
   Future<void> getChefData() async {
+    if (isClosed) return;
+
     emit(state.copyWith(cubitStatus: CubitStatus.loading));
     final getChefData = await getChefUseCase();
     getChefData.fold(
-      (faliure) {
-        try {
-          if (isClosed) return;
+      (failure) {
+        print("failures: ${failure.error}");
 
+        try {
           emit(state.copyWith(
-              cubitStatus: CubitStatus.error, message: faliure.errorMessage));
+              cubitStatus: CubitStatus.error, message: failure.errorMessage));
         } catch (e) {
           emit(state.copyWith(
             cubitStatus: CubitStatus.error,
@@ -59,7 +61,9 @@ class ProfileCubit extends Cubit<ProfileState> {
 
     result.fold(
       (failure) {
-        if (isClosed) return;
+        // ===========================================================
+        print("failures: ${failure.error}");
+        // ===========================================================
 
         emit(
           state.copyWith(
@@ -69,8 +73,6 @@ class ProfileCubit extends Cubit<ProfileState> {
         );
       },
       (response) {
-        if (isClosed) return;
-
         emit(
           state.copyWith(
             cubitStatus: CubitStatus.loaded,
