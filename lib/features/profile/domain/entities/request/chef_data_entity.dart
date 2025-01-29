@@ -91,6 +91,13 @@ class Location {
 
   final String? type;
   final List<int> coordinates;
+  Map<String, dynamic> toJson() {
+    return {
+      'name': "Egypt",
+      'address': "meet halfa",
+      'coordinates': [1214451511, 12541845],
+    };
+  }
 
   factory Location.fromJson(Map<String, dynamic> json) {
     return Location(

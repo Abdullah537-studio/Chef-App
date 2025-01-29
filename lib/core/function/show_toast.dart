@@ -3,10 +3,10 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 void showToast(
   ToastMessageStatus toastMessageStatus,
-  String text,
+  String? text,
 ) {
   Fluttertoast.showToast(
-    msg: text,
+    msg: text ?? "empty value",
     toastLength: Toast.LENGTH_SHORT,
     gravity: ToastGravity.CENTER,
     timeInSecForIosWeb: 1,

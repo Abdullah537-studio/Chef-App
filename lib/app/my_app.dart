@@ -1,3 +1,4 @@
+import 'package:chef_app/app/splashe_page.dart';
 import 'package:chef_app/core/function/theme_data_function.dart';
 import 'package:chef_app/core/router/app_router.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -17,13 +18,13 @@ class MyApp extends StatelessWidget {
             theme: mainThemeData(),
             debugShowCheckedModeBanner: false,
             debugShowMaterialGrid: false,
-            title: 'Flutter Demo',
+            title: 'Chef App',
             onGenerateRoute: AppRouter.onGenerateRoute,
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
             locale: context.locale,
-            initialRoute: RouteNamedScreens.initialRoute,
-            // home: const SplasheScreen(),
+            // initialRoute: RouteNamedScreens.initialRoute,
+            home: const SplasheScreen(),
           ),
         );
       },

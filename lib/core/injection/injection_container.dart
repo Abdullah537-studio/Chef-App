@@ -15,7 +15,6 @@ import "package:chef_app/features/profile/data/repositories/profile_repository_i
 import "package:chef_app/features/profile/domain/repositories/profile_repository.dart";
 import "package:chef_app/features/profile/domain/usecases/edit_profile_usecase.dart";
 import "package:chef_app/features/profile/domain/usecases/get_chef_data_usecase.dart";
-import "package:chef_app/features/profile/presentation/cubit/edit_profile_cubit/edit_profile_cubit.dart";
 import "package:chef_app/features/profile/presentation/cubit/get_profile_cubit/profile_cubit.dart";
 import "package:dio/dio.dart";
 import "package:get_it/get_it.dart";
@@ -81,9 +80,7 @@ Future<void> init() async {
   );
   //? =========  get data
   sl.registerLazySingleton(
-    () => ProfileCubit(
-      sl(),
-    ),
+    () => ProfileCubit(sl(), sl()),
   );
   sl.registerLazySingleton(
     () => GetChefDataUsecase(
@@ -100,9 +97,6 @@ Future<void> init() async {
     () => ChefDataRemoteImpl(),
   );
 //? ========= edit profile
-  sl.registerLazySingleton(() => EditProfileCubit(
-        sl(),
-      ));
   sl.registerLazySingleton(
     () => EditProfileUsecase(repository: sl()),
   );

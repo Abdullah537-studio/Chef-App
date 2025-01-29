@@ -3,6 +3,7 @@ import 'package:chef_app/core/enum/cubit_status.dart';
 import 'package:chef_app/features/auth/domain/entities/requiest/register_requist_model.dart';
 import 'package:chef_app/features/auth/domain/usecases/register_usecase.dart';
 import 'package:chef_app/features/auth/presentation/cubits/register/register_state.dart';
+import 'package:flutter/material.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
   RegisterCubit(this.registerUsecase) : super(RegisterState.initial());
@@ -19,7 +20,7 @@ class RegisterCubit extends Cubit<RegisterState> {
           return;
         }
 
-        print("Failure Error: ${failure.error}");
+        debugPrint("Failure Error: ${failure.error}");
         emit(state.copyWith(
           cubitStatus: CubitStatus.error,
           message: failure.errorMessage,

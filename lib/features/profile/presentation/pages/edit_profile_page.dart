@@ -7,7 +7,6 @@ import 'package:chef_app/core/widgets/main_app_bar.dart';
 import 'package:chef_app/core/widgets/main_button.dart';
 import 'package:chef_app/core/widgets/main_text_form_field.dart';
 import 'package:chef_app/features/profile/domain/entities/request/edit_profile_request.dart';
-import 'package:chef_app/features/profile/presentation/cubit/edit_profile_cubit/edit_profile_cubit.dart';
 import 'package:chef_app/features/profile/presentation/cubit/get_profile_cubit/profile_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -42,19 +41,27 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<EditProfileCubit, EditProfileState>(
-      listener: (context, state) {
-        if (state.status == CubitStatus.error) {
-          showToast(ToastMessageStatus.error, state.message ?? "empty message");
-        } else if (state.status == CubitStatus.loaded) {
-          showToast(
-              ToastMessageStatus.success, state.message ?? "empty message");
-        }
-      },
-      builder: (context, state) {
-        return Scaffold(
-          appBar: mainAppBar(context, context.editProfile),
-          body: SingleChildScrollView(
+    final data = EditProfileRequest(
+      name: _userData?.name,
+      location: _userData?.location,
+      phone: _userData?.phone,
+      brandName: _userData?.brandName,
+      minCharge: _userData?.minCharge,
+      disc: _userData?.disc,
+      profilePic: _userData?.profilePic,
+    );
+    return Scaffold(
+      appBar: mainAppBar(context, context.editProfile),
+      body: BlocConsumer<ProfileCubit, ProfileState>(
+        listener: (context, state) {
+          if (state.cubitStatus == CubitStatus.error) {
+            showToast(ToastMessageStatus.error, state.message);
+          } else if (state.cubitStatus == CubitStatus.loaded) {
+            showToast(ToastMessageStatus.success, state.message);
+          }
+        },
+        builder: (context, state) {
+          return SingleChildScrollView(
             child: Column(
               children: [
                 Padding(
@@ -96,13 +103,13 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   child: StatefulBuilder(
                     builder: (BuildContext context, setState) {
                       return MainButton(
-                        isLoading: state.status == CubitStatus.loading,
-                        text: "Update",
+                        isLoading: state.cubitStatus == CubitStatus.loading,
+                        text: context.update,
                         onTap: () {
                           if (_userData != null) {
-                            context
-                                .read<EditProfileCubit>()
-                                .edit(editProfileRequest: _userData!);
+                            print(data);
+                            final myCubit = context.read<ProfileCubit>();
+                            myCubit.edit(editProfileRequest: data);
                           }
                         },
                       );
@@ -111,9 +118,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 ),
               ],
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }

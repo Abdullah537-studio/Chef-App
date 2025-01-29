@@ -31,6 +31,7 @@ class AuthCubit extends Cubit<AuthState> {
   ) : super(AuthState.initial());
 
   Future<void> login({required LoginRequiestModel loginRequiestModel}) async {
+    if (isClosed) return;
     emit(state.copyWith(cubitStatus: CubitStatus.loading));
     final loginData =
         await loginUsecase(loginRequiestModel: loginRequiestModel);

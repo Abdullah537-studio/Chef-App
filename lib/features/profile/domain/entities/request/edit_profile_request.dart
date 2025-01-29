@@ -1,3 +1,4 @@
+import 'package:chef_app/features/profile/domain/entities/request/chef_data_entity.dart';
 import 'package:dio/dio.dart';
 
 class EditProfileRequest {
@@ -22,11 +23,12 @@ class EditProfileRequest {
     return {
       "name": name,
       "phone": phone,
-      "location": Location(
-        name: "methalfa",
-        address: "meet halfa",
-        coordinates: [1214451511, 12541845],
-      ),
+      "location": location!.toJson(),
+      // Location(
+      //   name: "methalfa",
+      //   address: "meet halfa",
+      //   coordinates: [1214451511, 12541845],
+      // ),
       "brandName": brandName,
       "minCharge": minCharge,
       "disc": disc,
@@ -41,22 +43,22 @@ class EditProfileRequest {
   }
 }
 
-class Location {
-  String name;
-  String address;
-  List<double> coordinates;
+// class Location {
+//   String name;
+//   String address;
+//   List<double> coordinates;
 
-  Location({
-    required this.name,
-    required this.address,
-    required this.coordinates,
-  });
+//   Location({
+//     required this.name,
+//     required this.address,
+//     required this.coordinates,
+//   });
 
-  Map<String, dynamic> toJson() {
-    return {
-      'name': name,
-      'address': address,
-      'coordinates': coordinates,
-    };
-  }
-}
+//   Map<String, dynamic> toJson() {
+//     return {
+//       'name': name,
+//       'address': address,
+//       'coordinates': coordinates,
+//     };
+//   }
+// }

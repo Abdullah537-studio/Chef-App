@@ -28,6 +28,8 @@ class LoginPage extends StatelessWidget {
       listener: (context, state) {
         if (state.cubitStatus == CubitStatus.error) {
           showToast(ToastMessageStatus.error, state.message);
+        } else if (state.cubitStatus == CubitStatus.loaded) {
+          Navigator.pushReplacementNamed(context, RouteNamedScreens.homescreen);
         }
       },
       builder: (context, state) {
@@ -103,6 +105,7 @@ class LoginPage extends StatelessWidget {
                       },
                     ),
                   ),
+                  //?----------- navBar
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24),
                     child: CustomAskLoginOrRegister(

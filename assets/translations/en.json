@@ -54,8 +54,8 @@
     "category":"Category",
     "description":"Description",
     "number":"Number",
-    "quantity":"Quantity"
-
+    "quantity":"Quantity",
+    "update":"Update"
 
   }
   

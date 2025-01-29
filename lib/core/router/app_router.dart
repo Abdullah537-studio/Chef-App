@@ -10,7 +10,6 @@ import 'package:chef_app/features/auth/presentation/pages/send_code_page.dart';
 import 'package:chef_app/features/auth/presentation/pages/login_page.dart';
 import 'package:chef_app/features/auth/presentation/pages/register_page.dart';
 import 'package:chef_app/features/meal/presentation/pages/add_meal_page.dart';
-import 'package:chef_app/features/profile/presentation/cubit/edit_profile_cubit/edit_profile_cubit.dart';
 import 'package:chef_app/features/profile/presentation/cubit/get_profile_cubit/profile_cubit.dart';
 import 'package:chef_app/features/profile/presentation/pages/change_password_page.dart';
 import 'package:chef_app/features/profile/presentation/pages/edit_profile_page.dart';
@@ -35,10 +34,10 @@ class AppRouter {
           builder: (_) => MultiBlocProvider(
             providers: [
               BlocProvider(
-                create: (context) => sl<ProfileCubit>()..getChefData(),
+                create: (context) => sl<BootomNavbarCubit>(),
               ),
               BlocProvider(
-                create: (context) => sl<BootomNavbarCubit>(),
+                create: (context) => sl<ProfileCubit>()..getChefData(),
               ),
             ],
             child: const HomePage(),
@@ -74,9 +73,6 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => MultiBlocProvider(
             providers: [
-              BlocProvider(
-                create: (context) => sl<EditProfileCubit>(),
-              ),
               BlocProvider(
                 create: (context) => sl<ProfileCubit>(),
               ),
