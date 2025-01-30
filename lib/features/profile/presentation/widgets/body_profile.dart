@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:chef_app/core/enum/cubit_status.dart';
 import 'package:chef_app/core/function/main_text_style.dart';
 import 'package:chef_app/core/function/show_alert_dialog.dart';
@@ -31,7 +33,9 @@ class ShowBodyProfile extends StatelessWidget {
               children: [
                 CustomImageWithEdit(
                   image: image,
-                  value: (val) {},
+                  value: (File? newImage) {
+                    if (newImage != null) {}
+                  },
                 ),
                 MainTextWidget(
                     text: state.chef.name ?? "**********",
@@ -52,9 +56,7 @@ class ShowBodyProfile extends StatelessWidget {
 
                     Navigator.pushNamed(
                         context, RouteNamedScreens.editScreenProfile,
-                        arguments: profileCubit
-                        //  RouteSettings(arguments: profileCubit),
-                        );
+                        arguments: profileCubit);
                   },
                   colorTextIsPrimary: false,
                 ),

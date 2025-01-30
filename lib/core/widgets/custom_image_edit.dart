@@ -17,63 +17,61 @@ class CustomImageWithEdit extends StatefulWidget {
 
 class _CustomImageWithEditState extends State<CustomImageWithEdit> {
   File? imageEdit;
-  String baseName = "";
 
-  // File? file;
+  @override
+  void initState() {
+    super.initState();
+    if (widget.image != null) {
+      imageEdit = File(widget.image!);
+    }
+  }
 
-  // يجب أن يكون نوع القيمة File بدلاً من String
-  void selectImage() {
-    pickImage((file) {
-      widget.value!(file);
-      setState(() {
-        imageEdit = file;
-        // chooseNameOrEmpty = true;
-        // errorValidateMessage = null;
-        // widget.isValid = true;
-      });
-    }, (baseName) {
-      setState(() {
-        this.baseName = baseName;
-      });
-    });
+//? pick image from gallory
+  void selectImage() async {
+    await pickImage(
+      (File file) {
+        setState(() {
+//? update image
+          imageEdit = file;
+        });
+//? take value as File
+        widget.value!(file);
+      },
+      (String baseName) {},
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return StatefulBuilder(
-      builder: (BuildContext context, setState) {
-        widget.value!(
-            imageEdit ?? (widget.image != null ? File(widget.image!) : null));
-        return Stack(
-          alignment: Alignment.center,
-          children: [
-            ClipOval(
-              child: SizedBox(
-                width: 120,
-                height: 120,
-                child: imageEdit == null
-                    ? widget.image != null
-                        ? Image.network(
-                            widget.image!,
-                            fit: BoxFit.cover,
-                          )
-                        : Image.asset(ImageString.imageNotFound)
-                    : Image.file(imageEdit!),
-              ),
-            ),
-            Positioned(
-              right: 0,
-              bottom: 0,
-              child: InkWell(
-                onTap: () {
-                  selectImage();
-                },
-                child: Image.asset(ImageString.editeImageProfile),
-              ),
-            ),
-          ],
-        );
-      },
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        ClipOval(
+          child: SizedBox(
+            width: 120,
+            height: 120,
+            child: imageEdit != null
+                ? Image.file(
+                    imageEdit!,
+                    fit: BoxFit.cover,
+                  )
+                : widget.image != null
+                    ? Image.network(
+                        widget.image!,
+                        fit: BoxFit.cover,
+                      )
+                    : Image.asset(ImageString.imageNotFound),
+          ),
+        ),
+        Positioned(
+          right: 0,
+          bottom: 0,
+          child: InkWell(
+            onTap: selectImage,
+            child: Image.asset(ImageString.editeImageProfile),
+          ),
+        ),
+      ],
     );
   }
 }

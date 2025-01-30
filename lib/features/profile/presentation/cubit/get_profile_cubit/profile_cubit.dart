@@ -5,6 +5,7 @@ import 'package:chef_app/features/profile/domain/entities/request/edit_profile_r
 import 'package:chef_app/features/profile/domain/usecases/edit_profile_usecase.dart';
 import 'package:chef_app/features/profile/domain/usecases/get_chef_data_usecase.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 part 'profile_state.dart';
 
@@ -21,7 +22,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     final getChefData = await getChefUseCase();
     getChefData.fold(
       (failure) {
-        print("failures: ${failure.error}");
+        debugPrint("failures: ${failure.error}");
 
         try {
           emit(state.copyWith(
@@ -62,7 +63,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     result.fold(
       (failure) {
         // ===========================================================
-        print("failures: ${failure.error}");
+        debugPrint("failures: ${failure.error}");
         // ===========================================================
 
         emit(
