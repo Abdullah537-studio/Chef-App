@@ -7,7 +7,7 @@ import 'package:chef_app/core/widgets/main_app_bar.dart';
 import 'package:chef_app/core/widgets/main_button.dart';
 import 'package:chef_app/core/widgets/main_text_form_field.dart';
 import 'package:chef_app/features/profile/domain/entities/request/edit_profile_request.dart';
-import 'package:chef_app/features/profile/presentation/cubit/get_profile_cubit/profile_cubit.dart';
+import 'package:chef_app/features/profile/presentation/cubit/profile/profile_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

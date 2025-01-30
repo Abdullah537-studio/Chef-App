@@ -24,7 +24,7 @@ class AddMealPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CustomImageWithEdit(
-                value: (vak) {},
+                value: (val) {},
                 image: imageProfile,
               ),
               SizedBox(

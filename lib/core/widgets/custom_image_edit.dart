@@ -26,21 +26,6 @@ class _CustomImageWithEditState extends State<CustomImageWithEdit> {
     }
   }
 
-//? pick image from gallory
-  void selectImage() async {
-    await pickImage(
-      (File file) {
-        setState(() {
-//? update image
-          imageEdit = file;
-        });
-//? take value as File
-        widget.value!(file);
-      },
-      (String baseName) {},
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -67,7 +52,9 @@ class _CustomImageWithEditState extends State<CustomImageWithEdit> {
           right: 0,
           bottom: 0,
           child: InkWell(
-            onTap: selectImage,
+            onTap: () {
+              pickImage(imageEdit);
+            },
             child: Image.asset(ImageString.editeImageProfile),
           ),
         ),

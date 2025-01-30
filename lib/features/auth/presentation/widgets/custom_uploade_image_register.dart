@@ -43,23 +43,6 @@ class _CustomUploadeImageRegisterState
     });
   }
 
-  void selectImage() {
-    pickImage((file) {
-      widget.fileFunction!(file);
-      setState(() {
-        this.file = file;
-        baseName = file.path.split('/').last;
-        chooseNameOrEmpty = true;
-        errorValidateMessage = null;
-        widget.isValid = true;
-      });
-    }, (baseName) {
-      setState(() {
-        this.baseName = baseName;
-      });
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -67,7 +50,7 @@ class _CustomUploadeImageRegisterState
         GestureDetector(
           onTap: () {
             if (!chooseNameOrEmpty) {
-              selectImage();
+              pickImage(file);
             }
           },
           child: Container(

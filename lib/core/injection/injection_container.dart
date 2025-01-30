@@ -15,7 +15,7 @@ import "package:chef_app/features/profile/data/repositories/profile_repository_i
 import "package:chef_app/features/profile/domain/repositories/profile_repository.dart";
 import "package:chef_app/features/profile/domain/usecases/edit_profile_usecase.dart";
 import "package:chef_app/features/profile/domain/usecases/get_chef_data_usecase.dart";
-import "package:chef_app/features/profile/presentation/cubit/get_profile_cubit/profile_cubit.dart";
+import "package:chef_app/features/profile/presentation/cubit/profile/profile_cubit.dart";
 import "package:dio/dio.dart";
 import "package:get_it/get_it.dart";
 import "package:internet_connection_checker/internet_connection_checker.dart";
@@ -80,7 +80,7 @@ Future<void> init() async {
   );
   //? =========  get data
   sl.registerLazySingleton(
-    () => ProfileCubit(sl(), sl()),
+    () => ProfileCubit(sl(), sl(), sl()),
   );
   sl.registerLazySingleton(
     () => GetChefDataUsecase(

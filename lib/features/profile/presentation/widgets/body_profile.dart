@@ -10,7 +10,7 @@ import 'package:chef_app/core/widgets/custom_image_edit.dart';
 import 'package:chef_app/core/widgets/main_loading_indicator.dart';
 import 'package:chef_app/core/widgets/main_text_widget.dart';
 import 'package:chef_app/features/profile/domain/entities/request/chef_data_entity.dart';
-import 'package:chef_app/features/profile/presentation/cubit/get_profile_cubit/profile_cubit.dart';
+import 'package:chef_app/features/profile/presentation/cubit/profile/profile_cubit.dart';
 import 'package:chef_app/features/profile/presentation/widgets/custom_change_lang_dropdown.dart';
 import 'package:chef_app/features/profile/presentation/widgets/custom_setting_profile.dart';
 import 'package:chef_app/core/strings/color_strings.dart';

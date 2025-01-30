@@ -10,7 +10,7 @@ import 'package:chef_app/features/auth/presentation/pages/send_code_page.dart';
 import 'package:chef_app/features/auth/presentation/pages/login_page.dart';
 import 'package:chef_app/features/auth/presentation/pages/register_page.dart';
 import 'package:chef_app/features/meal/presentation/pages/add_meal_page.dart';
-import 'package:chef_app/features/profile/presentation/cubit/get_profile_cubit/profile_cubit.dart';
+import 'package:chef_app/features/profile/presentation/cubit/profile/profile_cubit.dart';
 import 'package:chef_app/features/profile/presentation/pages/change_password_page.dart';
 import 'package:chef_app/features/profile/presentation/pages/edit_profile_page.dart';
 import 'package:chef_app/features/profile/presentation/pages/home_page.dart';

@@ -3,7 +3,7 @@ import 'package:chef_app/core/enum/bootm_nav_bar_profile_meal_enum.dart';
 import 'package:chef_app/core/enum/cubit_status.dart';
 import 'package:chef_app/core/widgets/main_loading_indicator.dart';
 import 'package:chef_app/features/meal/presentation/widgets/body_meal.dart';
-import 'package:chef_app/features/profile/presentation/cubit/get_profile_cubit/profile_cubit.dart';
+import 'package:chef_app/features/profile/presentation/cubit/profile/profile_cubit.dart';
 import 'package:chef_app/features/profile/presentation/widgets/body_profile.dart';
 import 'package:chef_app/features/profile/presentation/widgets/custom_bottom_nav_bar.dart';
 
