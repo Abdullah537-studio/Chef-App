@@ -53,11 +53,13 @@ extension AppKeyTranslate on BuildContext {
   String get cancleDialog => "cancle".tr();
   String get bodyDialog => "bodyDialog".tr();
   String get skip => "skip".tr();
-  // String get addMeal => "Add Meal".tr();
   String get price => "price".tr();
   String get category => "category".tr();
   String get description => "description".tr();
   String get number => "number".tr();
   String get quantity => "quantity".tr();
   String get update => "update".tr();
+  String get changePassword => "change_password".tr();
+  String get oldPassword => "old_password".tr();
+  String get newPassword => "new_password".tr();
 }

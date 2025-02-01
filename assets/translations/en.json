@@ -55,7 +55,9 @@
     "description":"Description",
     "number":"Number",
     "quantity":"Quantity",
-    "update":"Update"
-
+    "update":"Update",
+    "change_password":"Change Password",
+    "old_password":"old password",
+    "new_password":"new password"
   }
   

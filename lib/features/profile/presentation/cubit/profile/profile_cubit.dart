@@ -60,12 +60,14 @@ class ProfileCubit extends Cubit<ProfileState> {
     );
   }
 
-  Future<void> changePassword(
-      {required ChangePasswordRequest changePasswordRequest}) async {
+  Future<void> changePassword({
+    required ChangePasswordRequest changePasswordRequest,
+  }) async {
     if (isClosed) return;
     emit(state.copyWith(cubitStatus: CubitStatus.loading));
     final result = await changepasswordUseCase.call(
-        changePasswordRequest: changePasswordRequest);
+      changePasswordRequest: changePasswordRequest,
+    );
     result.fold(
       (failure) {
         debugPrint("failures: ${failure.error}");

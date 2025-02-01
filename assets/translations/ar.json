@@ -54,6 +54,9 @@
     "description":"الوصف",
     "number":"الرقم",
     "quantity":"الكمية",
-    "update":"تحديث"
+    "update":"تحديث",
+    "change_password":"تعديل كلمة المرور",
+    "old_password":"كلمة مرور قديمة ",
+    "new_password":"كلمة مرور جديدة"
   }
   
