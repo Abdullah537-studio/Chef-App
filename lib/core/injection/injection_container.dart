@@ -13,6 +13,7 @@ import "package:chef_app/features/auth/presentation/cubits/register/register_cub
 import "package:chef_app/features/profile/data/datasources/chef_data_remote.dart";
 import "package:chef_app/features/profile/data/repositories/profile_repository_impl.dart";
 import "package:chef_app/features/profile/domain/repositories/profile_repository.dart";
+import "package:chef_app/features/profile/domain/usecases/change_password_profile_usecase.dart";
 import "package:chef_app/features/profile/domain/usecases/edit_profile_usecase.dart";
 import "package:chef_app/features/profile/domain/usecases/get_chef_data_usecase.dart";
 import "package:chef_app/features/profile/presentation/cubit/profile/profile_cubit.dart";
@@ -40,9 +41,9 @@ Future<void> init() async {
   );
   sl.registerFactory(
     () => ProfileCubit(
-      sl(),
-      sl(),
-      sl(),
+      changepasswordUseCase: sl(),
+      editProfileUseCase: sl(),
+      getChefUseCase: sl(),
     ),
   );
   //!============ Features - Global
@@ -101,6 +102,10 @@ Future<void> init() async {
 //? ========= edit profile
   sl.registerLazySingleton(
     () => EditProfileUsecase(repository: sl()),
+  );
+//?==========
+  sl.registerLazySingleton(
+    () => ChangePasswordProfileUsecase(repository: sl()),
   );
   //!============ End_profile_Feature
 }

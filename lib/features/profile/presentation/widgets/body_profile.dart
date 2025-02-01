@@ -1,12 +1,9 @@
-import 'dart:io';
-
 import 'package:chef_app/core/enum/cubit_status.dart';
 import 'package:chef_app/core/function/main_text_style.dart';
 import 'package:chef_app/core/function/show_alert_dialog.dart';
 import 'package:chef_app/core/router/app_router.dart';
 import 'package:chef_app/core/strings/image_svg.dart';
 import 'package:chef_app/core/strings/key_tanslate.dart';
-import 'package:chef_app/core/widgets/custom_image_edit.dart';
 import 'package:chef_app/core/widgets/main_loading_indicator.dart';
 import 'package:chef_app/core/widgets/main_text_widget.dart';
 import 'package:chef_app/features/profile/domain/entities/request/chef_data_entity.dart';
@@ -31,12 +28,12 @@ class ShowBodyProfile extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                CustomImageWithEdit(
-                  image: image,
-                  value: (File? newImage) {
-                    if (newImage != null) {}
-                  },
-                ),
+                // CustomImageWithEdit(
+                //   image: image,
+                //   value: (File? newImage) {
+                //     if (newImage != null) {}
+                //   },
+                // ),
                 MainTextWidget(
                     text: state.chef.name ?? "**********",
                     textStyle: boldStyle(color: AppColors.blackColor)),

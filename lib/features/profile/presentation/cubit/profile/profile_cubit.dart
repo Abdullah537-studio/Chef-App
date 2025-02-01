@@ -12,13 +12,17 @@ import 'package:flutter/material.dart';
 part 'profile_state.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
-  ProfileCubit(
-      this.getChefUseCase, this.editProfileUseCase, this.changepasswordUseCase)
-      : super(ProfileState.initial());
+  ProfileCubit({
+    required this.getChefUseCase,
+    required this.editProfileUseCase,
+    required this.changepasswordUseCase,
+  }) : super(ProfileState.initial());
+
   final GetChefDataUsecase getChefUseCase;
   final EditProfileUsecase editProfileUseCase;
   final ChangePasswordProfileUsecase changepasswordUseCase;
   EditProfileRequest? data;
+
   Future<void> getChefData() async {
     if (isClosed) return;
 
