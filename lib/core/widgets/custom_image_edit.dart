@@ -6,10 +6,10 @@ import '../../../../core/strings/image_png.dart';
 class CustomImageWithEdit extends StatefulWidget {
   const CustomImageWithEdit({
     super.key,
-    required this.image,
+    required this.imageNetwork,
     required this.value,
   });
-  final String? image;
+  final String? imageNetwork;
   final Function(File?)? value;
   @override
   State<CustomImageWithEdit> createState() => _CustomImageWithEditState();
@@ -17,14 +17,6 @@ class CustomImageWithEdit extends StatefulWidget {
 
 class _CustomImageWithEditState extends State<CustomImageWithEdit> {
   File? imageEdit;
-
-  @override
-  void initState() {
-    super.initState();
-    if (widget.image != null) {
-      imageEdit = File(widget.image!);
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,17 +27,14 @@ class _CustomImageWithEditState extends State<CustomImageWithEdit> {
           child: SizedBox(
             width: 120,
             height: 120,
-            child: imageEdit != null
-                ? Image.file(
+            child: imageEdit == null
+                ? (widget.imageNetwork != null
+                    ? Image.network(widget.imageNetwork!)
+                    : Image.asset(ImageString.imageNotFound))
+                : Image.file(
                     imageEdit!,
                     fit: BoxFit.cover,
-                  )
-                : widget.image != null
-                    ? Image.network(
-                        widget.image!,
-                        fit: BoxFit.cover,
-                      )
-                    : Image.asset(ImageString.imageNotFound),
+                  ),
           ),
         ),
         Positioned(

@@ -14,14 +14,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EditProfilePage extends StatefulWidget {
   const EditProfilePage({super.key, required this.profileCubit});
-  final ProfileCubit profileCubit;
+  final EditProfileRequest profileCubit;
   @override
   State<EditProfilePage> createState() => _EditProfilePageState();
 }
 
 class _EditProfilePageState extends State<EditProfilePage> {
-  // EditProfileRequest? _userData = EditProfileRequest();
-
   final TextEditingController controllerEmail = TextEditingController();
 
   final TextEditingController controllerName = TextEditingController();
@@ -30,23 +28,18 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
   final TextEditingController controllerBradName = TextEditingController();
 
-  EditProfileRequest? _userData;
-
   @override
   void initState() {
-    _userData = widget.profileCubit.data;
-    controllerName.text = _userData?.name ?? '';
-    controllerDisc.text = _userData?.disc ?? '';
-    controllerBradName.text = _userData?.brandName ?? '';
+    controllerName.text = widget.profileCubit.name ?? '';
+    controllerDisc.text = widget.profileCubit.disc ?? '';
+    controllerBradName.text = widget.profileCubit.brandName ?? '';
 
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider.value(
-      value: widget.profileCubit,
-      child: Scaffold(
+    return Scaffold(
         appBar: mainAppBar(context, context.editProfile),
         body: BlocConsumer<ProfileCubit, ProfileState>(
           listener: (context, state) {
@@ -63,10 +56,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 24.h),
                     child: CustomImageWithEdit(
-                      image: _userData?.profilePic,
+                      imageNetwork: widget.profileCubit.profilePic,
                       value: (val) {
                         if (val != null) {
-                          _userData?.profilePic = val.path;
+                          widget.profileCubit.profilePic = val.path;
                         }
                       },
                     ),
@@ -78,7 +71,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     controller: controllerName,
                     text: context.name,
                     onChanged: (value) {
-                      _userData?.name = value;
+                      widget.profileCubit.name = value;
                     },
                   ),
                   MainTextFormField(
@@ -88,7 +81,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     controller: controllerDisc,
                     text: context.disc,
                     onChanged: (value) {
-                      _userData?.disc = value;
+                      widget.profileCubit.disc = value;
                     },
                   ),
                   MainTextFormField(
@@ -98,7 +91,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     controller: controllerBradName,
                     text: context.brandNamed,
                     onChanged: (value) {
-                      _userData?.brandName = value;
+                      widget.profileCubit.brandName = value;
                     },
                   ),
                   Padding(
@@ -112,10 +105,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           isLoading: state.cubitStatus == CubitStatus.loading,
                           text: context.update,
                           onTap: () {
-                            if (_userData != null) {
-                              widget.profileCubit
-                                  .edit(editProfileRequest: _userData!);
-                            }
+                            context
+                                .read<ProfileCubit>()
+                                .edit(editProfileRequest: widget.profileCubit);
                           },
                         );
                       },
@@ -125,8 +117,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
               ),
             );
           },
-        ),
-      ),
-    );
+        ));
   }
 }

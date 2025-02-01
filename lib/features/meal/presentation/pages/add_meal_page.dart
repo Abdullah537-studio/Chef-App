@@ -25,7 +25,7 @@ class AddMealPage extends StatelessWidget {
             children: [
               CustomImageWithEdit(
                 value: (val) {},
-                image: imageProfile,
+                imageNetwork: imageProfile,
               ),
               SizedBox(
                 height: 25.h,

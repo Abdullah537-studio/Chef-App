@@ -10,6 +10,7 @@ import 'package:chef_app/features/auth/presentation/pages/send_code_page.dart';
 import 'package:chef_app/features/auth/presentation/pages/login_page.dart';
 import 'package:chef_app/features/auth/presentation/pages/register_page.dart';
 import 'package:chef_app/features/meal/presentation/pages/add_meal_page.dart';
+import 'package:chef_app/features/profile/domain/entities/request/edit_profile_request.dart';
 import 'package:chef_app/features/profile/presentation/cubit/profile/profile_cubit.dart';
 import 'package:chef_app/features/profile/presentation/pages/change_password_page.dart';
 import 'package:chef_app/features/profile/presentation/pages/edit_profile_page.dart';
@@ -71,10 +72,13 @@ class AppRouter {
 
       case RouteNamedScreens.editScreenProfile:
         final args = settings.arguments;
-        if (args is ProfileCubit) {
+        if (args is EditProfileRequest) {
           return MaterialPageRoute(
-            builder: (context) => EditProfilePage(
-              profileCubit: args,
+            builder: (context) => BlocProvider(
+              create: (context) => sl<ProfileCubit>(),
+              child: EditProfilePage(
+                profileCubit: args,
+              ),
             ),
           );
         } else {

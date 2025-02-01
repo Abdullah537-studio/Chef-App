@@ -4,9 +4,11 @@ import 'package:chef_app/core/function/show_alert_dialog.dart';
 import 'package:chef_app/core/router/app_router.dart';
 import 'package:chef_app/core/strings/image_svg.dart';
 import 'package:chef_app/core/strings/key_tanslate.dart';
+import 'package:chef_app/core/widgets/custom_show_image_profile.dart';
 import 'package:chef_app/core/widgets/main_loading_indicator.dart';
 import 'package:chef_app/core/widgets/main_text_widget.dart';
 import 'package:chef_app/features/profile/domain/entities/request/chef_data_entity.dart';
+import 'package:chef_app/features/profile/domain/entities/request/edit_profile_request.dart';
 import 'package:chef_app/features/profile/presentation/cubit/profile/profile_cubit.dart';
 import 'package:chef_app/features/profile/presentation/widgets/custom_change_lang_dropdown.dart';
 import 'package:chef_app/features/profile/presentation/widgets/custom_setting_profile.dart';
@@ -28,12 +30,9 @@ class ShowBodyProfile extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                // CustomImageWithEdit(
-                //   image: image,
-                //   value: (File? newImage) {
-                //     if (newImage != null) {}
-                //   },
-                // ),
+                CustomShowImageProfile(
+                  imageNetwork: image,
+                ),
                 MainTextWidget(
                     text: state.chef.name ?? "**********",
                     textStyle: boldStyle(color: AppColors.blackColor)),
@@ -49,11 +48,20 @@ class ShowBodyProfile extends StatelessWidget {
                   text: context.editProfile,
                   image: ImageSvg.personIcon,
                   ontap: () {
-                    final profileCubit = context.read<ProfileCubit>();
-
+                    final editProfieRequest = EditProfileRequest(
+                      brandName: chef!.chef!.brandName,
+                      disc: chef!.chef!.disc,
+                      location: chef!.chef!.location,
+                      minCharge: chef!.chef!.minCharge,
+                      name: chef!.chef!.name,
+                      phone: chef!.chef!.phone,
+                      profilePic: chef!.chef!.profilePic,
+                    );
                     Navigator.pushNamed(
-                        context, RouteNamedScreens.editScreenProfile,
-                        arguments: profileCubit);
+                      context,
+                      RouteNamedScreens.editScreenProfile,
+                      arguments: editProfieRequest,
+                    );
                   },
                   colorTextIsPrimary: false,
                 ),
