@@ -22,7 +22,30 @@ import "package:internet_connection_checker/internet_connection_checker.dart";
 
 final sl = GetIt.instance;
 Future<void> init() async {
-  //! Features - Global
+  //!============ cubits
+  sl.registerFactory(
+    () => AuthCubit(
+      sl(),
+      sl(),
+      sl(),
+    ),
+  );
+  sl.registerFactory(
+    () => RegisterCubit(
+      sl(),
+    ),
+  );
+  sl.registerFactory(
+    () => BootomNavbarCubit(),
+  );
+  sl.registerFactory(
+    () => ProfileCubit(
+      sl(),
+      sl(),
+      sl(),
+    ),
+  );
+  //!============ Features - Global
 
   // sl.registerLazySingleton(() => CacheHelper().init());
   sl.registerLazySingleton(() => Dio());
@@ -33,21 +56,8 @@ Future<void> init() async {
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImplemntes(sl()));
 
   sl.registerLazySingleton(() => InternetConnectionChecker());
-  //! Features - Global Finished
 
-  //! Auth_Feature
-  sl.registerLazySingleton(
-    () => AuthCubit(
-      sl(),
-      sl(),
-      sl(),
-    ),
-  );
-  sl.registerLazySingleton(
-    () => RegisterCubit(
-      sl(),
-    ),
-  );
+  //!============ Auth_Feature
 
   sl.registerLazySingleton(
     () => LoginUsecase(
@@ -72,16 +82,8 @@ Future<void> init() async {
   );
   sl.registerLazySingleton<AuthRemote>(() => AuthRemoteImpl());
 
-  //! End_Auth_Feature
+  //!============ start_profile_Feature
 
-  //! start_profile_Feature
-  sl.registerLazySingleton(
-    () => BootomNavbarCubit(),
-  );
-  //? =========  get data
-  sl.registerLazySingleton(
-    () => ProfileCubit(sl(), sl(), sl()),
-  );
   sl.registerLazySingleton(
     () => GetChefDataUsecase(
       repository: sl(),
@@ -100,5 +102,5 @@ Future<void> init() async {
   sl.registerLazySingleton(
     () => EditProfileUsecase(repository: sl()),
   );
-  //! End_profile_Feature
+  //!============ End_profile_Feature
 }
