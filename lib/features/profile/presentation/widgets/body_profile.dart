@@ -18,14 +18,24 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ShowBodyProfile extends StatelessWidget {
-  ShowBodyProfile({super.key, required this.image});
+  const ShowBodyProfile({super.key, required this.image});
   final String? image;
-  ChefDataEntity? chef;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProfileCubit, ProfileState>(
       builder: (context, state) {
         if (state.cubitStatus == CubitStatus.loaded) {
+          Chef chefData = state.chef;
+
+          final editProfieRequest = EditProfileRequest(
+            brandName: chefData.brandName,
+            disc: chefData.disc,
+            location: chefData.location,
+            minCharge: chefData.minCharge,
+            name: chefData.name,
+            phone: chefData.phone,
+            profilePic: chefData.profilePic,
+          );
           return SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -34,12 +44,12 @@ class ShowBodyProfile extends StatelessWidget {
                   imageNetwork: image,
                 ),
                 MainTextWidget(
-                    text: state.chef.name ?? "**********",
+                    text: chefData.name ?? "**********",
                     textStyle: boldStyle(color: AppColors.blackColor)),
                 Padding(
                   padding: EdgeInsets.only(bottom: 20.h, top: 14.h),
                   child: MainTextWidget(
-                    text: state.chef.email ?? "**********",
+                    text: chefData.email ?? "**********",
                     textStyle: regularStyle(),
                   ),
                 ),
@@ -48,15 +58,6 @@ class ShowBodyProfile extends StatelessWidget {
                   text: context.editProfile,
                   image: ImageSvg.personIcon,
                   ontap: () {
-                    final editProfieRequest = EditProfileRequest(
-                      brandName: chef!.chef!.brandName,
-                      disc: chef!.chef!.disc,
-                      location: chef!.chef!.location,
-                      minCharge: chef!.chef!.minCharge,
-                      name: chef!.chef!.name,
-                      phone: chef!.chef!.phone,
-                      profilePic: chef!.chef!.profilePic,
-                    );
                     Navigator.pushNamed(
                       context,
                       RouteNamedScreens.editScreenProfile,
