@@ -91,10 +91,10 @@ class DioConsumer extends ApiConsumer {
           );
         case DioExceptionType.badResponse:
           throw _handleBadResponse(e.response!);
-        default:
-          throw ServerException(
-            errorModel: ErrorModel.fromJson(e.response!.data),
-          );
+        // default:
+        //   throw ServerException(
+        //     errorModel: ErrorModel.fromJson(e.response!.data),
+        //   );
       }
     } else {
       return ServerException(
