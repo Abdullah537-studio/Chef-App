@@ -19,7 +19,7 @@ class MainButton extends StatelessWidget {
       minWidth: double.infinity,
       height: 42.h,
       onPressed: onTap,
-      color: AppColors.primaryColor,
+      color: AppColors.orangeColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8.r),
       ),
