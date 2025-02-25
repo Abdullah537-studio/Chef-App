@@ -1,5 +1,5 @@
 import 'package:chef_app/core/function/main_text_style.dart';
-import 'package:chef_app/core/on_boarding_screen_2/build_screen_on_boarding_screen.dart';
+import 'package:chef_app/core/on_boarding_screen/build_screen_on_boarding_screen.dart';
 import 'package:chef_app/core/router/app_router.dart';
 import 'package:chef_app/core/strings/color_strings.dart';
 import 'package:chef_app/core/strings/image_png.dart';
@@ -9,14 +9,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class OnBoardingScreen2 extends StatefulWidget {
-  const OnBoardingScreen2({super.key});
+class OnBoardingScreen extends StatefulWidget {
+  const OnBoardingScreen({super.key});
 
   @override
-  State<OnBoardingScreen2> createState() => _OnBoardingScreen2State();
+  State<OnBoardingScreen> createState() => _OnBoardingScreenState();
 }
 
-class _OnBoardingScreen2State extends State<OnBoardingScreen2> {
+class _OnBoardingScreenState extends State<OnBoardingScreen> {
   final controller = PageController();
   bool isLastPage = false;
 

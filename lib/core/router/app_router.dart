@@ -1,7 +1,7 @@
 import 'package:chef_app/app/splashe_page.dart';
 import 'package:chef_app/core/cubits/cubit/bootom_navbar_cubit.dart';
 import 'package:chef_app/core/injection/injection_container.dart';
-import 'package:chef_app/core/on_boarding_screen_2/on_boarding_screen.dart';
+import 'package:chef_app/core/on_boarding_screen/on_boarding_screen.dart';
 import 'package:chef_app/features/auth/presentation/cubits/auth/auth_cubit.dart';
 import 'package:chef_app/features/auth/presentation/cubits/register/register_cubit.dart';
 import 'package:chef_app/features/auth/presentation/pages/choose_lang_page.dart';
@@ -25,7 +25,7 @@ class AppRouter {
       case RouteNamedScreens.initialRoute:
         return MaterialPageRoute(builder: (_) => const SplasheScreen());
       case RouteNamedScreens.onBoardingScreen:
-        return MaterialPageRoute(builder: (_) => const OnBoardingScreen2());
+        return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
       case RouteNamedScreens.chooseLang:
         return MaterialPageRoute(
           builder: (_) => const ChooseLangPage(),
@@ -84,17 +84,6 @@ class AppRouter {
         } else {
           break;
         }
-
-      // return MaterialPageRoute(
-      //   builder: (_) => MultiBlocProvider(
-      //     providers: [
-      //       BlocProvider(
-      //         create: (context) => sl<ProfileCubit>(),
-      //       ),
-      //     ],
-      //     child: const EditProfilePage(),
-      //   ),
-      // );
       case RouteNamedScreens.changePasswordScreenProfile:
         return MaterialPageRoute(builder: (_) => ChangePasswordPage());
       case RouteNamedScreens.addMealScreen:
