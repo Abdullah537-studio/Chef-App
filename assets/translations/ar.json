@@ -57,6 +57,8 @@
     "update":"تحديث",
     "change_password":"تعديل كلمة المرور",
     "old_password":"كلمة مرور قديمة ",
-    "new_password":"كلمة مرور جديدة"
+    "new_password":"كلمة مرور جديدة",
+    "get_started":"جاهز للبدأ",
+    "next":"التالي"
   }
   

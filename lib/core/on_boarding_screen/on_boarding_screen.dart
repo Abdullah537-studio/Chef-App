@@ -1,8 +1,11 @@
+import 'package:chef_app/core/database/cache/cache_helper.dart';
 import 'package:chef_app/core/function/main_text_style.dart';
 import 'package:chef_app/core/on_boarding_screen/build_screen_on_boarding_screen.dart';
 import 'package:chef_app/core/router/app_router.dart';
 import 'package:chef_app/core/strings/color_strings.dart';
+import 'package:chef_app/core/strings/constant_string.dart';
 import 'package:chef_app/core/strings/image_png.dart';
+import 'package:chef_app/core/strings/key_tanslate.dart';
 import 'package:chef_app/core/widgets/main_button.dart';
 import 'package:chef_app/core/widgets/main_text_widget.dart';
 import 'package:flutter/material.dart';
@@ -40,10 +43,15 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         child: isLastPage
             ? TextButton(
                 onPressed: () {
+                  final CacheHelper cache = CacheHelper();
+                  cache.saveData(
+                    key: AppConstantString.showedSplacheScreen,
+                    value: "true",
+                  );
                   Navigator.pushNamed(context, RouteNamedScreens.chooseLang);
                 },
                 child: MainTextWidget(
-                  text: "Get Started",
+                  text: context.getStarted,
                   textStyle: boldStyle(color: AppColors.orangeColor),
                 ),
               )
@@ -53,7 +61,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   SizedBox(
                     width: 100.w,
                     child: MainButton(
-                      text: "skip",
+                      text: context.skip,
                       onTap: () {
                         controller.jumpToPage(2);
                       },
@@ -79,7 +87,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   SizedBox(
                     width: 100.w,
                     child: MainButton(
-                      text: "next",
+                      text: context.next,
                       onTap: () {
                         controller.nextPage(
                           duration: const Duration(milliseconds: 500),

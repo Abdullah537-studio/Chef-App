@@ -2,6 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 extension AppKeyTranslate on BuildContext {
+  String get getStarted => "get_started".tr();
+  String get skip => "skip".tr();
+  String get next => "next".tr();
   String get welcomeToApplication => "question_dont_register_yet".tr();
   String get chooseLanguage => "choose_language".tr();
   String get messageWelcomeLogin => "message_welcome_login".tr();
@@ -52,7 +55,6 @@ extension AppKeyTranslate on BuildContext {
   String get continueDialog => "Continue".tr();
   String get cancleDialog => "cancle".tr();
   String get bodyDialog => "bodyDialog".tr();
-  String get skip => "skip".tr();
   String get price => "price".tr();
   String get category => "category".tr();
   String get description => "description".tr();

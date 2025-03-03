@@ -19,6 +19,7 @@ class HomePage extends StatelessWidget {
     return BlocBuilder<ProfileCubit, ProfileState>(
       builder: (context, state) {
         String? imageProfile;
+
         if (state.cubitStatus == CubitStatus.loaded) {
           imageProfile = state.chef.profilePic;
           return BlocBuilder<BootomNavbarCubit, BootomNavbarState>(

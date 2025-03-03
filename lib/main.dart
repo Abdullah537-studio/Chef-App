@@ -1,4 +1,5 @@
 import 'package:chef_app/app/my_app.dart';
+import 'package:chef_app/core/database/cache/cache_helper.dart';
 import 'package:chef_app/core/strings/constant_string.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,10 @@ void main(List<String> args) async {
   await di.init();
   await ScreenUtil.ensureScreenSize();
   await EasyLocalization.ensureInitialized();
+  final CacheHelper cacheHelper = CacheHelper();
+  bool? sheckSplacheShowed =
+      await cacheHelper.getData(key: AppConstantString.showedSplacheScreen) ==
+          "true";
   runApp(
     EasyLocalization(
       supportedLocales: const [
@@ -18,7 +23,7 @@ void main(List<String> args) async {
       ],
       path: "assets/translations",
       fallbackLocale: const Locale(AppConstantString.en),
-      child: const MyApp(),
+      child: MyApp(sheckSplacheShowed: sheckSplacheShowed),
     ),
   );
 }

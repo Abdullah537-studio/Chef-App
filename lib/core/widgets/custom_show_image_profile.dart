@@ -25,7 +25,10 @@ class _CustomShowImageProfileState extends State<CustomShowImageProfile> {
             width: 120,
             height: 120,
             child: widget.imageNetwork != null
-                ? Image.network(widget.imageNetwork!)
+                ? Image.network(
+                    widget.imageNetwork!,
+                    fit: BoxFit.cover,
+                  )
                 : Image.asset(ImageString.imageNotFound),
           ),
         ),
