@@ -52,7 +52,7 @@ class LoginPage extends StatelessWidget {
                     onChanged: (value) {},
                   ),
                   CustomTextFormFieldPassword(
-                    validate: (val) => Validate.generalValidate(context, val),
+                    validate: (val) => Validate.passwordValidate(context, val),
                     horizontal: 26.w,
                     vertical: 14.h,
                     controller: _controllerPassword,

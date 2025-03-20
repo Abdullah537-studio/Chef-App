@@ -3,7 +3,6 @@ import 'package:chef_app/core/cubits/cubit/bootom_navbar_cubit.dart';
 import 'package:chef_app/core/injection/injection_container.dart';
 import 'package:chef_app/core/on_boarding_screen/on_boarding_screen.dart';
 import 'package:chef_app/features/auth/presentation/cubits/auth/auth_cubit.dart';
-import 'package:chef_app/features/auth/presentation/cubits/register/register_cubit.dart';
 import 'package:chef_app/features/auth/presentation/pages/choose_lang_page.dart';
 import 'package:chef_app/features/auth/presentation/pages/create_new_password_page.dart';
 import 'package:chef_app/features/auth/presentation/pages/send_code_page.dart';
@@ -55,7 +54,7 @@ class AppRouter {
       case RouteNamedScreens.registerscreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => sl<RegisterCubit>(),
+            create: (context) => sl<AuthCubit>(),
             child: RegisterPage(),
           ),
         );
@@ -66,7 +65,11 @@ class AppRouter {
                   child: SendCodePage(),
                 ));
       case RouteNamedScreens.changeForgettonPassword:
-        return MaterialPageRoute(builder: (_) => ChangeForgettonPassword());
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+                  create: (context) => sl<ProfileCubit>(),
+                  child: ChangeForgettonPassword(),
+                ));
       case RouteNamedScreens.settingScreenProfile:
         return MaterialPageRoute(builder: (_) => const SettingPage());
 
@@ -85,7 +88,11 @@ class AppRouter {
           break;
         }
       case RouteNamedScreens.changePasswordScreenProfile:
-        return MaterialPageRoute(builder: (_) => ChangePasswordPage());
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+                  create: (context) => sl<ProfileCubit>(),
+                  child: ChangePasswordPage(),
+                ));
       case RouteNamedScreens.addMealScreen:
         return MaterialPageRoute(builder: (_) => AddMealPage());
     }

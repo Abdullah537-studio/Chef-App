@@ -40,10 +40,10 @@ class ProfileRepositoryImpl implements ProfileRepository {
             editProfileRequest: editProfileRequest);
         return Right(editChefData);
       } on ServerException catch (e) {
-        throw Left(e.errorModel);
+        return Left(e.errorModel!);
       }
     } else {
-      throw const Left(ErrorModel(errorMessage: "offline"));
+      return const Left(ErrorModel(errorMessage: "offline"));
     }
   }
 
@@ -56,10 +56,10 @@ class ProfileRepositoryImpl implements ProfileRepository {
             changePasswordRequest: changePassowrdRequest);
         return Right(changePasswordData);
       } on ServerException catch (e) {
-        throw Left(e.errorModel);
+        return Left(e.errorModel!);
       }
     } else {
-      throw const Left(ErrorModel(errorMessage: "offline"));
+      return const Left(ErrorModel(errorMessage: "offline"));
     }
   }
 }

@@ -28,7 +28,8 @@ class EditProfileRequest {
       "brandName": brandName,
       "minCharge": minCharge,
       "disc": disc,
-      "profilePic": await MultipartFile.fromFile(profilePic!),
+      // "profilePic":
+      //     profilePic != null ? await MultipartFile.fromFile(profilePic!) : null,
     });
   }
 }

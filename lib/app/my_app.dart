@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
             // initialRoute: sheckSplacheShowed
             //     ? RouteNamedScreens.initialRoute
             //     : RouteNamedScreens.chooseLang,
-            home: sheckSplacheShowed == null
+            home: sheckSplacheShowed != null
                 ? const SplasheScreen()
                 : const ChooseLangPage(),
           ),

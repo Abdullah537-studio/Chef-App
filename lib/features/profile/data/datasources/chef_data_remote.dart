@@ -38,8 +38,10 @@ class ChefDataRemoteImpl implements ChefDataRemote {
   @override
   Future<ChangePasswordResponse> changePasswordData(
       {required ChangePasswordRequest changePasswordRequest}) async {
-    Response response = await sl<ApiConsumer>()
-        .post(ApiPost.chefChangePassword, data: changePasswordRequest.toJson());
+    Response response = await sl<ApiConsumer>().patche(
+        ApiPost.chefChangePassword,
+        data: changePasswordRequest.toJson());
+
     if (response.statusCode == 200 || response.statusCode == 202) {
       return ChangePasswordResponse.fromJson(response.data);
     } else {
@@ -52,7 +54,7 @@ class ChefDataRemoteImpl implements ChefDataRemote {
   Future<EditProfileResponse> editProfileData(
       {required EditProfileRequest editProfileRequest}) async {
     FormData formData = await editProfileRequest.toFormData();
-    Response response = await sl<ApiConsumer>().post(
+    Response response = await sl<ApiConsumer>().patche(
       ApiPost.chefUpdateProfile,
       data: formData,
     );

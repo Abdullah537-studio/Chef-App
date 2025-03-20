@@ -61,7 +61,7 @@ class Validate {
 
   static String? passwordValidate(BuildContext context, String? value) {
     final RegExp passwordRegExp =
-        RegExp(r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d]{8,}$');
+        RegExp(r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@])[A-Za-z\d@]{6,}$');
 
     if (value?.isEmpty ?? true) {
       return context.thisFieldRequiredValidate;
@@ -77,7 +77,7 @@ class Validate {
       BuildContext context, String? value, String? comperation) {
     if (value?.isEmpty ?? true) {
       return context.thisFieldRequiredValidate;
-    } else if (comperation != value) {
+    } else if (value != comperation) {
       return context.confirmPasswordValidatoin;
     }
     return null;

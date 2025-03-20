@@ -28,6 +28,9 @@ class ChangePasswordPage extends StatelessWidget {
         if (state.cubitStatus == CubitStatus.error) {
           showToast(ToastMessageStatus.error, state.message);
         } else if (state.cubitStatus == CubitStatus.loaded) {
+          controllerNewPassword.clear();
+          controllerOldPassword.clear();
+          controllerconfirmPassword.clear();
           showToast(ToastMessageStatus.success, state.message);
         }
       },
@@ -53,7 +56,8 @@ class ChangePasswordPage extends StatelessWidget {
                       textStyle: regularStyle(),
                     ),
                     CustomTextFormFieldPassword(
-                      validate: (val) => Validate.generalValidate(context, val),
+                      validate: (val) =>
+                          Validate.passwordValidate(context, val),
                       horizontal: 0,
                       vertical: 30.h,
                       text: context.oldPassword,
@@ -86,9 +90,9 @@ class ChangePasswordPage extends StatelessWidget {
                       onTap: () {
                         if (formState.currentState!.validate()) {
                           changePasswordRequest = ChangePasswordRequest(
-                            oldPass: context.oldPassword,
-                            newPass: context.newPassword,
-                            confirmPassword: context.confirmPassword,
+                            oldPass: controllerOldPassword.text,
+                            newPass: controllerNewPassword.text,
+                            confirmPassword: controllerconfirmPassword.text,
                           );
                           context.read<ProfileCubit>().changePassword(
                                 changePasswordRequest: changePasswordRequest,

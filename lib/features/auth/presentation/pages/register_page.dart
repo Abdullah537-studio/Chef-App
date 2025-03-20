@@ -6,8 +6,7 @@ import 'package:chef_app/core/strings/key_tanslate.dart';
 import 'package:chef_app/core/widgets/main_button.dart';
 import 'package:chef_app/core/widgets/main_text_form_field.dart';
 import 'package:chef_app/features/auth/domain/entities/requiest/register_requist_model.dart';
-import 'package:chef_app/features/auth/presentation/cubits/register/register_cubit.dart';
-import 'package:chef_app/features/auth/presentation/cubits/register/register_state.dart';
+import 'package:chef_app/features/auth/presentation/cubits/auth/auth_cubit.dart';
 import 'package:chef_app/features/auth/presentation/widgets/custom_ask_login_or_register.dart';
 import 'package:chef_app/features/auth/presentation/widgets/custom_text_form_field_password.dart';
 import 'package:chef_app/features/auth/presentation/widgets/custom_uploade_image_register.dart';
@@ -19,23 +18,23 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class RegisterPage extends StatelessWidget {
   RegisterPage({super.key});
 
-  final TextEditingController controllerName = TextEditingController();
-  final TextEditingController controllerEmail = TextEditingController();
-  final TextEditingController controllerPassword = TextEditingController();
-  final TextEditingController controllerConfirmPassword =
-      TextEditingController();
-  final TextEditingController controllerPhone = TextEditingController();
-  final TextEditingController controllerLocation = TextEditingController();
-  final TextEditingController controllerDisc = TextEditingController();
-  final TextEditingController controllerMinCharge = TextEditingController();
-  final TextEditingController controllerBradName = TextEditingController();
+  // final TextEditingController controllerName = TextEditingController();
+  // final TextEditingController controllerEmail = TextEditingController();
+  // final TextEditingController controllerPassword = TextEditingController();
+  // final TextEditingController controllerConfirmPassword =
+  //     TextEditingController();
+  // final TextEditingController controllerPhone = TextEditingController();
+  // final TextEditingController controllerLocation = TextEditingController();
+  // final TextEditingController controllerDisc = TextEditingController();
+  // final TextEditingController controllerMinCharge = TextEditingController();
+  // final TextEditingController controllerBradName = TextEditingController();
   final GlobalKey<FormState> formState = GlobalKey();
 
   String? healthCertificate, profilePic, frontId, backId;
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<RegisterCubit, RegisterState>(
+    return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state.cubitStatus == CubitStatus.error) {
           showToast(
@@ -48,6 +47,8 @@ class RegisterPage extends StatelessWidget {
         }
       },
       builder: (context, state) {
+        final authController = context.read<AuthCubit>();
+
         return Form(
           key: formState,
           child: Scaffold(
@@ -58,59 +59,59 @@ class RegisterPage extends StatelessWidget {
                   SizedBox(
                     height: 103.h,
                   ),
-                  //! Name
+                  //!======== Name
                   MainTextFormField(
                     validate: (val) => Validate.generalValidate(context, val),
                     horizontal: 26.w,
                     vertical: 14.h,
-                    controller: controllerName,
+                    controller: authController.controllerName,
                     text: context.name,
                   ),
-                  //! Phone
+                  //!======== Phone
                   MainTextFormField(
                     textinputType:
                         const TextInputType.numberWithOptions(decimal: false),
                     validate: (val) => Validate.phoneValidate(context, val),
                     horizontal: 26.w,
                     vertical: 14.h,
-                    controller: controllerPhone,
+                    controller: authController.controllerPhone,
                     text: context.phone,
                   ),
-                  //! location
+                  //!======== location
                   MainTextFormField(
                     validate: (val) => Validate.generalValidate(context, val),
                     horizontal: 26.w,
                     vertical: 14.h,
-                    controller: controllerLocation,
+                    controller: authController.controllerLocation,
                     text: context.location,
                   ),
-                  //! min charge
+                  //!======== min charge
                   MainTextFormField(
                     textinputType: TextInputType.number,
                     validate: (val) => Validate.minChargeValidate(context, val),
                     horizontal: 26.w,
                     vertical: 14.h,
-                    controller: controllerMinCharge,
+                    controller: authController.controllerMinCharge,
                     text: context.minCharge,
                   ),
-                  //! discription
+                  //!======== discription
                   MainTextFormField(
                     validate: (val) => Validate.discValidate(context, val),
                     horizontal: 26.w,
                     vertical: 14.h,
-                    controller: controllerDisc,
+                    controller: authController.controllerDisc,
                     text: context.disc,
                   ),
-                  //! Brand Name
+                  //!======== Brand Name
                   MainTextFormField(
                     validate: (val) => Validate.generalValidate(context, val),
                     horizontal: 26.w,
                     vertical: 14.h,
-                    controller: controllerBradName,
+                    controller: authController.controllerBradName,
                     text: context.brandNamed,
                   ),
 
-                  //! healthCertificate شهادة صحية
+                  //!======== healthCertificate شهادة صحية
                   CustomUploadeImageRegister(
                     horizontal: 26.w,
                     vertical: 14.h,
@@ -120,7 +121,7 @@ class RegisterPage extends StatelessWidget {
                     },
                     isValid: healthCertificate == null,
                   ),
-                  //! frontId الهوية الأمامية
+                  //!======== frontId الهوية الأمامية
                   CustomUploadeImageRegister(
                     horizontal: 26.w,
                     vertical: 14.h,
@@ -131,7 +132,7 @@ class RegisterPage extends StatelessWidget {
                     isValid: frontId == null,
                   ),
 
-                  //! backId الهوية الخلفية
+                  //!======== backId الهوية الخلفية
                   CustomUploadeImageRegister(
                     horizontal: 26.w,
                     vertical: 14.h,
@@ -142,7 +143,7 @@ class RegisterPage extends StatelessWidget {
                     isValid: backId == null,
                   ),
 
-                  //! profilePic صورة الملف الشخصي
+                  //!======== profilePic صورة الملف الشخصي
                   CustomUploadeImageRegister(
                     horizontal: 26.w,
                     vertical: 14.h,
@@ -153,29 +154,32 @@ class RegisterPage extends StatelessWidget {
                     isValid: profilePic == null,
                   ),
 
-                  //! Email
+                  //!======== Email
                   MainTextFormField(
                     validate: (val) => Validate.emailValidate(context, val),
                     horizontal: 26.w,
                     vertical: 14.h,
-                    controller: controllerEmail,
+                    controller: authController.controllerEmail,
                     text: context.email,
                   ),
-                  //! Password
+                  //!======== Password
                   CustomTextFormFieldPassword(
-                    validate: (val) => Validate.generalValidate(context, val),
+                    validate: (val) => Validate.passwordValidate(context, val),
                     horizontal: 24.w,
                     vertical: 12.h,
-                    controller: controllerPassword,
+                    controller: authController.controllerPassword,
                     text: context.password,
                   ),
-                  //! Confirm Password
+                  //!======== Confirm Password
                   CustomTextFormFieldPassword(
                     validate: (val) => Validate.confirmPasswordValidate(
-                        context, val, controllerPassword.text),
+                      context,
+                      val,
+                      authController.controllerPassword.text,
+                    ),
                     horizontal: 24.w,
                     vertical: 12.h,
-                    controller: controllerConfirmPassword,
+                    controller: authController.controllerConfirmPassword,
                     text: context.confirmPassword,
                   ),
                   Padding(
@@ -194,24 +198,37 @@ class RegisterPage extends StatelessWidget {
                             profilePic == null) {
                           final RegisterRequestModel registerRequestModel =
                               RegisterRequestModel(
-                            name: controllerName.text,
-                            phone: controllerPhone.text,
-                            email: controllerEmail.text,
-                            password: controllerPassword.text,
-                            confirmPassword: controllerConfirmPassword.text,
+                            name: authController.controllerName.text,
+                            phone: authController.controllerPhone.text,
+                            email: authController.controllerEmail.text,
+                            password: context
+                                .read<AuthCubit>()
+                                .controllerPassword
+                                .text,
+                            confirmPassword: context
+                                .read<AuthCubit>()
+                                .controllerConfirmPassword
+                                .text,
                             location: Location(
-                                name: "methalfa",
-                                address: "meet halfa",
-                                coordinates: [1214451511, 12541845]),
-                            minCharge: int.parse(controllerMinCharge.text),
-                            disc: controllerDisc.text,
-                            brandName: controllerBradName.text,
+                              name: "methalfa",
+                              address: "meet halfa",
+                              coordinates: [1214451511, 12541845],
+                            ),
+                            minCharge: int.parse(context
+                                .read<AuthCubit>()
+                                .controllerMinCharge
+                                .text),
+                            disc: authController.controllerDisc.text,
+                            brandName: context
+                                .read<AuthCubit>()
+                                .controllerBradName
+                                .text,
                             backId: backId!,
                             frontId: frontId!,
                             healthCertificate: healthCertificate!,
                             profilePic: profilePic!,
                           );
-                          context.read<RegisterCubit>().register(
+                          context.read<AuthCubit>().register(
                                 registerRequestModel: registerRequestModel,
                               );
                         }

@@ -70,9 +70,10 @@ class ProfileCubit extends Cubit<ProfileState> {
     );
     result.fold(
       (failure) {
-        debugPrint("failures: ${failure.error}");
-
-        emit(state.copyWith(cubitStatus: CubitStatus.error));
+        String messageFailure =
+            "${failure.errorMessage}\n${failure.error!.join(', ')}";
+        emit(state.copyWith(
+            cubitStatus: CubitStatus.error, message: messageFailure));
       },
       (response) {
         emit(
@@ -95,12 +96,13 @@ class ProfileCubit extends Cubit<ProfileState> {
 
     result.fold(
       (failure) {
-        debugPrint("failures: ${failure.error}");
+        String messageFailure =
+            "${failure.errorMessage}\n${failure.error!.join(', ')}";
 
         emit(
           state.copyWith(
             cubitStatus: CubitStatus.error,
-            message: failure.errorMessage,
+            message: messageFailure,
           ),
         );
       },

@@ -9,7 +9,6 @@ import "package:chef_app/features/auth/domain/usecases/login_usecase.dart";
 import "package:chef_app/features/auth/domain/usecases/register_usecase.dart";
 import "package:chef_app/features/auth/presentation/cubits/auth/auth_cubit.dart";
 import "package:chef_app/core/network/network_info.dart";
-import "package:chef_app/features/auth/presentation/cubits/register/register_cubit.dart";
 import "package:chef_app/features/profile/data/datasources/chef_data_remote.dart";
 import "package:chef_app/features/profile/data/repositories/profile_repository_impl.dart";
 import "package:chef_app/features/profile/domain/repositories/profile_repository.dart";
@@ -28,11 +27,6 @@ Future<void> init() async {
     () => AuthCubit(
       sl(),
       sl(),
-      sl(),
-    ),
-  );
-  sl.registerFactory(
-    () => RegisterCubit(
       sl(),
     ),
   );
