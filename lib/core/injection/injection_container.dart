@@ -50,7 +50,7 @@ Future<void> init() async {
   );
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImplemntes(sl()));
 
-  sl.registerLazySingleton(() => InternetConnectionChecker());
+  sl.registerLazySingleton(() => InternetConnectionChecker.createInstance());
 
   //!============ Auth_Feature
 

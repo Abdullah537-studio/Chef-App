@@ -125,8 +125,12 @@ class DioConsumer extends ApiConsumer {
           errorModel: ErrorModel.fromJson(response.data),
         );
       default:
+        dynamic errorData = response.data;
+        if (errorData is String) {
+          errorData = ErrorModel.normalizeErrorData(errorData);
+        }
         throw ServerException(
-          errorModel: ErrorModel.fromJson(response.data),
+          errorModel: ErrorModel.fromJson(errorData as Map<String, dynamic>),
         );
     }
   }

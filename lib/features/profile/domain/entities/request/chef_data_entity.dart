@@ -1,3 +1,5 @@
+import 'package:chef_app/core/model/location.dart';
+
 class ChefDataEntity {
   ChefDataEntity({
     required this.chef,
@@ -59,8 +61,13 @@ class Chef {
     return Chef(
       password: json["password"],
       confirmPassword: json["confirmPassword"],
-      location:
-          json["location"] == null ? null : Location.fromJson(json["location"]),
+      location: json["location"] == null
+          ? null
+          : Location(
+              name: "methalfa",
+              address: "meet halfa",
+              coordinates: [1214451511, 12541845],
+            ),
       id: json["_id"],
       name: json["name"],
       phone: json["phone"],
@@ -79,32 +86,6 @@ class Chef {
       stock: json["stock"],
       status: json["status"],
       createdAt: DateTime.tryParse(json["createdAt"] ?? ""),
-    );
-  }
-}
-
-class Location {
-  Location({
-    required this.type,
-    required this.coordinates,
-  });
-
-  final String? type;
-  final List<int> coordinates;
-  Map<String, dynamic> toJson() {
-    return {
-      'name': "Egypt",
-      'address': "meet halfa",
-      'coordinates': [1214451511, 12541845],
-    };
-  }
-
-  factory Location.fromJson(Map<String, dynamic> json) {
-    return Location(
-      type: json["type"],
-      coordinates: json["coordinates"] == null
-          ? []
-          : List<int>.from(json["coordinates"]!.map((x) => x)),
     );
   }
 }

@@ -3,13 +3,13 @@ import 'package:chef_app/core/function/show_toast.dart';
 import 'package:chef_app/core/function/validate.dart';
 import 'package:chef_app/core/router/app_router.dart';
 import 'package:chef_app/core/strings/key_tanslate.dart';
+import 'package:chef_app/core/widgets/custom_location_search_widget.dart';
 import 'package:chef_app/core/widgets/main_button.dart';
 import 'package:chef_app/core/widgets/main_text_form_field.dart';
-import 'package:chef_app/features/auth/domain/entities/requiest/register_requist_model.dart';
 import 'package:chef_app/features/auth/presentation/cubits/auth/auth_cubit.dart';
 import 'package:chef_app/features/auth/presentation/widgets/custom_ask_login_or_register.dart';
 import 'package:chef_app/features/auth/presentation/widgets/custom_text_form_field_password.dart';
-import 'package:chef_app/features/auth/presentation/widgets/custom_uploade_image_register.dart';
+import 'package:chef_app/features/auth/presentation/widgets/custom_upload_image_field.dart';
 import 'package:chef_app/features/auth/presentation/widgets/cuton_welcome_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,22 +18,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class RegisterPage extends StatelessWidget {
   RegisterPage({super.key});
 
-  // final TextEditingController controllerName = TextEditingController();
-  // final TextEditingController controllerEmail = TextEditingController();
-  // final TextEditingController controllerPassword = TextEditingController();
-  // final TextEditingController controllerConfirmPassword =
-  //     TextEditingController();
-  // final TextEditingController controllerPhone = TextEditingController();
-  // final TextEditingController controllerLocation = TextEditingController();
-  // final TextEditingController controllerDisc = TextEditingController();
-  // final TextEditingController controllerMinCharge = TextEditingController();
-  // final TextEditingController controllerBradName = TextEditingController();
   final GlobalKey<FormState> formState = GlobalKey();
 
   String? healthCertificate, profilePic, frontId, backId;
-
   @override
   Widget build(BuildContext context) {
+    final authCubit = context.read<AuthCubit>();
+
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state.cubitStatus == CubitStatus.error) {
@@ -42,13 +33,12 @@ class RegisterPage extends StatelessWidget {
             state.message,
           );
         } else if (state.cubitStatus == CubitStatus.loaded) {
+          authCubit.clearControllersRegisters();
           showToast(ToastMessageStatus.success, state.message);
           Navigator.pushNamed(context, RouteNamedScreens.logiscreen);
         }
       },
       builder: (context, state) {
-        final authController = context.read<AuthCubit>();
-
         return Form(
           key: formState,
           child: Scaffold(
@@ -64,7 +54,7 @@ class RegisterPage extends StatelessWidget {
                     validate: (val) => Validate.generalValidate(context, val),
                     horizontal: 26.w,
                     vertical: 14.h,
-                    controller: authController.controllerName,
+                    controller: authCubit.controllerName,
                     text: context.name,
                   ),
                   //!======== Phone
@@ -74,24 +64,27 @@ class RegisterPage extends StatelessWidget {
                     validate: (val) => Validate.phoneValidate(context, val),
                     horizontal: 26.w,
                     vertical: 14.h,
-                    controller: authController.controllerPhone,
+                    controller: authCubit.controllerPhone,
                     text: context.phone,
                   ),
                   //!======== location
-                  MainTextFormField(
-                    validate: (val) => Validate.generalValidate(context, val),
-                    horizontal: 26.w,
-                    vertical: 14.h,
-                    controller: authController.controllerLocation,
+                  LocationSearchWidget(
                     text: context.location,
+                    validate: (value) =>
+                        Validate.generalValidate(context, value),
+                    controller: authCubit.controllerLocation,
+                    onLocationSelected: (location) {
+                      context.read<AuthCubit>().locatoinModel = location;
+                    },
                   ),
+
                   //!======== min charge
                   MainTextFormField(
                     textinputType: TextInputType.number,
                     validate: (val) => Validate.minChargeValidate(context, val),
                     horizontal: 26.w,
                     vertical: 14.h,
-                    controller: authController.controllerMinCharge,
+                    controller: authCubit.controllerMinCharge,
                     text: context.minCharge,
                   ),
                   //!======== discription
@@ -99,7 +92,7 @@ class RegisterPage extends StatelessWidget {
                     validate: (val) => Validate.discValidate(context, val),
                     horizontal: 26.w,
                     vertical: 14.h,
-                    controller: authController.controllerDisc,
+                    controller: authCubit.controllerDisc,
                     text: context.disc,
                   ),
                   //!======== Brand Name
@@ -107,51 +100,40 @@ class RegisterPage extends StatelessWidget {
                     validate: (val) => Validate.generalValidate(context, val),
                     horizontal: 26.w,
                     vertical: 14.h,
-                    controller: authController.controllerBradName,
+                    controller: authCubit.controllerBradName,
                     text: context.brandNamed,
                   ),
 
                   //!======== healthCertificate شهادة صحية
-                  CustomUploadeImageRegister(
-                    horizontal: 26.w,
-                    vertical: 14.h,
+                  CustomUploadImageField(
                     text: context.healthCertificate,
-                    fileFunction: (value) {
-                      return healthCertificate = value.path;
+                    onFilePicked: (value) {
+                      return healthCertificate = value?.path;
                     },
-                    isValid: healthCertificate == null,
                   ),
+
                   //!======== frontId الهوية الأمامية
-                  CustomUploadeImageRegister(
-                    horizontal: 26.w,
-                    vertical: 14.h,
+                  CustomUploadImageField(
                     text: context.frontId,
-                    fileFunction: (value) {
-                      return frontId = value.path;
+                    onFilePicked: (value) {
+                      return frontId = value?.path;
                     },
-                    isValid: frontId == null,
                   ),
 
                   //!======== backId الهوية الخلفية
-                  CustomUploadeImageRegister(
-                    horizontal: 26.w,
-                    vertical: 14.h,
+                  CustomUploadImageField(
                     text: context.backId,
-                    fileFunction: (value) {
-                      return backId = value.path;
+                    onFilePicked: (value) {
+                      return backId = value?.path;
                     },
-                    isValid: backId == null,
                   ),
 
                   //!======== profilePic صورة الملف الشخصي
-                  CustomUploadeImageRegister(
-                    horizontal: 26.w,
-                    vertical: 14.h,
+                  CustomUploadImageField(
                     text: context.profilePicture,
-                    fileFunction: (value) {
-                      return profilePic = value.path;
+                    onFilePicked: (value) {
+                      return profilePic = value?.path;
                     },
-                    isValid: profilePic == null,
                   ),
 
                   //!======== Email
@@ -159,7 +141,7 @@ class RegisterPage extends StatelessWidget {
                     validate: (val) => Validate.emailValidate(context, val),
                     horizontal: 26.w,
                     vertical: 14.h,
-                    controller: authController.controllerEmail,
+                    controller: authCubit.controllerEmail,
                     text: context.email,
                   ),
                   //!======== Password
@@ -167,7 +149,7 @@ class RegisterPage extends StatelessWidget {
                     validate: (val) => Validate.passwordValidate(context, val),
                     horizontal: 24.w,
                     vertical: 12.h,
-                    controller: authController.controllerPassword,
+                    controller: authCubit.controllerPassword,
                     text: context.password,
                   ),
                   //!======== Confirm Password
@@ -175,11 +157,11 @@ class RegisterPage extends StatelessWidget {
                     validate: (val) => Validate.confirmPasswordValidate(
                       context,
                       val,
-                      authController.controllerPassword.text,
+                      authCubit.controllerPassword.text,
                     ),
                     horizontal: 24.w,
                     vertical: 12.h,
-                    controller: authController.controllerConfirmPassword,
+                    controller: authCubit.controllerConfirmPassword,
                     text: context.confirmPassword,
                   ),
                   Padding(
@@ -187,49 +169,24 @@ class RegisterPage extends StatelessWidget {
                       horizontal: 24.w,
                       vertical: 64.h,
                     ),
+//!============== register Button
                     child: MainButton(
                       isLoading: state.cubitStatus == CubitStatus.loading,
                       text: context.signUp,
                       onTap: () async {
                         if (formState.currentState!.validate() &&
-                            healthCertificate == null &&
-                            frontId == null &&
-                            backId == null &&
-                            profilePic == null) {
-                          final RegisterRequestModel registerRequestModel =
-                              RegisterRequestModel(
-                            name: authController.controllerName.text,
-                            phone: authController.controllerPhone.text,
-                            email: authController.controllerEmail.text,
-                            password: context
-                                .read<AuthCubit>()
-                                .controllerPassword
-                                .text,
-                            confirmPassword: context
-                                .read<AuthCubit>()
-                                .controllerConfirmPassword
-                                .text,
-                            location: Location(
-                              name: "methalfa",
-                              address: "meet halfa",
-                              coordinates: [1214451511, 12541845],
-                            ),
-                            minCharge: int.parse(context
-                                .read<AuthCubit>()
-                                .controllerMinCharge
-                                .text),
-                            disc: authController.controllerDisc.text,
-                            brandName: context
-                                .read<AuthCubit>()
-                                .controllerBradName
-                                .text,
-                            backId: backId!,
-                            frontId: frontId!,
-                            healthCertificate: healthCertificate!,
-                            profilePic: profilePic!,
-                          );
+                            healthCertificate != null &&
+                            frontId != null &&
+                            backId != null &&
+                            profilePic != null) {
                           context.read<AuthCubit>().register(
-                                registerRequestModel: registerRequestModel,
+                                registerRequestModel:
+                                    authCubit.registerModelRequest(
+                                  backId: backId,
+                                  frontId: frontId,
+                                  healthCertificate: healthCertificate,
+                                  profilePic: profilePic,
+                                ),
                               );
                         }
                         return null;

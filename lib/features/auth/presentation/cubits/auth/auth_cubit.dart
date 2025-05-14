@@ -1,5 +1,6 @@
 import 'package:chef_app/core/database/cache/cache_helper.dart';
 import 'package:chef_app/core/database/remote/api_urls.dart';
+import 'package:chef_app/core/model/location.dart';
 import 'package:chef_app/core/strings/key_cache_value.dart';
 import 'package:chef_app/features/auth/domain/entities/requiest/register_requist_model.dart';
 import 'package:chef_app/features/auth/domain/entities/requiest/send_code_requist_model.dart';
@@ -34,6 +35,8 @@ class AuthCubit extends Cubit<AuthState> {
   final TextEditingController controllerDisc = TextEditingController();
   final TextEditingController controllerMinCharge = TextEditingController();
   final TextEditingController controllerBradName = TextEditingController();
+  LocationModel locatoinModel =
+      LocationModel(name: "", address: "", latitude: 0, longitude: 0);
   //?------ forget password
   final SendCodeUsecase sendCodeUsecase;
 
@@ -109,6 +112,46 @@ class AuthCubit extends Cubit<AuthState> {
         message: response.message,
       ));
     });
+  }
+
+  RegisterRequestModel registerModelRequest({
+    var profilePic,
+    var healthCertificate,
+    var frontId,
+    var backId,
+  }) {
+    return RegisterRequestModel(
+      name: controllerName.text,
+      phone: controllerPhone.text,
+      email: controllerEmail.text,
+      password: controllerPassword.text,
+      confirmPassword: controllerConfirmPassword.text,
+      location: locatoinModel,
+      // Location(
+      //   name: "methalfa",
+      //   address: "meet halfa",
+      //   coordinates: [1214451511, 12541845],
+      // ),
+      minCharge: int.parse(controllerMinCharge.text),
+      disc: controllerDisc.text,
+      brandName: controllerBradName.text,
+      backId: backId,
+      frontId: frontId,
+      healthCertificate: healthCertificate,
+      profilePic: profilePic,
+    );
+  }
+
+  void clearControllersRegisters() {
+    controllerName.clear();
+    controllerEmail.clear();
+    controllerPassword.clear();
+    controllerConfirmPassword.clear();
+    controllerPhone.clear();
+    controllerLocation.clear();
+    controllerDisc.clear();
+    controllerMinCharge.clear();
+    controllerBradName.clear();
   }
 
   Future<void> sendCodePassword(

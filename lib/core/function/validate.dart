@@ -12,12 +12,19 @@ class Validate {
   }
 
   static String? phoneValidate(BuildContext context, String? value) {
-    if (value?.isEmpty ?? true) {
-      return context.thisFieldRequiredValidate;
-    } else if (value?.contains(".") ?? true) {
-      return context.thisFieldRequiredValidate;
-    } else if (int.parse(value ?? "0") < 10) {
-      return context.lengthPhoneValidation;
+    try {
+      int phoneNumber = int.parse(value ?? "0");
+      if (phoneNumber == 0) {
+        return context.thisFieldRequiredValidate;
+      }
+      //  else if (value?.contains(".") ?? true) {
+      //   return context.thisFieldRequiredValidate;
+      // }
+      else if (phoneNumber < 10 && phoneNumber > 11) {
+        return context.lengthPhoneValidation;
+      }
+    } catch (e) {
+      return "Rong phone number";
     }
     return null;
   }

@@ -1,4 +1,4 @@
-import 'package:chef_app/features/profile/domain/entities/request/chef_data_entity.dart';
+import 'package:chef_app/core/model/location.dart';
 import 'package:dio/dio.dart';
 
 class EditProfileRequest {

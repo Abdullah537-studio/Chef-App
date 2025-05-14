@@ -1,3 +1,4 @@
+import 'package:chef_app/core/model/location.dart';
 import 'package:dio/dio.dart';
 
 class EditMealRequest {
@@ -34,25 +35,5 @@ class EditMealRequest {
       ...toJson(),
       "profilePic": await MultipartFile.fromFile(profilePic),
     });
-  }
-}
-
-class Location {
-  String name;
-  String address;
-  List<double> coordinates;
-
-  Location({
-    required this.name,
-    required this.address,
-    required this.coordinates,
-  });
-
-  Map<String, dynamic> toJson() {
-    return {
-      'name': name,
-      'address': address,
-      'coordinates': coordinates,
-    };
   }
 }

@@ -41,8 +41,8 @@ class _CustomImageWithEditState extends State<CustomImageWithEdit> {
           right: 0,
           bottom: 0,
           child: InkWell(
-            onTap: () {
-              pickImage(imageEdit);
+            onTap: () async {
+              imageEdit = await pickFileFunction();
             },
             child: Image.asset(ImageString.editeImageProfile),
           ),

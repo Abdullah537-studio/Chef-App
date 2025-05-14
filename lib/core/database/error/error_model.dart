@@ -10,4 +10,18 @@ class ErrorModel {
       error: jsonData["Error"],
     );
   }
+  //  في حال كانت نوعية البيانات غير متوقعة أحياناً برجع String بدال map
+
+  static Map<String, dynamic> normalizeErrorData(
+    dynamic jsonData, {
+    String messageKey = "ErrorMessage",
+  }) {
+    if (jsonData is String) {
+      return {messageKey: jsonData};
+    } else if (jsonData is Map<String, dynamic>) {
+      return jsonData;
+    } else {
+      return {messageKey: jsonData.toString()};
+    }
+  }
 }

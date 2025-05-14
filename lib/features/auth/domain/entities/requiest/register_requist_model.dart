@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:chef_app/core/model/location.dart';
 import 'package:dio/dio.dart';
 
 class RegisterRequestModel {
@@ -8,7 +9,7 @@ class RegisterRequestModel {
   final String email;
   final String password;
   final String confirmPassword;
-  final Location location;
+  final LocationModel location;
   final String brandName;
   final int minCharge;
   final String disc;
@@ -49,25 +50,5 @@ class RegisterRequestModel {
       'backId': await MultipartFile.fromFile(backId),
       'profilePic': await MultipartFile.fromFile(profilePic),
     });
-  }
-}
-
-class Location {
-  String name;
-  String address;
-  List<double> coordinates;
-
-  Location({
-    required this.name,
-    required this.address,
-    required this.coordinates,
-  });
-
-  Map<String, dynamic> toJson() {
-    return {
-      'name': name,
-      'address': address,
-      'coordinates': coordinates,
-    };
   }
 }

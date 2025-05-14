@@ -38,14 +38,14 @@ dependencies:
   get_it: ^8.0.2
   dio: ^5.7.0
   shared_preferences: ^2.3.3
-  internet_connection_checker: ^1.0.0+1
+  internet_connection_checker: ^3.0.1
   flutter_svg: ^2.0.16
-  bloc: ^8.1.4
+  bloc: ^9.0.0
   equatable: ^2.0.7
   easy_localization: ^3.0.7
   flutter_screenutil: ^5.9.3
   dartz: ^0.10.1
-  flutter_bloc: ^8.1.6
+  flutter_bloc: ^9.1.1
   fluttertoast: ^8.2.8
   flutter_secure_storage: ^9.2.2
   google_fonts: ^6.2.1
@@ -55,7 +55,10 @@ dependencies:
   dropdown_button2: ^2.3.9
   async: ^2.11.0
   smooth_page_indicator: ^1.2.1
-
+  flutter_map: ^8.1.1
+  latlong2: ^0.9.1
+  flutter_typeahead: ^5.2.0
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -65,7 +68,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^4.0.0
+  flutter_lints: ^5.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -48,9 +48,9 @@ class _CustomUploadeImageRegisterState
     return Column(
       children: [
         GestureDetector(
-          onTap: () {
+          onTap: () async {
             if (!chooseNameOrEmpty) {
-              pickImage(file);
+              file = await pickFileFunction();
             }
           },
           child: Container(
