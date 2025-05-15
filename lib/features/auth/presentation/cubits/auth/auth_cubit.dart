@@ -127,11 +127,6 @@ class AuthCubit extends Cubit<AuthState> {
       password: controllerPassword.text,
       confirmPassword: controllerConfirmPassword.text,
       location: locatoinModel,
-      // Location(
-      //   name: "methalfa",
-      //   address: "meet halfa",
-      //   coordinates: [1214451511, 12541845],
-      // ),
       minCharge: int.parse(controllerMinCharge.text),
       disc: controllerDisc.text,
       brandName: controllerBradName.text,

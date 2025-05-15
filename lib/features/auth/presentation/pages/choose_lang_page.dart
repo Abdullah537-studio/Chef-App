@@ -33,10 +33,6 @@ class ChooseLangPage extends StatelessWidget {
               text: context.welcomeToApplication,
               textStyle: boldStyle(),
             ),
-            // Text(
-            //   ,
-            //   style: TextStyle(fontSize: 32.sp, color: AppColors.textColor),
-            // ),
             Padding(
               padding: EdgeInsets.only(top: 54.h, bottom: 102.h),
               child: MainTextWidget(
@@ -51,7 +47,9 @@ class ChooseLangPage extends StatelessWidget {
                     onTap: () {
                       context.setLocale(const Locale(AppConstantString.ar));
                       Navigator.pushNamed(
-                          context, RouteNamedScreens.logiscreen);
+                        context,
+                        RouteNamedScreens.logiscreen,
+                      );
                     },
                     text: AppConstantString.arabic),
                 MainButtonChooceLang(

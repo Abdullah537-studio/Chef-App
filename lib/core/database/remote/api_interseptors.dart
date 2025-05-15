@@ -15,6 +15,9 @@ class ApiInterseptors extends Interceptor {
     } else {
       options.headers["Authorization"] = "Bearer ";
     }
+
+    options.headers["User-Agent"] =
+        "chef_App/1.0 (abd.allah.alnahas.96@gmail.com)";
     super.onRequest(options, handler);
   }
 

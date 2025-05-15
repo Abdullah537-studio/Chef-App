@@ -3,6 +3,10 @@ class ApiBaseUrl {
 }
 
 class ApiGet {
+  static locationNominatimOpenstreetmap(query) {
+    return "https://nominatim.openstreetmap.org/search?q=$query&format=json&addressdetails=1";
+  }
+
   static String getChefDataEndPoint(id) {
     String chefGet = 'chef/get-chef/$id';
     return chefGet;

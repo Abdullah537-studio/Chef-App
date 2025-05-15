@@ -3,6 +3,7 @@ import 'package:chef_app/core/function/show_toast.dart';
 import 'package:chef_app/core/function/validate.dart';
 import 'package:chef_app/core/strings/key_tanslate.dart';
 import 'package:chef_app/core/widgets/custom_image_edit.dart';
+import 'package:chef_app/core/widgets/custom_location_search_widget.dart';
 import 'package:chef_app/core/widgets/main_app_bar.dart';
 import 'package:chef_app/core/widgets/main_button.dart';
 import 'package:chef_app/core/widgets/main_text_form_field.dart';
@@ -21,18 +22,16 @@ class EditProfilePage extends StatefulWidget {
 
 class _EditProfilePageState extends State<EditProfilePage> {
   final TextEditingController controllerEmail = TextEditingController();
-
   final TextEditingController controllerName = TextEditingController();
-
   final TextEditingController controllerDisc = TextEditingController();
-
   final TextEditingController controllerBradName = TextEditingController();
-
+  final TextEditingController controllerlocation = TextEditingController();
   @override
   void initState() {
     controllerName.text = widget.profileCubit.name ?? '';
     controllerDisc.text = widget.profileCubit.disc ?? '';
     controllerBradName.text = widget.profileCubit.brandName ?? '';
+    controllerlocation.text = widget.profileCubit.location?.address ?? '';
 
     super.initState();
   }
@@ -47,6 +46,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
               showToast(ToastMessageStatus.error, state.message);
             } else if (state.cubitStatus == CubitStatus.loaded) {
               showToast(ToastMessageStatus.success, state.message);
+              Navigator.pop(context, true);
             }
           },
           builder: (context, state) {
@@ -56,10 +56,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 24.h),
                     child: CustomImageWithEdit(
-                      imageNetwork: widget.profileCubit.profilePic,
+                      imageNetwork: widget.profileCubit.profilePicUrl,
                       value: (val) {
                         if (val != null) {
-                          widget.profileCubit.profilePic = val.path;
+                          widget.profileCubit.profilePicFile = val;
                         }
                       },
                     ),
@@ -93,6 +93,14 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     onChanged: (value) {
                       widget.profileCubit.brandName = value;
                     },
+                  ),
+                  LocationSearchWidget(
+                    onLocationSelected: (value) {
+                      widget.profileCubit.location = value;
+                    },
+                    validate: (val) => Validate.generalValidate(context, val),
+                    controller: controllerlocation,
+                    text: context.location,
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(

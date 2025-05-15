@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 class EditMealRequest {
   final String name;
   final String phone;
-  final Location location;
+  final LocationModel location;
   final String brandName;
   final int minCharge;
   final String disc;

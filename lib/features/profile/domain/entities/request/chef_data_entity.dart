@@ -37,7 +37,7 @@ class Chef {
     this.createdAt,
   });
 
-  final Location? location;
+  final LocationModel? location;
   final String? id;
   final String? name;
   final String? phone;
@@ -61,13 +61,7 @@ class Chef {
     return Chef(
       password: json["password"],
       confirmPassword: json["confirmPassword"],
-      location: json["location"] == null
-          ? null
-          : Location(
-              name: "methalfa",
-              address: "meet halfa",
-              coordinates: [1214451511, 12541845],
-            ),
+      location: LocationModel.fromNominatimJson(json),
       id: json["_id"],
       name: json["name"],
       phone: json["phone"],

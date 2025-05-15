@@ -1,4 +1,4 @@
-import 'package:chef_app/core/function/flutter_map.dart';
+import 'package:chef_app/core/function/fetch_locations.dart';
 import 'package:chef_app/core/function/main_text_style.dart';
 import 'package:chef_app/core/strings/color_strings.dart';
 import 'package:chef_app/core/widgets/main_loading_indicator.dart';
@@ -7,11 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:chef_app/core/model/location.dart';
-// تأكد من تعريف دالة fetchLocations التي تُعيد Future<List<LocationModel>> بناءً على نص البحث.
 
 class LocationSearchWidget extends StatefulWidget {
-  final ValueChanged<LocationModel>
-      onLocationSelected; // callback لتمرير الموقع المختار
+  final ValueChanged<LocationModel> onLocationSelected;
   final TextEditingController controller;
   final String text;
   final String? Function(String?)? validate;
@@ -39,17 +37,14 @@ class _LocationSearchWidgetState extends State<LocationSearchWidget> {
       child: TypeAheadField<LocationModel>(
         builder: (context, controller, focusNode) {
           return TextFormField(
-              validator: widget.validate,
-              controller: controller,
-              focusNode: focusNode,
-              autofocus: true,
-              decoration: InputDecoration(
-                hintText: widget.text,
-              ));
-          // MainTextFormField(
-          //     text: widget.text,
-
-          //     validate: widget.validate);
+            validator: widget.validate,
+            controller: controller,
+            focusNode: focusNode,
+            autofocus: true,
+            decoration: InputDecoration(
+              hintText: widget.text,
+            ),
+          );
         },
         controller: widget.controller,
         suggestionsCallback: (pattern) async {
@@ -67,12 +62,16 @@ class _LocationSearchWidgetState extends State<LocationSearchWidget> {
                   title: MainTextWidget(
                     text: suggestion.name,
                     textStyle: boldStyle(
-                        color: AppColors.darkCharcoal, fontSize: 16.sp),
+                      color: AppColors.darkCharcoal,
+                      fontSize: 16.sp,
+                    ),
                   ),
                   subtitle: MainTextWidget(
                     text: suggestion.address,
                     textStyle: regularStyle(
-                        color: AppColors.greyColor, fontSize: 14.sp),
+                      color: AppColors.greyColor,
+                      fontSize: 14.sp,
+                    ),
                   ),
                 ),
               ),
@@ -83,7 +82,6 @@ class _LocationSearchWidgetState extends State<LocationSearchWidget> {
           setState(() {
             widget.controller.text = suggestion.address;
           });
-          // استدعاء الـ callback وتمرير الموقع المختار إلى صفحة التسجيل
           widget.onLocationSelected(suggestion);
         },
       ),

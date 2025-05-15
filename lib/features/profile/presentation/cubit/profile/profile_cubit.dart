@@ -50,7 +50,7 @@ class ProfileCubit extends Cubit<ProfileState> {
           brandName: response.chef?.brandName,
           minCharge: response.chef?.minCharge,
           disc: response.chef?.disc,
-          profilePic: response.chef?.profilePic,
+          profilePicUrl: response.chef?.profilePic,
         );
         emit(state.copyWith(
           cubitStatus: CubitStatus.loaded,

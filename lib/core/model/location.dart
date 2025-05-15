@@ -1,23 +1,3 @@
-class Location {
-  String name;
-  String address;
-  List<double> coordinates;
-
-  Location({
-    required this.name,
-    required this.address,
-    required this.coordinates,
-  });
-
-  Map<String, dynamic> toJson() {
-    return {
-      'name': name,
-      'address': address,
-      'coordinates': coordinates,
-    };
-  }
-}
-
 class LocationModel {
   final String name;
   final String address;

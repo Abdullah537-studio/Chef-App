@@ -108,7 +108,7 @@ class RegisterPage extends StatelessWidget {
                   CustomUploadImageField(
                     text: context.healthCertificate,
                     onFilePicked: (value) {
-                      return healthCertificate = value?.path;
+                      healthCertificate = value?.path;
                     },
                   ),
 
@@ -116,7 +116,7 @@ class RegisterPage extends StatelessWidget {
                   CustomUploadImageField(
                     text: context.frontId,
                     onFilePicked: (value) {
-                      return frontId = value?.path;
+                      frontId = value?.path;
                     },
                   ),
 
@@ -124,7 +124,7 @@ class RegisterPage extends StatelessWidget {
                   CustomUploadImageField(
                     text: context.backId,
                     onFilePicked: (value) {
-                      return backId = value?.path;
+                      backId = value?.path;
                     },
                   ),
 
@@ -132,7 +132,7 @@ class RegisterPage extends StatelessWidget {
                   CustomUploadImageField(
                     text: context.profilePicture,
                     onFilePicked: (value) {
-                      return profilePic = value?.path;
+                      profilePic = value?.path;
                     },
                   ),
 

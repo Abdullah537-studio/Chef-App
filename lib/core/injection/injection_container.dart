@@ -1,4 +1,5 @@
 import "package:chef_app/core/cubits/cubit/bootom_navbar_cubit.dart";
+
 import "package:chef_app/core/database/remote/api_consumer.dart";
 import "package:chef_app/core/database/remote/dio_consumer.dart";
 import "package:chef_app/features/auth/data/datasources/auth_remote.dart";
@@ -40,9 +41,9 @@ Future<void> init() async {
       getChefUseCase: sl(),
     ),
   );
+
   //!============ Features - Global
 
-  // sl.registerLazySingleton(() => CacheHelper().init());
   sl.registerLazySingleton(() => Dio());
 
   sl.registerLazySingleton<ApiConsumer>(

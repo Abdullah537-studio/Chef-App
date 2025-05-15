@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return SafeArea(
           child: MaterialApp(
+            key: ValueKey(context.locale.toString()),
             theme: mainThemeData(),
             debugShowCheckedModeBanner: false,
             debugShowMaterialGrid: false,

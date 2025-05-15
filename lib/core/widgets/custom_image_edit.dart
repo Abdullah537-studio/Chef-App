@@ -11,6 +11,7 @@ class CustomImageWithEdit extends StatefulWidget {
   });
   final String? imageNetwork;
   final Function(File?)? value;
+
   @override
   State<CustomImageWithEdit> createState() => _CustomImageWithEditState();
 }
@@ -29,8 +30,14 @@ class _CustomImageWithEditState extends State<CustomImageWithEdit> {
             height: 120,
             child: imageEdit == null
                 ? (widget.imageNetwork != null
-                    ? Image.network(widget.imageNetwork!)
-                    : Image.asset(ImageString.imageNotFound))
+                    ? Image.network(
+                        widget.imageNetwork!,
+                        fit: BoxFit.cover,
+                      )
+                    : Image.asset(
+                        ImageString.imageNotFound,
+                        fit: BoxFit.cover,
+                      ))
                 : Image.file(
                     imageEdit!,
                     fit: BoxFit.cover,
@@ -42,7 +49,17 @@ class _CustomImageWithEditState extends State<CustomImageWithEdit> {
           bottom: 0,
           child: InkWell(
             onTap: () async {
-              imageEdit = await pickFileFunction();
+              // انتظار اختيار الملف
+              File? file = await pickFileFunction();
+              if (file != null) {
+                setState(() {
+                  imageEdit = file;
+                });
+                // تمرير الملف الجديد إلى الـ callback
+                if (widget.value != null) {
+                  widget.value!(file);
+                }
+              }
             },
             child: Image.asset(ImageString.editeImageProfile),
           ),

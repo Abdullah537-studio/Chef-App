@@ -1,55 +1,48 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:chef_app/core/model/location.dart';
 import 'package:dio/dio.dart';
 
 class EditProfileRequest {
   String? name;
   String? phone;
-  Location? location;
+  LocationModel? location;
   String? brandName;
   int? minCharge;
   String? disc;
-  String? profilePic;
 
-  EditProfileRequest({
-    this.name,
-    this.phone,
-    this.location,
-    this.brandName,
-    this.minCharge,
-    this.disc,
-    this.profilePic,
-  });
+  // الصورة القديمة من الـ API كـ URL.
+  String? profilePicUrl;
+  // الصورة الجديدة (إذا قام المستخدم بتغييرها).
+  File? profilePicFile;
+
+  EditProfileRequest(
+      {this.name,
+      this.phone,
+      this.location,
+      this.brandName,
+      this.minCharge,
+      this.disc,
+      this.profilePicFile,
+      this.profilePicUrl});
 
   Future<FormData> toFormData() async {
-    return FormData.fromMap({
+    final Map<String, dynamic> data = {
       "name": name,
       "phone": phone,
-      "location": location!.toJson(),
+      "location": jsonEncode(location?.toJson()),
       "brandName": brandName,
       "minCharge": minCharge,
       "disc": disc,
-      // "profilePic":
-      //     profilePic != null ? await MultipartFile.fromFile(profilePic!) : null,
-    });
+    };
+    // إذا كانت الصورة الجديدة موجودة، قم بضمها في الطلب.
+    if (profilePicFile != null) {
+      data["profilePic"] = await MultipartFile.fromFile(
+        profilePicFile!.path,
+        filename: profilePicFile!.path.split('/').last,
+      );
+    }
+    return FormData.fromMap(data);
   }
 }
-
-// class Location {
-//   String name;
-//   String address;
-//   List<double> coordinates;
-
-//   Location({
-//     required this.name,
-//     required this.address,
-//     required this.coordinates,
-//   });
-
-//   Map<String, dynamic> toJson() {
-//     return {
-//       'name': name,
-//       'address': address,
-//       'coordinates': coordinates,
-//     };
-//   }
-// }

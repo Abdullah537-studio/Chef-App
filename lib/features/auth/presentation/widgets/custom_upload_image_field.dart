@@ -13,7 +13,7 @@ class CustomUploadImageField extends StatelessWidget {
     required this.text,
     required this.onFilePicked,
   });
-  final Function(File?) onFilePicked;
+  final ValueChanged<File?> onFilePicked;
   final String text;
 
   @override
@@ -38,7 +38,6 @@ class CustomUploadImageField extends StatelessWidget {
               onTap: () async {
                 file = await pickFileFunction();
                 onFilePicked(file);
-
                 setState(() {});
               },
               child: SizedBox(
