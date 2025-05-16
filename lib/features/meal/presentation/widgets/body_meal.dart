@@ -57,12 +57,7 @@ class ShowBodyMeal extends StatelessWidget {
                         description: mealsDetailes[index].description,
                         mealImage: mealsDetailes[index].images.first,
                         price: mealsDetailes[index].price,
-                        ontapDeletMeal: () {
-                          showToast(
-                            ToastMessageStatus.warning,
-                            "You are not allowed to delete this meal ! ",
-                          );
-                        },
+                        mealId: mealsDetailes[index].id,
                       );
                     },
                   ),
