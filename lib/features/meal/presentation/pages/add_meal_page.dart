@@ -1,3 +1,4 @@
+import 'package:chef_app/core/function/show_toast.dart';
 import 'package:chef_app/core/function/validate.dart';
 import 'package:chef_app/core/strings/key_tanslate.dart';
 import 'package:chef_app/core/widgets/custom_image_edit.dart';
@@ -99,7 +100,12 @@ class AddMealPage extends StatelessWidget {
                 ),
                 child: MainButton(
                   text: context.addMeal,
-                  onTap: () {},
+                  onTap: () {
+                    showToast(
+                      ToastMessageStatus.warning,
+                      "You are not allowed to update this meal !",
+                    );
+                  },
                   isLoading: false,
                 ),
               ),

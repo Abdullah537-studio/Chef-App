@@ -8,6 +8,7 @@ import 'package:chef_app/features/auth/presentation/pages/create_new_password_pa
 import 'package:chef_app/features/auth/presentation/pages/send_code_page.dart';
 import 'package:chef_app/features/auth/presentation/pages/login_page.dart';
 import 'package:chef_app/features/auth/presentation/pages/register_page.dart';
+import 'package:chef_app/features/meal/presentation/cubits/cubit/meal_cubit.dart';
 import 'package:chef_app/features/meal/presentation/pages/add_meal_page.dart';
 import 'package:chef_app/features/profile/domain/entities/request/edit_profile_request.dart';
 import 'package:chef_app/features/profile/presentation/cubit/profile/profile_cubit.dart';
@@ -35,6 +36,9 @@ class AppRouter {
             providers: [
               BlocProvider(
                 create: (context) => sl<ProfileCubit>()..getChefData(),
+              ),
+              BlocProvider(
+                create: (context) => sl<MealCubit>()..getMealsData(),
               ),
               BlocProvider(
                 create: (context) => sl<BootomNavbarCubit>(),

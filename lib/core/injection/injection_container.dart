@@ -10,6 +10,11 @@ import "package:chef_app/features/auth/domain/usecases/login_usecase.dart";
 import "package:chef_app/features/auth/domain/usecases/register_usecase.dart";
 import "package:chef_app/features/auth/presentation/cubits/auth/auth_cubit.dart";
 import "package:chef_app/core/network/network_info.dart";
+import "package:chef_app/features/meal/data/datasources/meals_data_remote.dart";
+import "package:chef_app/features/meal/data/repositories/meals_repository_impl.dart";
+import "package:chef_app/features/meal/domain/repositories/meals_repository.dart";
+import "package:chef_app/features/meal/domain/usecases/get_meals_data_usecase.dart";
+import "package:chef_app/features/meal/presentation/cubits/cubit/meal_cubit.dart";
 import "package:chef_app/features/profile/data/datasources/chef_data_remote.dart";
 import "package:chef_app/features/profile/data/repositories/profile_repository_impl.dart";
 import "package:chef_app/features/profile/domain/repositories/profile_repository.dart";
@@ -40,6 +45,9 @@ Future<void> init() async {
       editProfileUseCase: sl(),
       getChefUseCase: sl(),
     ),
+  );
+  sl.registerFactory(
+    () => MealCubit(sl()),
   );
 
   //!============ Features - Global
@@ -98,9 +106,26 @@ Future<void> init() async {
   sl.registerLazySingleton(
     () => EditProfileUsecase(repository: sl()),
   );
-//?==========
+//?========== change password
   sl.registerLazySingleton(
     () => ChangePasswordProfileUsecase(repository: sl()),
   );
   //!============ End_profile_Feature
+
+  //!============ Start_meal_Feature
+//?========== get all meals
+  sl.registerLazySingleton(
+    () => GetMealsDataUsecase(repository: sl()),
+  );
+  sl.registerLazySingleton<MealsRepository>(
+    () => MealsRepositoryImpl(
+      networkInfo: sl(),
+      remoteData: sl(),
+    ),
+  );
+  sl.registerLazySingleton<MealsDataRemote>(
+    () => MealsDataRemoteImpl(),
+  );
+
+  //!============ End_meal_Feature
 }

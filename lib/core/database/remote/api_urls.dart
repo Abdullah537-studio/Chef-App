@@ -12,6 +12,7 @@ class ApiGet {
     return chefGet;
   }
 
+  static String getAllMealsData = "meal/get-meals";
   static String getMealChefDataEndPoint(id) {
     String mealChefGet = "chef/get-chef/$id/meals";
     return mealChefGet;

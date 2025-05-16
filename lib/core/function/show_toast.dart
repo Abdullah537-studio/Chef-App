@@ -14,7 +14,9 @@ void showToast(
         ? AppColors.primaryColor
         : toastMessageStatus == ToastMessageStatus.error
             ? AppColors.redColor
-            : AppColors.greenColor,
+            : toastMessageStatus == ToastMessageStatus.warning
+                ? AppColors.errorValidateColor
+                : AppColors.greenColor,
     textColor: AppColors.whiteColor,
     fontSize: 16.0,
   );

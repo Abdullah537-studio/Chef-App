@@ -1,17 +1,23 @@
 part of 'meal_cubit.dart';
 
 class MealState extends Equatable {
-  const MealState({required this.status, this.message, this.response});
+  const MealState({
+    required this.status,
+    required this.message,
+    required this.response,
+  });
   final CubitStatus status;
   final String? message;
-  final EditMealResponse? response;
+  final GetMealsEntitiy? response;
+
   factory MealState.initial() {
-    return const MealState(status: CubitStatus.initial);
+    return const MealState(
+        status: CubitStatus.initial, message: "", response: null);
   }
   MealState copyWith({
     CubitStatus? status,
     String? message,
-    EditMealResponse? response,
+    GetMealsEntitiy? response,
   }) {
     return MealState(
       status: status ?? this.status,
